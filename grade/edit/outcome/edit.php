@@ -97,7 +97,7 @@ if ($id) {
 
 if (!$courseid) {
     require_once $CFG->libdir.'/adminlib.php';
-    admin_externalpage_setup('outcomes');
+    admin_externalpage_setup('scales');
 }
 
 // default return url

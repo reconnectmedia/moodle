@@ -362,12 +362,6 @@ class page_requirements_manager {
         if ($url instanceof moodle_url) {
             return $url;
         } else if (strpos($url, '/') === 0) {
-            // Fix the admin links if needed.
-            if ($CFG->admin !== 'admin') {
-                if (strpos($url, "/admin/") === 0) {
-                    $url = preg_replace("|^/admin/|", "/$CFG->admin/", $url);
-                }
-            }
             if (debugging()) {
                 // check file existence only when in debug mode
                 if (!file_exists($CFG->dirroot . strtok($url, '?'))) {
@@ -402,7 +396,7 @@ class page_requirements_manager {
                 case 'core_filepicker':
                     $module = array('name'     => 'core_filepicker',
                                     'fullpath' => '/repository/filepicker.js',
-                                    'requires' => array('base', 'node', 'node-event-simulate', 'json', 'async-queue', 'io-base', 'io-upload-iframe', 'io-form', 'escape', 'yui2-button', 'yui2-container', 'yui2-layout', 'yui2-menu', 'yui2-treeview', 'yui2-dragdrop', 'yui2-cookie'),
+                                    'requires' => array('base', 'node', 'node-event-simulate', 'json', 'async-queue', 'io-base', 'io-upload-iframe', 'io-form', 'yui2-button', 'yui2-container', 'yui2-layout', 'yui2-menu', 'yui2-treeview', 'yui2-dragdrop', 'yui2-cookie'),
                                     'strings'  => array(array('add', 'repository'), array('back', 'repository'), array('cancel', 'moodle'), array('close', 'repository'),
                                                         array('cleancache', 'repository'), array('copying', 'repository'), array('date', 'repository'), array('downloadsucc', 'repository'),
                                                         array('emptylist', 'repository'), array('error', 'repository'), array('federatedsearch', 'repository'),
@@ -443,7 +437,7 @@ class page_requirements_manager {
                     $module = array('name'     => 'core_dock',
                                     'fullpath' => '/blocks/dock.js',
                                     'requires' => array('base', 'node', 'event-custom', 'event-mouseenter', 'event-resize'),
-                                    'strings' => array(array('addtodock', 'block'),array('undockitem', 'block'),array('undockall', 'block'),array('thisdirectionvertical', 'langconfig'),array('hidedockpanel', 'block'),array('hidepanel', 'block')));
+                                    'strings' => array(array('addtodock', 'block'),array('undockitem', 'block'),array('undockall', 'block'),array('thisdirectionvertical', 'langconfig')));
                     break;
                 case 'core_message':
                     $module = array('name'     => 'core_message',
@@ -714,7 +708,7 @@ class page_requirements_manager {
         if (!is_array($modules)) {
             $modules = array($modules);
         }
-        if (empty($CFG->useexternalyui)) {
+        if (empty($CFG->useexternalyui) || true) {
             // We need to set the M.yui.galleryversion to the correct version
             $jscode = 'M.yui.galleryversion='.json_encode($galleryversion).';';
         } else {

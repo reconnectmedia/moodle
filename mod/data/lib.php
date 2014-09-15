@@ -243,8 +243,7 @@ class data_field_base {     // Base class for Database Field Types (see field/*/
         }
 
         $str = '<div title="'.s($this->field->description).'">';
-        $str .= '<label class="accesshide" for="field_'.$this->field->id.'">'.$this->field->description.'</label>';
-        $str .= '<input class="basefieldinput" type="text" name="field_'.$this->field->id.'" id="field_'.$this->field->id.'" value="'.s($content).'" />';
+        $str .= '<input style="width:300px;" type="text" name="field_'.$this->field->id.'" id="field_'.$this->field->id.'" value="'.s($content).'" />';
         $str .= '</div>';
 
         return $str;
@@ -1546,16 +1545,14 @@ function data_print_preference_form($data, $perpage, $search, $sort='', $order='
     $pagesizes = array(2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,15=>15,
                        20=>20,30=>30,40=>40,50=>50,100=>100,200=>200,300=>300,400=>400,500=>500,1000=>1000);
     echo html_writer::select($pagesizes, 'perpage', $perpage, false, array('id'=>'pref_perpage'));
-
+    echo '<div id="reg_search" style="display: ';
     if ($advanced) {
-        $regsearchclass = 'search_none';
-        $advancedsearchclass = 'search_inline';
-    } else {
-        $regsearchclass = 'search_inline';
-        $advancedsearchclass = 'search_none';
+        echo 'none';
     }
-    echo '<div id="reg_search" class="' . $regsearchclass . '" >&nbsp;&nbsp;&nbsp;';
-    echo '<label for="pref_search">'.get_string('search').'</label> <input type="text" size="16" name="search" id= "pref_search" value="'.s($search).'" /></div>';
+    else {
+        echo 'inline';
+    }
+    echo ';" >&nbsp;&nbsp;&nbsp;<label for="pref_search">'.get_string('search').'</label> <input type="text" size="16" name="search" id= "pref_search" value="'.s($search).'" /></div>';
     echo '&nbsp;&nbsp;&nbsp;<label for="pref_sortby">'.get_string('sortby').'</label> ';
     // foreach field, print the option
     echo '<select name="sort" id="pref_sortby">';
@@ -1615,7 +1612,15 @@ function data_print_preference_form($data, $perpage, $search, $sort='', $order='
     echo '&nbsp;<input type="submit" value="'.get_string('savesettings','data').'" />';
 
     echo '<br />';
-    echo '<div class="' . $advancedsearchclass . '" id="data_adv_form">';
+    echo '<div class="dataadvancedsearch" id="data_adv_form" style="display: ';
+
+    if ($advanced) {
+        echo 'inline';
+    }
+    else {
+        echo 'none';
+    }
+    echo ';margin-left:auto;margin-right:auto;" >';
     echo '<table class="boxaligncenter">';
 
     // print ASC or DESC
@@ -1666,9 +1671,9 @@ function data_print_preference_form($data, $perpage, $search, $sort='', $order='
     $fn = !empty($search_array[DATA_FIRSTNAME]->data) ? $search_array[DATA_FIRSTNAME]->data : '';
     $ln = !empty($search_array[DATA_LASTNAME]->data) ? $search_array[DATA_LASTNAME]->data : '';
     $patterns[]    = '/##firstname##/';
-    $replacement[] = '<label class="accesshide" for="u_fn">'.get_string('authorfirstname', 'data').'</label><input type="text" size="16" id="u_fn" name="u_fn" value="'.$fn.'" />';
+    $replacement[] = '<input type="text" size="16" name="u_fn" value="'.$fn.'" />';
     $patterns[]    = '/##lastname##/';
-    $replacement[] = '<label class="accesshide" for="u_ln">'.get_string('authorlastname', 'data').'</label><input type="text" size="16" id="u_ln" name="u_ln" value="'.$ln.'" />';
+    $replacement[] = '<input type="text" size="16" name="u_ln" value="'.$ln.'" />';
 
     // actual replacement of the tags
     $newtext = preg_replace($patterns, $replacement, $data->asearchtemplate);
@@ -1680,7 +1685,7 @@ function data_print_preference_form($data, $perpage, $search, $sort='', $order='
     echo format_text($newtext, FORMAT_HTML, $options);
     echo '</td></tr>';
 
-    echo '<tr><td colspan="4"><br/><input type="submit" value="'.get_string('savesettings','data').'" /><input type="submit" name="resetadv" value="'.get_string('resetsettings','data').'" /></td></tr>';
+    echo '<tr><td colspan="4" style="text-align: center;"><br/><input type="submit" value="'.get_string('savesettings','data').'" /><input type="submit" name="resetadv" value="'.get_string('resetsettings','data').'" /></td></tr>';
     echo '</table>';
     echo '</div>';
     echo '</div>';
@@ -2172,25 +2177,17 @@ abstract class data_preset_importer {
      * @param stored_file $fileobj the directory to look in. null if using a conventional directory
      * @param string $dir the directory to look in. null if using the Moodle file storage
      * @param string $filename the name of the file we want
-     * @return string the contents of the file or null if the file doesn't exist.
+     * @return string the contents of the file
      */
     public function data_preset_get_file_contents(&$filestorage, &$fileobj, $dir, $filename) {
         if(empty($filestorage) || empty($fileobj)) {
             if (substr($dir, -1)!='/') {
                 $dir .= '/';
             }
-            if (file_exists($dir.$filename)) {
-                return file_get_contents($dir.$filename);
-            } else {
-                return null;
-            }
+            return file_get_contents($dir.$filename);
         } else {
-            if ($filestorage->file_exists(DATA_PRESET_CONTEXT, DATA_PRESET_COMPONENT, DATA_PRESET_FILEAREA, 0, $fileobj->get_filepath(), $filename)) {
-                $file = $filestorage->get_file(DATA_PRESET_CONTEXT, DATA_PRESET_COMPONENT, DATA_PRESET_FILEAREA, 0, $fileobj->get_filepath(), $filename);
-                return $file->get_content();
-            } else {
-                return null;
-            }
+            $file = $filestorage->get_file(DATA_PRESET_CONTEXT, DATA_PRESET_COMPONENT, DATA_PRESET_FILEAREA, 0, $fileobj->get_filepath(), $filename);
+            return $file->get_content();
         }
 
     }
@@ -2210,8 +2207,7 @@ abstract class data_preset_importer {
             $files = $fs->get_area_files(DATA_PRESET_CONTEXT, DATA_PRESET_COMPONENT, DATA_PRESET_FILEAREA);
 
             //preset name to find will be the final element of the directory
-            $explodeddirectory = explode('/', $this->directory);
-            $presettofind = end($explodeddirectory);
+            $presettofind = end(explode('/',$this->directory));
 
             //now go through the available files available and see if we can find it
             foreach ($files as $file) {
@@ -2292,9 +2288,15 @@ abstract class data_preset_importer {
         $result->settings->rsstitletemplate   = $this->data_preset_get_file_contents($fs, $fileobj,$this->directory,"rsstitletemplate.html");
         $result->settings->csstemplate        = $this->data_preset_get_file_contents($fs, $fileobj,$this->directory,"csstemplate.css");
         $result->settings->jstemplate         = $this->data_preset_get_file_contents($fs, $fileobj,$this->directory,"jstemplate.js");
-        $result->settings->asearchtemplate    = $this->data_preset_get_file_contents($fs, $fileobj,$this->directory,"asearchtemplate.html");
 
+        //optional
+        if (file_exists($this->directory."/asearchtemplate.html")) {
+            $result->settings->asearchtemplate = $this->data_preset_get_file_contents($fs, $fileobj,$this->directory,"asearchtemplate.html");
+        } else {
+            $result->settings->asearchtemplate = NULL;
+        }
         $result->settings->instance = $this->module->id;
+
         return $result;
     }
 
@@ -2764,7 +2766,7 @@ function data_export_xls($export, $dataname, $count) {
     $workbook = new MoodleExcelWorkbook($filearg);
     $workbook->send($filename);
     $worksheet = array();
-    $worksheet[0] = $workbook->add_worksheet('');
+    $worksheet[0] =& $workbook->add_worksheet('');
     $rowno = 0;
     foreach ($export as $row) {
         $colno = 0;
@@ -2798,7 +2800,7 @@ function data_export_ods($export, $dataname, $count) {
     $workbook = new MoodleODSWorkbook($filearg);
     $workbook->send($filename);
     $worksheet = array();
-    $worksheet[0] = $workbook->add_worksheet('');
+    $worksheet[0] =& $workbook->add_worksheet('');
     $rowno = 0;
     foreach ($export as $row) {
         $colno = 0;
@@ -3465,183 +3467,4 @@ function data_user_can_delete_preset($context, $preset) {
         }
         return $candelete;
     }
-}
-
-/**
- * Get all of the record ids from a database activity.
- *
- * @param int    $dataid      The dataid of the database module.
- * @param object $selectdata  Contains an additional sql statement for the
- *                            where clause for group and approval fields.
- * @param array  $params      Parameters that coincide with the sql statement.
- * @return array $idarray     An array of record ids
- */
-function data_get_all_recordids($dataid, $selectdata = '', $params = null) {
-    global $DB;
-    $initsql = 'SELECT r.id
-                  FROM {data_records} r
-                 WHERE r.dataid = :dataid';
-    if ($selectdata != '') {
-        $initsql .= $selectdata;
-        $params = array_merge(array('dataid' => $dataid), $params);
-    } else {
-        $params = array('dataid' => $dataid);
-    }
-    $initsql .= ' GROUP BY r.id';
-    $initrecord = $DB->get_recordset_sql($initsql, $params);
-    $idarray = array();
-    foreach ($initrecord as $data) {
-        $idarray[] = $data->id;
-    }
-    // Close the record set and free up resources.
-    $initrecord->close();
-    return $idarray;
-}
-
-/**
- * Get the ids of all the records that match that advanced search criteria
- * This goes and loops through each criterion one at a time until it either
- * runs out of records or returns a subset of records.
- *
- * @param array $recordids    An array of record ids.
- * @param array $searcharray  Contains information for the advanced search criteria
- * @param int $dataid         The data id of the database.
- * @return array $recordids   An array of record ids.
- */
-function data_get_advance_search_ids($recordids, $searcharray, $dataid) {
-    $searchcriteria = array_keys($searcharray);
-    // Loop through and reduce the IDs one search criteria at a time.
-    foreach ($searchcriteria as $key) {
-        $recordids = data_get_recordids($key, $searcharray, $dataid, $recordids);
-        // If we don't have anymore IDs then stop.
-        if (!$recordids) {
-            break;
-        }
-    }
-    return $recordids;
-}
-
-/**
- * Gets the record IDs given the search criteria
- *
- * @param string $alias       Record alias.
- * @param array $searcharray  Criteria for the search.
- * @param int $dataid         Data ID for the database
- * @param array $recordids    An array of record IDs.
- * @return array $nestarray   An arry of record IDs
- */
-function data_get_recordids($alias, $searcharray, $dataid, $recordids) {
-    global $DB;
-
-    $nestsearch = $searcharray[$alias];
-    // searching for content outside of mdl_data_content
-    if ($alias < 0) {
-        $alias = '';
-    }
-    list($insql, $params) = $DB->get_in_or_equal($recordids, SQL_PARAMS_NAMED);
-    $nestselect = 'SELECT c' . $alias . '.recordid
-                     FROM {data_content} c' . $alias . ',
-                          {data_fields} f,
-                          {data_records} r,
-                          {user} u ';
-    $nestwhere = 'WHERE u.id = r.userid
-                    AND f.id = c' . $alias . '.fieldid
-                    AND r.id = c' . $alias . '.recordid
-                    AND r.dataid = :dataid
-                    AND c' . $alias .'.recordid ' . $insql . '
-                    AND ';
-
-    $params['dataid'] = $dataid;
-    if (count($nestsearch->params) != 0) {
-        $params = array_merge($params, $nestsearch->params);
-        $nestsql = $nestselect . $nestwhere . $nestsearch->sql;
-    } else {
-        $thing = $DB->sql_like($nestsearch->field, ':search1', false);
-        $nestsql = $nestselect . $nestwhere . $thing . ' GROUP BY c' . $alias . '.recordid';
-        $params['search1'] = "%$nestsearch->data%";
-    }
-    $nestrecords = $DB->get_recordset_sql($nestsql, $params);
-    $nestarray = array();
-    foreach ($nestrecords as $data) {
-        $nestarray[] = $data->recordid;
-    }
-    // Close the record set and free up resources.
-    $nestrecords->close();
-    return $nestarray;
-}
-
-/**
- * Returns an array with an sql string for advanced searches and the parameters that go with them.
- *
- * @param int $sort            DATA_*
- * @param stdClass $data       Data module object
- * @param array $recordids     An array of record IDs.
- * @param string $selectdata   Information for the where and select part of the sql statement.
- * @param string $sortorder    Additional sort parameters
- * @return array sqlselect     sqlselect['sql] has the sql string, sqlselect['params'] contains an array of parameters.
- */
-function data_get_advanced_search_sql($sort, $data, $recordids, $selectdata, $sortorder) {
-    global $DB;
-    if ($sort == 0) {
-        $nestselectsql = 'SELECT r.id, r.approved, r.timecreated, r.timemodified, r.userid, u.firstname, u.lastname
-                        FROM {data_content} c,
-                             {data_records} r,
-                             {user} u ';
-        $groupsql = ' GROUP BY r.id, r.approved, r.timecreated, r.timemodified, r.userid, u.firstname, u.lastname ';
-    } else {
-        // Sorting through 'Other' criteria
-        if ($sort <= 0) {
-            switch ($sort) {
-                case DATA_LASTNAME:
-                    $sortcontentfull = "u.lastname";
-                    break;
-                case DATA_FIRSTNAME:
-                    $sortcontentfull = "u.firstname";
-                    break;
-                case DATA_APPROVED:
-                    $sortcontentfull = "r.approved";
-                    break;
-                case DATA_TIMEMODIFIED:
-                    $sortcontentfull = "r.timemodified";
-                    break;
-                case DATA_TIMEADDED:
-                default:
-                    $sortcontentfull = "r.timecreated";
-            }
-        } else {
-            $sortfield = data_get_field_from_id($sort, $data);
-            $sortcontent = $DB->sql_compare_text('c.' . $sortfield->get_sort_field());
-            $sortcontentfull = $sortfield->get_sort_sql($sortcontent);
-        }
-
-        $nestselectsql = 'SELECT r.id, r.approved, r.timecreated, r.timemodified, r.userid, u.firstname, u.lastname, ' . $sortcontentfull . '
-                              AS sortorder
-                            FROM {data_content} c,
-                                 {data_records} r,
-                                 {user} u ';
-        $groupsql = ' GROUP BY r.id, r.approved, r.timecreated, r.timemodified, r.userid, u.firstname, u.lastname, ' .$sortcontentfull;
-    }
-
-    // Default to a standard Where statement if $selectdata is empty.
-    if ($selectdata == '') {
-        $selectdata = 'WHERE c.recordid = r.id
-                         AND r.dataid = :dataid
-                         AND r.userid = u.id ';
-    }
-
-    // Find the field we are sorting on
-    if ($sort > 0 or data_get_field_from_id($sort, $data)) {
-        $selectdata .= ' AND c.fieldid = :sort';
-    }
-
-    // If there are no record IDs then return an sql statment that will return no rows.
-    if (count($recordids) != 0) {
-        list($insql, $inparam) = $DB->get_in_or_equal($recordids, SQL_PARAMS_NAMED);
-    } else {
-        list($insql, $inparam) = $DB->get_in_or_equal(array('-1'), SQL_PARAMS_NAMED);
-    }
-    $nestfromsql = $selectdata . ' AND c.recordid ' . $insql . $groupsql;
-    $sqlselect['sql'] = "$nestselectsql $nestfromsql $sortorder";
-    $sqlselect['params'] = $inparam;
-    return $sqlselect;
 }

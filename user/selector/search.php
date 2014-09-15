@@ -78,20 +78,17 @@ if (isset($options['file'])) {
 $userselector = new $classname($name, $options);
 
 // Do the search and output the results.
-$results = $userselector->find_users($search);
-$json = array();
-foreach ($results as $groupname => $users) {
-    $groupdata = array('name' => $groupname, 'users' => array());
-    foreach ($users as $user) {
+$users = $userselector->find_users($search);
+foreach ($users as &$group) {
+    foreach ($group as $user) {
         $output = new stdClass;
         $output->id = $user->id;
         $output->name = $userselector->output_user($user);
         if (!empty($user->disabled)) {
             $output->disabled = true;
         }
-        $groupdata['users'][] = $output;
+        $group[$user->id] = $output;
     }
-    $json[] = $groupdata;
 }
 
-echo json_encode(array('results' => $json));
+echo json_encode(array('results' => $users));

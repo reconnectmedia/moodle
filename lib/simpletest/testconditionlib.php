@@ -79,8 +79,7 @@ class conditionlib_test extends UnitTestCaseUsingDatabase {
         $this->assertEqual(
             (object)array('id'=>$id,'showavailability'=>1,
                 'availablefrom'=>17,'availableuntil'=>398,'course'=>64,
-                'conditionsgrade' => array(), 'conditionscompletion' => array(),
-                'visible' => 1),
+                'conditionsgrade'=>array(), 'conditionscompletion'=>array()),
             $test->get_full_course_module());
 
         // just the course_modules stuff; check it doesn't request that from db
@@ -88,13 +87,11 @@ class conditionlib_test extends UnitTestCaseUsingDatabase {
         $cm->availablefrom=2;
         $cm->availableuntil=74;
         $cm->course=38;
-        $cm->visible = 1;
         $test=new condition_info($cm,CONDITION_MISSING_EXTRATABLE);
         $this->assertEqual(
             (object)array('id'=>$id,'showavailability'=>0,
                 'availablefrom'=>2,'availableuntil'=>74,'course'=>38,
-                'conditionsgrade' => array(), 'conditionscompletion' => array(),
-                'visible' => 1),
+                'conditionsgrade'=>array(), 'conditionscompletion'=>array()),
             $test->get_full_course_module());
 
         // Now let's add some actual grade/completion conditions

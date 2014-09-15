@@ -62,7 +62,7 @@ switch ($type) {
     case backup::TYPE_1SECTION :
         $coursecontext = get_context_instance(CONTEXT_COURSE, $course->id);
         require_capability('moodle/backup:backupsection', $coursecontext);
-        if ((string)$section->name !== '') {
+        if (!empty($section->name)) {
             $sectionname = format_string($section->name, true, array('context' => $coursecontext));
             $heading = get_string('backupsection', 'backup', $sectionname);
             $PAGE->navbar->add($sectionname);
@@ -98,7 +98,7 @@ $PAGE->navbar->add($backup->get_stage_name());
 $renderer = $PAGE->get_renderer('core','backup');
 echo $OUTPUT->header();
 if ($backup->enforce_changed_dependencies()) {
-    debugging('Your settings have been altered due to unmet dependencies', DEBUG_DEVELOPER);
+    echo $renderer->dependency_notification(get_string('dependenciesenforced','backup'));
 }
 echo $renderer->progress_bar($backup->get_progress_bar());
 echo $backup->display();

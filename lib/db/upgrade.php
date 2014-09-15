@@ -53,7 +53,7 @@ defined('MOODLE_INTERNAL') || die();
  * @return bool always true
  */
 function xmldb_main_upgrade($oldversion) {
-    global $CFG, $USER, $DB, $OUTPUT, $SITE;
+    global $CFG, $USER, $DB, $OUTPUT;
 
     require_once($CFG->libdir.'/db/upgradelib.php'); // Core Upgrade-related functions
 
@@ -162,20 +162,6 @@ function xmldb_main_upgrade($oldversion) {
     /// Define index contextid-lowerboundary-letter (unique) to be added to grade_letters
         $table = new xmldb_table('grade_letters');
         $index = new xmldb_index('contextid-lowerboundary-letter', XMLDB_INDEX_UNIQUE, array('contextid', 'lowerboundary', 'letter'));
-
-        // MDL-30515 Removing duplicate entries before adding the unique index
-        $sql = "SELECT MAX(id) as newestid, contextid, lowerboundary, letter, COUNT('x') AS dcount
-                  FROM {grade_letters}
-              GROUP BY contextid, lowerboundary, letter
-                HAVING COUNT('x') > 1";
-        $duplicateletters = $DB->get_recordset_sql($sql);
-        foreach ($duplicateletters as $duplicateletter) {
-            // Removing duplicate/s and keeping the latest one
-            $where = 'contextid = ? AND lowerboundary = ? AND letter = ? AND id != ?';
-            $params = array($duplicateletter->contextid, $duplicateletter->lowerboundary, $duplicateletter->letter, $duplicateletter->newestid);
-            $DB->delete_records_select('grade_letters', $where, $params);
-        }
-        $duplicateletters->close();
 
     /// Launch add index contextid-lowerboundary-letter
         $dbman->add_index($table, $index);
@@ -1061,8 +1047,6 @@ function xmldb_main_upgrade($oldversion) {
     }
 
     if ($oldversion < 2009010602) {
-        // Issue with field in the user table being null in postgres.
-        $DB->execute("UPDATE {user} SET lastip = '' WHERE lastip IS NULL");
 
     /// Changing precision of field lastip on table user to (45)
         $table = new xmldb_table('user');
@@ -1663,25 +1647,12 @@ WHERE gradeitemid IS NOT NULL AND grademax IS NOT NULL");
     if ($oldversion < 2009050613) {
     /// fill in contextid and subpage, and update pagetypepattern from pagetype and pageid
 
-    upgrade_set_timeout(60*20);
-
     /// site-index
         $frontpagecontext = get_context_instance(CONTEXT_COURSE, SITEID);
         $DB->execute("UPDATE {block_instances} SET contextid = " . $frontpagecontext->id . ",
                                                    pagetypepattern = 'site-index',
                                                    subpagepattern = NULL
                       WHERE pagetypepattern = 'site-index'");
-
-    /// delete all blocks from incorrectly deleted courses
-        $rs = $DB->get_recordset_sql(
-            "SELECT bi.id
-               FROM {block_instances} bi
-          LEFT JOIN {course} c ON (c.id = bi.pageid)
-               WHERE bi.pagetypepattern = 'course-view' AND c.id IS NULL");
-        foreach ($rs as $bi) {
-            $DB->delete_records('block_instances', array('id'=>$bi->id));
-        }
-        $rs->close();
 
     /// course-view
         $DB->execute("UPDATE {block_instances} SET
@@ -1740,17 +1711,6 @@ WHERE gradeitemid IS NOT NULL AND grademax IS NOT NULL");
             if (!$dbman->table_exists($modname)) {
                 continue;
             }
-        /// delete all blocks that belonged to incorrectly deleted activities
-            $rs = $DB->get_recordset_sql(
-                "SELECT bi.id
-                   FROM {block_instances} bi
-              LEFT JOIN {{$modname}} m ON (m.id = bi.pageid)
-                  WHERE bi.pagetypepattern = 'mod-$modname-view' AND m.id IS NULL");
-            foreach ($rs as $bi) {
-                $DB->delete_records('block_instances', array('id'=>$bi->id));
-            }
-            $rs->close();
-
             $DB->execute("UPDATE {block_instances} SET
                             contextid = (
                                 SELECT {context}.id
@@ -1760,9 +1720,9 @@ WHERE gradeitemid IS NOT NULL AND grademax IS NOT NULL");
                                 JOIN {{$modname}} ON {course_modules}.instance = {{$modname}}.id
                                 WHERE {{$modname}}.id = pageid
                             ),
-                            pagetypepattern = 'mod-$modname-view',
+                            pagetypepattern = 'blog-index',
                             subpagepattern = NULL
-                          WHERE pagetypepattern = 'mod-$modname-view'");
+                          WHERE pagetypepattern = 'blog-view'");
         }
 
     /// Main savepoint reached
@@ -4734,10 +4694,6 @@ WHERE gradeitemid IS NOT NULL AND grademax IS NOT NULL");
         if ($dbman->index_exists($table, $index)) {
             $dbman->drop_index($table, $index);
         }
-
-        // Issue with field in the user table being null in postgres.
-        $DB->execute("UPDATE {user} SET city = '' WHERE city IS NULL");
-
     /// Changing precision of field city on table user to (120)
         $field = new xmldb_field('city', XMLDB_TYPE_CHAR, '120', null, XMLDB_NOTNULL, null, null, 'address');
 
@@ -5036,8 +4992,7 @@ WHERE gradeitemid IS NOT NULL AND grademax IS NOT NULL");
                         break;
                     case CONTEXT_COURSECAT :
                     case CONTEXT_SYSTEM :
-                        // Stored in the front-page course.
-                        $context = get_context_instance(CONTEXT_COURSE, get_site()->id);
+                        $context = get_system_context();
                         break;
                     default :
                         continue;
@@ -7093,203 +7048,6 @@ FROM
 
         // Main savepoint reached
         upgrade_main_savepoint(true, 2011120502.08);
-    }
-
-    if ($oldversion < 2011120503.03) { // fix invalid course_completion_records MDL-27368
-        //first get all instances of duplicate records
-        $sql = 'SELECT userid, course FROM {course_completions} WHERE (deleted IS NULL OR deleted <> 1) GROUP BY userid, course HAVING (count(id) > 1)';
-        $duplicates = $DB->get_recordset_sql($sql, array());
-
-        foreach ($duplicates as $duplicate) {
-            $pointer = 0;
-            //now get all the records for this user/course
-            $sql = 'userid = ? AND course = ? AND (deleted IS NULL OR deleted <> 1)';
-            $completions = $DB->get_records_select('course_completions', $sql,
-                array($duplicate->userid, $duplicate->course), 'timecompleted DESC, timestarted DESC');
-            $needsupdate = false;
-            $origcompletion = null;
-            foreach ($completions as $completion) {
-                $pointer++;
-                if ($pointer === 1) { //keep 1st record but delete all others.
-                    $origcompletion = $completion;
-                } else {
-                    //we need to keep the "oldest" of all these fields as the valid completion record.
-                    $fieldstocheck = array('timecompleted', 'timestarted', 'timeenrolled');
-                    foreach ($fieldstocheck as $f) {
-                        if ($origcompletion->$f > $completion->$f) {
-                            $origcompletion->$f = $completion->$f;
-                            $needsupdate = true;
-                        }
-                    }
-                    $DB->delete_records('course_completions', array('id'=>$completion->id));
-                }
-            }
-            if ($needsupdate) {
-                $DB->update_record('course_completions', $origcompletion);
-            }
-        }
-
-        // Main savepoint reached
-        upgrade_main_savepoint(true, 2011120503.03);
-    }
-
-    if ($oldversion < 2011120503.09) {
-        // Drop some old backup tables, not used anymore
-
-        // Define table backup_files to be dropped
-        $table = new xmldb_table('backup_files');
-
-        // Conditionally launch drop table for backup_files
-        if ($dbman->table_exists($table)) {
-            $dbman->drop_table($table);
-        }
-
-        // Define table backup_ids to be dropped
-        $table = new xmldb_table('backup_ids');
-
-        // Conditionally launch drop table for backup_ids
-        if ($dbman->table_exists($table)) {
-            $dbman->drop_table($table);
-        }
-
-        // Main savepoint reached
-        upgrade_main_savepoint(true, 2011120503.09);
-    }
-
-    if ($oldversion < 2011120504.03) {
-
-        // Saves orphaned questions from the Dark Side
-        upgrade_save_orphaned_questions();
-
-        // Main savepoint reached
-        upgrade_main_savepoint(true, 2011120504.03);
-    }
-
-    if ($oldversion < 2011120504.05) {
-
-        // Handle events with empty eventtype //MDL-32827
-
-        $DB->set_field('event', 'eventtype', 'site', array('eventtype' => '', 'courseid' => $SITE->id));
-        $DB->set_field_select('event', 'eventtype', 'due', "eventtype = '' AND courseid != 0 AND groupid = 0 AND (modulename = 'assignment' OR modulename = 'assign')");
-        $DB->set_field_select('event', 'eventtype', 'course', "eventtype = '' AND courseid != 0 AND groupid = 0");
-        $DB->set_field_select('event', 'eventtype', 'group', "eventtype = '' AND groupid != 0");
-        $DB->set_field_select('event', 'eventtype', 'user', "eventtype = '' AND userid != 0");
-
-        // Main savepoint reached
-        upgrade_main_savepoint(true, 2011120504.05);
-    }
-
-    if ($oldversion < 2011120504.12) {
-        $subquery = 'SELECT b.id FROM {blog_external} b where b.id = ' . $DB->sql_cast_char2int('{post}.content', true);
-        $sql = 'DELETE FROM {post}
-                      WHERE {post}.module = \'blog_external\'
-                            AND NOT EXISTS (' . $subquery . ')
-                            AND ' . $DB->sql_isnotempty('post', 'uniquehash', false, false);
-        $DB->execute($sql);
-        upgrade_main_savepoint(true, 2011120504.12);
-    }
-
-    if ($oldversion < 2011120505.09) {
-        // Issue with Moodle version < 1.7 using postgres having null values in the user table.
-        if ($DB->get_dbfamily() === 'postgres') {
-            // Array to store columns we may need to change.
-            $arrcolumns = array('idnumber', 'icq', 'skype', 'yahoo', 'aim', 'msn',
-                                'phone1', 'phone2', 'institution', 'department',
-                                'address', 'city', 'country', 'lastip', 'secret',
-                                'picture', 'url');
-            // OK, now we want to remove the columns that already have the default values before editing.
-            $columns = $DB->get_columns('user');
-            foreach ($columns as $c) {
-                if (in_array($c->name, $arrcolumns)) {
-                    if ($c->has_default && $c->not_null) {
-                        $arrcolumns = array_diff($arrcolumns, array($c->name));
-                    } else {
-                        if ($c->name == 'picture') {
-                            $DB->execute("UPDATE {user} SET picture = '0' WHERE picture IS NULL");
-                        } else {
-                            $DB->execute("UPDATE {user} SET $c->name = '' WHERE $c->name IS NULL");
-                        }
-                    }
-                }
-            }
-            // Create user table object.
-            $table = new xmldb_table('user');
-            // Create array to store the indexes in the user table.
-            $arrindexes = array();
-            $arrindexes['idnumber'] = new xmldb_index('idnumber', XMLDB_INDEX_NOTUNIQUE, array('idnumber'));
-            $arrindexes['city'] = new xmldb_index('city', XMLDB_INDEX_NOTUNIQUE, array('city'));
-            $arrindexes['country'] = new xmldb_index('country', XMLDB_INDEX_NOTUNIQUE, array('country'));
-            // Loop through the indexes.
-            foreach ($arrindexes as $key => $index) {
-                // Check if it is not in the columns array and remove as it does not need editing.
-                if (!in_array($key, $arrcolumns)) {
-                    unset($arrindexes[$key]);
-                }
-            }
-            // Remove the indexes that need to be removed.
-            foreach ($arrindexes as $index) {
-                if ($dbman->index_exists($table, $index)) {
-                    $dbman->drop_index($table, $index);
-                }
-            }
-            // Create list of fields that potentially need changed.
-            $arrfields = array();
-            $arrfields['idnumber'] = new xmldb_field('idnumber', XMLDB_TYPE_CHAR, '255', null, XMLDB_NOTNULL, null, null, 'password');
-            $arrfields['icq'] = new xmldb_field('icq', XMLDB_TYPE_CHAR, '15', null, XMLDB_NOTNULL, null, null, 'emailstop');
-            $arrfields['skype'] = new xmldb_field('skype', XMLDB_TYPE_CHAR, '50', null, XMLDB_NOTNULL, null, null, 'icq');
-            $arrfields['yahoo'] = new xmldb_field('yahoo', XMLDB_TYPE_CHAR, '50', null, XMLDB_NOTNULL, null, null, 'skype');
-            $arrfields['aim'] = new xmldb_field('aim', XMLDB_TYPE_CHAR, '50', null, XMLDB_NOTNULL, null, null, 'yahoo');
-            $arrfields['msn'] = new xmldb_field('msn', XMLDB_TYPE_CHAR, '50', null, XMLDB_NOTNULL, null, null, 'aim');
-            $arrfields['phone1'] = new xmldb_field('phone1', XMLDB_TYPE_CHAR, '20', null, XMLDB_NOTNULL, null, null, 'msn');
-            $arrfields['phone2'] = new xmldb_field('phone2', XMLDB_TYPE_CHAR, '20', null, XMLDB_NOTNULL, null, null, 'phone1');
-            $arrfields['institution'] = new xmldb_field('institution', XMLDB_TYPE_CHAR, '40', null, XMLDB_NOTNULL, null, null, 'phone2');
-            $arrfields['department'] = new xmldb_field('department', XMLDB_TYPE_CHAR, '30', null, XMLDB_NOTNULL, null, null, 'institution');
-            $arrfields['address'] = new xmldb_field('address', XMLDB_TYPE_CHAR, '70', null, XMLDB_NOTNULL, null, null, 'department');
-            $arrfields['city'] = new xmldb_field('city', XMLDB_TYPE_CHAR, '120', null, XMLDB_NOTNULL, null, null, 'address');
-            $arrfields['country'] = new xmldb_field('country', XMLDB_TYPE_CHAR, '2', null, XMLDB_NOTNULL, null, null, 'city');
-            $arrfields['lastip'] = new xmldb_field('lastip', XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null, 'country');
-            $arrfields['secret'] = new xmldb_field('secret', XMLDB_TYPE_CHAR, '15', null, XMLDB_NOTNULL, null, null, 'lastip');
-            $arrfields['picture'] = new xmldb_field('picture', XMLDB_TYPE_INTEGER, '1', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, 0, 'secret');
-            $arrfields['url'] = new xmldb_field('url', XMLDB_TYPE_CHAR, '255', null, XMLDB_NOTNULL, null, null, 'picture');
-            foreach ($arrfields as $key => $field) {
-                // If it is in the columns array it needs editing.
-                if (in_array($key, $arrcolumns)) {
-                    if ($dbman->field_exists($table, $field)) {
-                        $dbman->change_field_notnull($table, $field);
-                    }
-                }
-            }
-            // Re-add the indexes that were removed.
-            foreach ($arrindexes as $index) {
-                if (!$dbman->index_exists($table, $index)) {
-                    $dbman->add_index($table, $index);
-                }
-            }
-        }
-
-        // Main savepoint reached.
-        upgrade_main_savepoint(true, 2011120505.09);
-    }
-
-    if ($oldversion < 2011120506.06) {
-        // Remove "_utf8" suffix from all langs in course table.
-        $langs = $DB->get_records_sql("SELECT DISTINCT lang FROM {course} WHERE lang LIKE ?", array('%_utf8'));
-
-        foreach ($langs as $lang=>$unused) {
-            $newlang = str_replace('_utf8', '', $lang);
-            $sql = "UPDATE {course} SET lang = :newlang WHERE lang = :lang";
-            $DB->execute($sql, array('newlang'=>$newlang, 'lang'=>$lang));
-        }
-
-        // Main savepoint reached.
-        upgrade_main_savepoint(true, 2011120506.06);
-    }
-
-    if ($oldversion < 2011120507.03) {
-        // Make sure the sortorder is not above the unsigned integer MySQL range.
-        fix_course_sortorder();
-        // Main savepoint reached.
-        upgrade_main_savepoint(true, 2011120507.03);
     }
 
     return true;

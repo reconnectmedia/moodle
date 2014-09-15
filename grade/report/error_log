@@ -1,0 +1,5 @@
+[17-Mar-2014 11:24:49 America/Denver] Default exception handler: A required parameter (id) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 20 of /grade/report/index.php: call to required_param()
+

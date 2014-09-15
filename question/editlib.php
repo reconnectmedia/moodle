@@ -134,9 +134,6 @@ abstract class question_bank_column_base {
      */
     protected $qbank;
 
-    /** @var bool determine whether the column is td or th. */
-    protected $isheading = false;
-
     /**
      * Constructor.
      * @param $qbank the question_bank_view we are helping to render.
@@ -151,13 +148,6 @@ abstract class question_bank_column_base {
      * without having to override the constructor.
      */
     protected function init() {
-    }
-
-    /**
-     * Set the column as heading
-     */
-    public function set_as_heading() {
-        $this->isheading = true;
     }
 
     public function is_extra_row() {
@@ -268,20 +258,8 @@ abstract class question_bank_column_base {
         $this->display_end($question, $rowclasses);
     }
 
-    /**
-     * Output the opening column tag.  If it is set as heading, it will use <th> tag instead of <td>
-     *
-     * @param stdClass $question
-     * @param array $rowclasses
-     */
     protected function display_start($question, $rowclasses) {
-        $tag = 'td';
-        $attr = array('class' => $this->get_classes());
-        if ($this->isheading) {
-            $tag = 'th';
-            $attr['scope'] = 'row';
-        }
-        echo html_writer::start_tag($tag, $attr);
+        echo '<td class="' . $this->get_classes() . '">';
     }
 
     /**
@@ -314,18 +292,8 @@ abstract class question_bank_column_base {
      */
     protected abstract function display_content($question, $rowclasses);
 
-    /**
-     * Output the closing column tag
-     *
-     * @param object $question
-     * @param string $rowclasses
-     */
     protected function display_end($question, $rowclasses) {
-        $tag = 'td';
-        if ($this->isheading) {
-            $tag = 'th';
-        }
-        echo html_writer::end_tag($tag);
+        echo "</td>\n";
     }
 
     /**
@@ -640,7 +608,7 @@ abstract class question_bank_action_column_base extends question_bank_column_bas
 
     public function get_required_fields() {
         // createdby is required for permission checks.
-        return array('q.id', 'q.createdby');
+        return array('q.id, q.createdby');
     }
 }
 
@@ -917,7 +885,7 @@ class question_bank_view {
         $this->lastchangedid = optional_param('lastchanged',0,PARAM_INT);
 
         $this->init_column_types();
-        $this->init_columns($this->wanted_columns(), $this->heading_column());
+        $this->init_columns($this->wanted_columns());
         $this->init_sort();
 
         $PAGE->requires->yui2_lib('container');
@@ -931,15 +899,6 @@ class question_bank_view {
             $columns[] = 'questiontext';
         }
         return $columns;
-    }
-
-    /**
-     * Specify the column heading
-     *
-     * @return string Column name for the heading
-     */
-    protected function heading_column() {
-        return 'questionname';
     }
 
     protected function known_field_types() {
@@ -964,13 +923,7 @@ class question_bank_view {
         }
     }
 
-    /**
-     * Initializing table columns
-     *
-     * @param array $wanted Collection of column names
-     * @param string $heading The name of column that is set as heading
-     */
-    protected function init_columns($wanted, $heading = '') {
+    protected function init_columns($wanted) {
         $this->visiblecolumns = array();
         $this->extrarows = array();
         foreach ($wanted as $colname) {
@@ -985,9 +938,6 @@ class question_bank_view {
             }
         }
         $this->requiredcolumns = array_merge($this->visiblecolumns, $this->extrarows);
-        if (array_key_exists($heading, $this->requiredcolumns)) {
-            $this->requiredcolumns[$heading]->set_as_heading();
-        }
     }
 
     /**
@@ -1083,8 +1033,6 @@ class question_bank_view {
     }
 
     protected function default_sort() {
-        $this->requiredcolumns['qtype'] = $this->knowncolumntypes['qtype'];
-        $this->requiredcolumns['questionname'] = $this->knowncolumntypes['questionname'];
         return array('qtype' => 1, 'questionname' => 1);
     }
 

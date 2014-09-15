@@ -1,0 +1,482 @@
+[11-Dec-2012 09:40:12 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[09-Jan-2013 10:19:00 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[16-Jan-2013 19:41:00 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[17-Feb-2013 14:19:33 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[01-Mar-2013 07:22:42 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[01-Mar-2013 09:02:12 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[01-Mar-2013 10:03:51 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[02-Mar-2013 20:41:15 America/Denver] Can not obtain session lock
+[02-Mar-2013 20:41:15 America/Denver] Default exception handler: Timed out while waiting for session lock.<br />Wait for your current requests to finish and try again later. Debug: 
+* line 1228 of /lib/dml/mysqli_native_moodle_database.php: dml_sessionwait_exception thrown
+* line 593 of /lib/sessionlib.php: call to mysqli_native_moodle_database->get_session_lock()
+* line ? of unknownfile: call to database_session->handler_read()
+* line 184 of /lib/sessionlib.php: call to session_start()
+* line 473 of /lib/sessionlib.php: call to session_stub->__construct()
+* line 60 of /lib/sessionlib.php: call to database_session->__construct()
+* line 692 of /lib/setup.php: call to session_get_instance()
+* line 463 of /config.php: call to require_once()
+* line 19 of /mod/scorm/player.php: call to require_once()
+
+[02-Mar-2013 20:42:36 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[05-Mar-2013 08:37:36 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[06-Mar-2013 12:45:02 America/Denver] Can not obtain session lock
+[06-Mar-2013 12:45:02 America/Denver] Default exception handler: Timed out while waiting for session lock.<br />Wait for your current requests to finish and try again later. Debug: 
+* line 1228 of /lib/dml/mysqli_native_moodle_database.php: dml_sessionwait_exception thrown
+* line 593 of /lib/sessionlib.php: call to mysqli_native_moodle_database->get_session_lock()
+* line ? of unknownfile: call to database_session->handler_read()
+* line 184 of /lib/sessionlib.php: call to session_start()
+* line 473 of /lib/sessionlib.php: call to session_stub->__construct()
+* line 60 of /lib/sessionlib.php: call to database_session->__construct()
+* line 692 of /lib/setup.php: call to session_get_instance()
+* line 463 of /config.php: call to require_once()
+* line 17 of /mod/scorm/view.php: call to require_once()
+
+[06-Mar-2013 12:47:49 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[11-Mar-2013 13:33:45 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[12-Mar-2013 06:55:29 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[12-Mar-2013 07:55:33 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[15-Mar-2013 06:40:41 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[15-Mar-2013 07:43:18 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[15-Mar-2013 10:14:08 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[15-Mar-2013 13:37:45 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[15-Mar-2013 14:38:17 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[15-Mar-2013 16:44:41 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[15-Mar-2013 22:59:46 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[16-Mar-2013 00:01:07 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[18-Mar-2013 11:12:43 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[20-Mar-2013 00:16:26 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[21-Mar-2013 04:43:25 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 25 of /mod/scorm/player.php: call to required_param()
+
+[22-Mar-2013 20:04:43 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[27-Mar-2013 00:18:46 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[28-Mar-2013 09:03:54 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[28-Mar-2013 15:19:39 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[28-Mar-2013 16:27:04 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[13-Apr-2013 11:49:16 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[15-Apr-2013 17:02:38 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[16-Apr-2013 11:05:11 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[19-Apr-2013 17:02:03 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[22-Apr-2013 06:11:19 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[22-Apr-2013 17:34:54 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[25-Apr-2013 17:11:51 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[26-Apr-2013 17:40:05 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[07-May-2013 01:02:38 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[17-May-2013 23:14:51 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[21-May-2013 21:00:09 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[05-Jun-2013 20:08:14 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[14-Jun-2013 13:07:32 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[21-Jun-2013 18:00:28 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[21-Jun-2013 19:02:30 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[21-Jun-2013 20:05:01 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[24-Jun-2013 17:16:25 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[24-Jun-2013 20:22:31 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[01-Aug-2013 07:06:47 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[09-Aug-2013 09:10:28 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[11-Aug-2013 05:35:53 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[23-Aug-2013 09:09:01 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[27-Sep-2013 05:47:58 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[08-Oct-2013 09:07:35 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[08-Oct-2013 11:16:55 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[17-Oct-2013 07:31:15 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[17-Oct-2013 08:59:19 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[31-Dec-2013 08:14:24 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[28-Jan-2014 13:50:11 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[28-Jan-2014 14:53:20 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[30-Jan-2014 20:20:37 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[31-Jan-2014 18:52:25 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[03-Feb-2014 12:16:54 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[05-Feb-2014 09:43:50 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[06-Feb-2014 16:56:02 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[07-Feb-2014 05:21:04 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[07-Feb-2014 15:59:12 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[10-Feb-2014 09:45:20 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[10-Feb-2014 10:51:46 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[11-Feb-2014 06:50:25 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[11-Feb-2014 09:25:54 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[17-Feb-2014 15:10:20 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[18-Feb-2014 12:27:38 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[18-Feb-2014 22:44:12 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[20-Feb-2014 23:09:46 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[24-Feb-2014 13:29:13 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[04-Mar-2014 21:55:25 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[17-Mar-2014 11:20:50 America/Denver] Default exception handler: Parameter missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 46 of /mod/scorm/view.php: call to print_error()
+
+[17-Mar-2014 11:21:02 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/api.php: call to required_param()
+
+[17-Mar-2014 11:23:52 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/loadSCO.php: call to required_param()
+
+[17-Mar-2014 11:25:27 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[17-Mar-2014 11:27:25 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 24 of /mod/scorm/prereqs.php: call to required_param()
+
+[22-Apr-2014 19:30:18 America/Denver] Default exception handler: Parameter missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 46 of /mod/scorm/view.php: call to print_error()
+
+[22-Apr-2014 19:30:26 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/api.php: call to required_param()
+
+[22-Apr-2014 19:35:39 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/loadSCO.php: call to required_param()
+
+[22-Apr-2014 19:38:10 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[25-Apr-2014 09:57:02 America/Denver] Default exception handler: Parameter missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 46 of /mod/scorm/view.php: call to print_error()
+
+[25-Apr-2014 09:57:08 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/api.php: call to required_param()
+
+[25-Apr-2014 09:58:48 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/loadSCO.php: call to required_param()
+
+[25-Apr-2014 10:02:07 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[30-Apr-2014 09:52:25 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 22 of /mod/scorm/datamodel.php: call to required_param()
+
+[24-Jun-2014 16:50:20 America/Denver] Default exception handler: A required parameter (scoid) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 25 of /mod/scorm/player.php: call to required_param()
+
+[10-Aug-2014 21:44:27 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 420 of /mod/scorm/locallib.php: call to mysqli_native_moodle_database->insert_record()
+* line 106 of /mod/scorm/api.php: call to scorm_insert_track()
+

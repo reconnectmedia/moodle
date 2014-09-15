@@ -68,8 +68,6 @@ if ($id) {
     // Checking course instance
     $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
 
-    require_login($course, true, $cm);
-
     // Checking wiki instance
     if (!$wiki = wiki_get_wiki($cm->instance)) {
         print_error('incorrectwikiid', 'wiki');
@@ -140,7 +138,6 @@ if ($id) {
     // Checking course instance
     $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
 
-    require_login($course, true, $cm);
     /*
      * Case 2:
      *
@@ -169,9 +166,9 @@ if ($id) {
     }
 
     // Checking course instance
-    $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
-
-    require_login($course, true, $cm);
+    if (!$course = $DB->get_record("course", array("id" => $cm->course))) {
+        print_error('coursemisconf');
+    }
 
     $groupmode = groups_get_activity_groupmode($cm);
 
@@ -270,6 +267,7 @@ if ($id) {
 } else {
     print_error('incorrectparameters');
 }
+require_login($course, true, $cm);
 
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 require_capability('mod/wiki:viewpage', $context);

@@ -66,7 +66,7 @@ class repository_dropbox extends repository {
             'oauth_consumer_key'=>$this->dropbox_key,
             'oauth_consumer_secret'=>$this->dropbox_secret,
             'oauth_callback' => $this->callback->out(false),
-            'api_root' => 'https://api.dropbox.com/1/oauth'
+            'api_root' => 'https://www.dropbox.com/1/oauth',
         );
 
         $this->dropbox = new dropbox($args);
@@ -132,8 +132,6 @@ class repository_dropbox extends repository {
         $list['manage'] = false;
         $list['dynload'] = true;
         $list['nosearch'] = true;
-        $list['logouturl'] = 'https://www.dropbox.com/logout';
-        $list['message'] = get_string('logoutdesc', 'repository_dropbox');
         // process breadcrumb trail
         $list['path'] = array(
             array('name'=>get_string('dropbox', 'repository_dropbox'), 'path'=>'/')

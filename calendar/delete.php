@@ -107,7 +107,7 @@ $repeatspan = '';
 if (!empty($event->eventrepeats) && $event->eventrepeats > 0) {
     $url = new moodle_url(CALENDAR_URL.'delete.php', array('id'=>$event->repeatid, 'confirm'=>true, 'repeats'=>true));
     $buttons .= $OUTPUT->single_button($url, get_string('deleteall'));
-    $repeatspan = '<br /><br /><span>'.get_string('youcandeleteallrepeats', 'calendar', $event->eventrepeats).'</span>';
+    $repeatspan = '<br /><br /><span>'.get_string('youcandeleteallrepeats', 'calendar').'</span>';
 }
 
 // And add the cancel button
@@ -121,10 +121,7 @@ echo $OUTPUT->box_end();
 
 // Print the event so that people can visually confirm they have the correct event
 $event->time = calendar_format_event_time($event, time(), null, false);
-$renderer = $PAGE->get_renderer('core_calendar');
-echo $renderer->start_layout();
-echo $renderer->event($event, false);
-echo $renderer->complete_layout();
+calendar_print_event($event, false);
 
 echo $OUTPUT->box_end();
 echo $OUTPUT->footer();

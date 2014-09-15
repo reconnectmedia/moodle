@@ -481,9 +481,6 @@ abstract class repository {
     public $returntypes;
     /** @var object repository instance database record */
     public $instance;
-    /** Type of the instance (dropbox, upload, etc...) */
-    public $type;
-
     /**
      * 1. Initialize context and options
      * 2. Accept necessary parameters
@@ -514,17 +511,6 @@ abstract class repository {
         }
         $this->name = $this->get_name();
         $this->returntypes = $this->supported_returntypes();
-
-        // Determining the type of repository if not set.
-        if (empty($this->type)) {
-            $matches = array();
-            if (!preg_match("/^repository_(.*)$/", get_class($this), $matches)) {
-                throw new coding_exception('The class name of a repository should be repository_<typeofrepository>, '.
-                        'e.g. repository_dropbox');
-            }
-            $this->type = $matches[1];
-        }
-
         $this->super_called = true;
     }
 
@@ -594,63 +580,11 @@ abstract class repository {
      * @return boolean
      */
     public static function check_capability($contextid, $instance) {
-        global $USER;
-
-        // The context we are on.
-        $currentcontext = get_context_instance_by_id($contextid);
-        $can = has_capability('repository/'.$instance->type.':view', $currentcontext);
-
-        // Context in which the repository has been created.
-        if (!isset($instance->contextid)) {
-            // Depending on what is calling the function, we have to get the context from somewhere else.
-            $repocontext = get_context_instance_by_id($instance->instance->contextid);
-        } else {
-            $repocontext = get_context_instance_by_id($instance->contextid);
+        $context = get_context_instance_by_id($contextid);
+        $capability = has_capability('repository/'.$instance->type.':view', $context);
+        if (!$capability) {
+            throw new repository_exception('nopermissiontoaccess', 'repository');
         }
-
-        // Prevent access to private repositories when logged in as.
-        if (session_is_loggedinas()) {
-            $allowed = array('coursefiles', 'equella', 'filesystem', 'flickr_public', 'local', 'merlot', 'recent',
-                's3', 'upload', 'url', 'user', 'webdav', 'wikimedia', 'youtube');
-            // Are only accessible the repositories which do not contain private data (any data
-            // that is not part of Moodle, "Private files" is not considered "Pivate"). And if they
-            // do not contain private data, then it should not be a user instance, which is private by definition.
-            if (!in_array($instance->type, $allowed) || $repocontext->contextlevel == CONTEXT_USER) {
-                $can = false;
-            }
-        }
-
-        // We are going to ensure that the current context was legit, and reliable to check
-        // the capability against. (No need to do that if we already cannot).
-        if ($can) {
-            if ($repocontext->contextlevel == CONTEXT_USER) {
-                // The repository is a user instance, ensure we're the right user to access it!
-                if ($repocontext->instanceid != $USER->id) {
-                    $can = false;
-                }
-            } else if ($repocontext->contextlevel == CONTEXT_COURSE) {
-                // The repository is a course one. Let's check that we are on the right course.
-                if (in_array($currentcontext->contextlevel, array(CONTEXT_COURSE, CONTEXT_MODULE, CONTEXT_BLOCK))) {
-                    $coursecontext = $currentcontext->get_course_context();
-                    if ($coursecontext->instanceid != $repocontext->instanceid) {
-                        $can = false;
-                    }
-                } else {
-                    // We are on a parent context, therefore it's legit to check the permissions
-                    // in the current context.
-                }
-            } else {
-                // Nothing to check here, system instances can have different permissions on different
-                // levels. We do not want to prevent URL hack here, because it does not make sense to
-                // prevent a user to access a repository in a context if it's accessible in another one.
-            }
-        }
-
-        if ($can) {
-            return true;
-        }
-
-        throw new repository_exception('nopermissiontoaccess', 'repository');
     }
 
     /**
@@ -881,9 +815,6 @@ abstract class repository {
         $ft = new filetype_parser();
         if (isset($args['accepted_types'])) {
             $accepted_types = $args['accepted_types'];
-            if (is_array($accepted_types) && in_array('*', $accepted_types)) {
-                $accepted_types = '*';
-            }
         } else {
             $accepted_types = '*';
         }
@@ -1285,7 +1216,7 @@ abstract class repository {
         //want to display only visible instances, but for every type types. The repository::get_instances()
         //third parameter displays only visible type.
         $params = array();
-        $params['context'] = array($context);
+        $params['context'] = array($context, get_system_context());
         $params['currentcontext'] = $context;
         $params['onlyvisible'] = !$admin;
         $params['type']        = $typename;
@@ -1322,7 +1253,7 @@ abstract class repository {
             }
 
             $type = repository::get_type_by_id($i->options['typeid']);
-            $table->data[] = array(format_string($i->name), $type->get_readablename(), $settings, $delete);
+            $table->data[] = array($i->name, $type->get_readablename(), $settings, $delete);
 
             //display a grey row if the type is defined as not visible
             if (isset($type) && !$type->get_visible()) {
@@ -1347,12 +1278,6 @@ abstract class repository {
             $types = repository::get_editable_types($context);
             foreach ($types as $type) {
                 if (!empty($type) && $type->get_visible()) {
-                    // If the user does not have the permission to view the repository, it won't be displayed in
-                    // the list of instances. Hiding the link to create new instances will prevent the
-                    // user from creating them without being able to find them afterwards, which looks like a bug.
-                    if (!has_capability('repository/'.$type->get_typename().':view', $context)) {
-                        continue;
-                    }
                     $instanceoptionnames = repository::static_function($type->get_typename(), 'get_instance_option_names');
                     if (!empty($instanceoptionnames)) {
                         $baseurl->param('new', $type->get_typename());
@@ -1525,7 +1450,7 @@ abstract class repository {
         $ft = new filetype_parser;
         $meta = new stdClass();
         $meta->id   = $this->id;
-        $meta->name = format_string($this->get_name());
+        $meta->name = $this->get_name();
         $meta->type = $this->options['type'];
         $meta->icon = $OUTPUT->pix_url('icon', 'repository_'.$meta->type)->out(false);
         $meta->supported_types = $ft->get_extensions($this->supported_filetypes());
@@ -1837,7 +1762,6 @@ abstract class repository {
             // it can be empty, then moodle will look for instance name from language string
             $mform->addElement('text', 'pluginname', get_string('pluginname', 'repository'), array('size' => '40'));
             $mform->addElement('static', 'pluginnamehelp', '', get_string('pluginnamehelp', 'repository'));
-            $mform->setType('pluginname', PARAM_TEXT);
         }
     }
 
@@ -1980,7 +1904,6 @@ final class repository_instance_form extends moodleform {
 
         $mform->addElement('text', 'name', get_string('name'), 'maxlength="100" size="30"');
         $mform->addRule('name', $strrequired, 'required', null, 'client');
-        $mform->setType('name', PARAM_TEXT);
     }
 
     public function definition() {

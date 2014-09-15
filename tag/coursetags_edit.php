@@ -129,7 +129,6 @@ echo $OUTPUT->header();
         // Print the add and delete form
         coursetag_get_jscript();
         $edittagthisunit = get_string('edittagthisunit', $tagslang);
-        $suggestedtagthisunit = get_string('suggestedtagthisunit', $tagslang);
         $arrowtitle = get_string('arrowtitle', $tagslang);
         $sesskey = sesskey();
         $leftarrow = $OUTPUT->pix_url('t/arrow_left');
@@ -142,19 +141,12 @@ echo $OUTPUT->header();
                 <div class="coursetag_edit_centered">
                     <div class="coursetag_edit_row">
                         <div class="coursetag_edit_left">
-                            <label for="coursetag_sug_tag">$suggestedtagthisunit</label>
+                            $edittagthisunit
                         </div>
                         <div class="coursetag_edit_right">
                             <div class="coursetag_form_input1">
-                                <input type="text" name="coursetag_sug_keyword" id="coursetag_sug_keyword" class="coursetag_form_input1a" disabled="disabled" />
+                                <input type="text" name="coursetag_sug_keyword" class="coursetag_form_input1a" disabled="disabled" />
                             </div>
-                        </div>
-                    </div>
-                    <div class="coursetag_edit_row">
-                        <div class="coursetag_edit_left">
-                            <label for="coursetag_new_tag">$edittagthisunit</label>
-                        </div>
-                        <div class="coursetag_edit_right">
                             <div class="coursetag_form_input2">
                                 <input type="text" name="coursetag_new_tag" id="coursetag_new_tag" class="coursetag_form_input2a"
                                     onfocus="ctags_getKeywords()" onkeyup="ctags_getKeywords()" maxlength="50" />
@@ -172,12 +164,10 @@ EOT;
             $outstr .= <<<EOT1
                     <div class="coursetag_edit_row">
                         <div class="coursetag_edit_left">
-                            <label for="del_tag">
-                                $editdeletemytag
-                            </label>
+                            $editdeletemytag
                         </div>
                         <div class="coursetag_edit_right">
-                            <select id="del_tag" name="del_tag">
+                            <select name="del_tag">
                                 $selectoptions
                             </select>
                         </div>

@@ -1,0 +1,26 @@
+[25-May-2012 16:02:57 UTC] PHP Warning:  POST Content-Length of 137717329 bytes exceeds the limit of 94371840 bytes in Unknown on line 0
+[27-Feb-2013 17:18:06 America/Denver] Default exception handler: Unsupported redirect detected, script execution terminated Debug: 
+* line 2262 of /lib/weblib.php: moodle_exception thrown
+* line 2655 of /lib/moodlelib.php: call to redirect()
+* line 56 of /repository/repository_ajax.php: call to require_login()
+
+[27-Feb-2013 17:18:48 America/Denver] Default exception handler: Unsupported redirect detected, script execution terminated Debug: 
+* line 2262 of /lib/weblib.php: moodle_exception thrown
+* line 2655 of /lib/moodlelib.php: call to redirect()
+* line 56 of /repository/repository_ajax.php: call to require_login()
+
+[28-Mar-2014 07:24:31 America/Denver] Default exception handler: Unsupported redirect detected, script execution terminated Debug: 
+* line 2262 of /lib/weblib.php: moodle_exception thrown
+* line 2655 of /lib/moodlelib.php: call to redirect()
+* line 56 of /repository/repository_ajax.php: call to require_login()
+
+[21-Apr-2014 03:25:57 America/Denver] Default exception handler: Unsupported redirect detected, script execution terminated Debug: 
+* line 2262 of /lib/weblib.php: moodle_exception thrown
+* line 2655 of /lib/moodlelib.php: call to redirect()
+* line 56 of /repository/repository_ajax.php: call to require_login()
+
+[07-May-2014 03:28:50 America/Denver] Default exception handler: Unsupported redirect detected, script execution terminated Debug: 
+* line 2262 of /lib/weblib.php: moodle_exception thrown
+* line 2655 of /lib/moodlelib.php: call to redirect()
+* line 56 of /repository/repository_ajax.php: call to require_login()
+

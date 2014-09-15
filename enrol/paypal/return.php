@@ -35,11 +35,10 @@ if (!$course = $DB->get_record("course", array("id"=>$id))) {
 }
 
 $context = get_context_instance(CONTEXT_COURSE, $course->id, MUST_EXIST);
-$PAGE->set_context($context);
 
 require_login();
 
-if (!empty($SESSION->wantsurl)) {
+if ($SESSION->wantsurl) {
     $destination = $SESSION->wantsurl;
     unset($SESSION->wantsurl);
 } else {

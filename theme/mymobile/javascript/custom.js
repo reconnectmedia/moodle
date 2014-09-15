@@ -128,14 +128,10 @@ $(document).ready(function() {
 
     //forum discussion page only stuff
     $('div#page-mod-forum-discussPAGE, #page-mod-forum-discuss div.generalpage, div.forumtype-single, .forumtype-single div.generalpage, div#page-mod-forum-postPAGE').live('pagebeforecreate',function(event, ui){
-        // Handle the '#' in the URLs.
+        //remove parent post because of hash remove this if has listening is fixed
         $('.options div.commands a').each(function(index) {
             var url = $(this).attr("href");
-            if (url.indexOf("post.php") != -1 && url.indexOf("reply=") != -1) {
-                // Remove the anchor from the reply link.
-                $(this).attr('href', url.replace('#mform1', ''));
-            } else if (url.indexOf("#") != -1) {
-                // Remove "Show parent" and other links which contains a '#'.
+            if (url.indexOf("#") != -1) {
                 $(this).remove();
             }
         });

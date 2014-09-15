@@ -208,13 +208,10 @@ M.mod_quiz.secure_window = {
             window.location = 'about:blank';
         }
         Y.delegate('contextmenu', M.mod_quiz.secure_window.prevent, document, '*');
-        Y.delegate('mousedown',   M.mod_quiz.secure_window.prevent_mouse, document, '*');
-        Y.delegate('mouseup',     M.mod_quiz.secure_window.prevent_mouse, document, '*');
-        Y.delegate('dragstart',   M.mod_quiz.secure_window.prevent, document, '*');
+        Y.delegate('mousedown', M.mod_quiz.secure_window.prevent_mouse, document, '*');
+        Y.delegate('mouseup', M.mod_quiz.secure_window.prevent_mouse, document, '*');
+        Y.delegate('dragstart', M.mod_quiz.secure_window.prevent, document, '*');
         Y.delegate('selectstart', M.mod_quiz.secure_window.prevent, document, '*');
-        Y.delegate('cut',         M.mod_quiz.secure_window.prevent, document, '*');
-        Y.delegate('copy',        M.mod_quiz.secure_window.prevent, document, '*');
-        Y.delegate('paste',       M.mod_quiz.secure_window.prevent, document, '*');
         M.mod_quiz.secure_window.clear_status;
         Y.on('beforeprint', function() {
             Y.one(document.body).setStyle('display', 'none');
@@ -271,7 +268,7 @@ M.mod_quiz.secure_window = {
         }, '#secureclosebutton');
     },
 
-    close: function(Y, url, delay) {
+    close: function(url, delay) {
         setTimeout(function() {
             if (window.opener) {
                 window.opener.document.location.reload();

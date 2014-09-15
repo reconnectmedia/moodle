@@ -339,7 +339,8 @@ class grade_report_grader extends grade_report {
         list($enrolledsql, $enrolledparams) = get_enrolled_sql($this->context);
 
         //fields we need from the user table
-        $userfields = user_picture::fields('u', get_extra_user_fields($this->context));
+        $userfields = user_picture::fields('u');
+        $userfields .= get_extra_user_fields_sql($this->context);
 
         $sortjoin = $sort = $params = null;
 
@@ -358,9 +359,6 @@ class grade_report_grader extends grade_report {
                     break;
                 case 'firstname':
                     $sort = "u.firstname $this->sortorder, u.lastname $this->sortorder";
-                    break;
-                case 'email':
-                    $sort = "u.email $this->sortorder";
                     break;
                 case 'idnumber':
                 default:
@@ -951,8 +949,7 @@ class grade_report_grader extends grade_report {
                             }
                             $itemcell->text .= '<input type="hidden" id="oldgrade_'.$userid.'_'.$item->id.'" name="oldgrade_'.$userid.'_'.$item->id.'" value="'.$oldval.'"/>';
                             $attributes = array('tabindex' => $tabindices[$item->id]['grade'], 'id'=>'grade_'.$userid.'_'.$item->id);
-                            $itemcell->text .= html_writer::label(get_string('typescale', 'grades'), $attributes['id'], false, array('class' => 'accesshide'));
-                            $itemcell->text .= html_writer::select($scaleopt, 'grade_'.$userid.'_'.$item->id, $gradeval, array(-1=>$nogradestr), $attributes);
+                            $itemcell->text .= html_writer::select($scaleopt, 'grade_'.$userid.'_'.$item->id, $gradeval, array(-1=>$nogradestr), $attributes);;
                         } elseif(!empty($scale)) {
                             $scales = explode(",", $scale->scale);
 

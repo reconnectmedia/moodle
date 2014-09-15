@@ -197,7 +197,6 @@ if (($action == 'edit') || ($action == 'new')) {
                 $currentaction = 'hide';
             }
             $select = new single_select(portfolio_action_url($pluginid, 'pf'), 'action', $actionchoicesforexisting, $currentaction, null, 'applyto' . $pluginid);
-            $select->set_label(get_string('action'), array('class' => 'accesshide'));
             $table->data[] = array($pluginname, $OUTPUT->render($select), $settings);
         }
         if (!in_array($plugin, $usedplugins)) {
@@ -219,7 +218,6 @@ if (($action == 'edit') || ($action == 'new')) {
                 $insaneplugins[] = $p;
             } else {
                 $select = new single_select(portfolio_action_url($p, 'pf'), 'action', $actionchoicesfornew, 'delete', null, 'applyto' . $p);
-                $select->set_label(get_string('action'), array('class' => 'accesshide'));
                 $table->data[] = array(portfolio_static_function($p, 'get_name'), $OUTPUT->render($select), '');
             }
         }

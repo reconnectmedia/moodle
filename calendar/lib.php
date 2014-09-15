@@ -209,6 +209,7 @@ function calendar_get_mini($courses, $groups, $users, $cal_month = false, $cal_y
     $days_title = calendar_get_days();
 
     $summary = get_string('calendarheading', 'calendar', userdate(make_timestamp($y, $m), get_string('strftimemonthyear')));
+    $summary = get_string('tabledata', 'access', $summary);
     $content .= '<table class="minicalendar calendartable" summary="'.$summary.'">'; // Begin table
     $content .= '<tr class="weekdays">'; // Header row: day names
 
@@ -1236,10 +1237,6 @@ function calendar_set_filters(array $courseeventsfrom, $ignorefilters = false) {
     $user = false;
     $group = false;
 
-    // capabilities that allow seeing group events from all groups
-    // TODO: rewrite so that moodle/calendar:manageentries is not necessary here
-    $allgroupscaps = array('moodle/site:accessallgroups', 'moodle/calendar:manageentries');
-
     $isloggedin = isloggedin();
 
     if ($ignorefilters || calendar_show_event_type(CALENDAR_EVENT_COURSE)) {
@@ -1265,35 +1262,26 @@ function calendar_set_filters(array $courseeventsfrom, $ignorefilters = false) {
 
     if (!empty($courseeventsfrom) && (calendar_show_event_type(CALENDAR_EVENT_GROUP) || $ignorefilters)) {
 
-        if (count($courseeventsfrom)==1) {
-            $course = reset($courseeventsfrom);
-            if (has_any_capability($allgroupscaps, get_context_instance(CONTEXT_COURSE, $course->id))) {
-                $coursegroups = groups_get_all_groups($course->id, 0, 0, 'g.id');
-                $group = array_keys($coursegroups);
-            }
-        }
-        if ($group === false) {
-            if (!empty($CFG->calendar_adminseesall) && has_any_capability($allgroupscaps, get_system_context())) {
-                $group = true;
-            } else if ($isloggedin) {
-                $groupids = array();
+        if (!empty($CFG->calendar_adminseesall) && has_capability('moodle/calendar:manageentries', get_system_context())) {
+            $group = true;
+        } else if ($isloggedin) {
+            $groupids = array();
 
-                // We already have the courses to examine in $courses
-                // For each course...
-                foreach ($courseeventsfrom as $courseid => $course) {
-                    // If the user is an editing teacher in there,
-                    if (!empty($USER->groupmember[$course->id])) {
-                        // We've already cached the users groups for this course so we can just use that
-                        $groupids = array_merge($groupids, $USER->groupmember[$course->id]);
-                    } else if ($course->groupmode != NOGROUPS || !$course->groupmodeforce) {
-                        // If this course has groups, show events from all of those related to the current user
-                        $coursegroups = groups_get_user_groups($course->id, $USER->id);
-                        $groupids = array_merge($groupids, $coursegroups['0']);
-                    }
+            // We already have the courses to examine in $courses
+            // For each course...
+            foreach ($courseeventsfrom as $courseid => $course) {
+                // If the user is an editing teacher in there,
+                if (!empty($USER->groupmember[$course->id])) {
+                    // We've already cached the users groups for this course so we can just use that
+                    $groupids = array_merge($groupids, $USER->groupmember[$course->id]);
+                } else if (($course->groupmode != NOGROUPS || !$course->groupmodeforce) && has_capability('moodle/calendar:manageentries', get_context_instance(CONTEXT_COURSE, $course->id))) {
+                    // If this course has groups, show events from all of them
+                    $coursegroups = groups_get_user_groups($course->id, $USER->id);
+                    $groupids = array_merge($groupids, $coursegroups['0']);
                 }
-                if (!empty($groupids)) {
-                    $group = $groupids;
-                }
+            }
+            if (!empty($groupids)) {
+                $group = $groupids;
             }
         }
     }
@@ -1361,16 +1349,15 @@ function calendar_get_default_courses() {
     }
 
     $courses = array();
-    if (!empty($CFG->calendar_adminseesall) && has_capability('moodle/calendar:manageentries', context_system::instance())) {
+    if (!empty($CFG->calendar_adminseesall) && has_capability('moodle/calendar:manageentries', get_context_instance(CONTEXT_SYSTEM))) {
         list ($select, $join) = context_instance_preload_sql('c.id', CONTEXT_COURSE, 'ctx');
-        $sql = "SELECT c.* $select
+        $sql = "SELECT DISTINCT c.* $select
                   FROM {course} c
-                  $join
-                  WHERE EXISTS (SELECT 1 FROM {event} e WHERE e.courseid = c.id)
-                  ";
+                  JOIN {event} e ON e.courseid = c.id
+                  $join";
         $courses = $DB->get_records_sql($sql, null, 0, 20);
         foreach ($courses as $course) {
-            context_helper::preload_from_record($course);
+            context_instance_preload($course);
         }
         return $courses;
     }
@@ -1485,7 +1472,6 @@ function calendar_print_month_selector($name, $selected) {
     for ($i=1; $i<=12; $i++) {
         $months[$i] = userdate(gmmktime(12, 0, 0, $i, 15, 2000), '%B');
     }
-    echo html_writer::label(get_string('months'), 'menu'. $name, false, array('class' => 'accesshide'));
     echo html_writer::select($months, $name, $selected, false);
 }
 
@@ -1931,22 +1917,24 @@ class calendar_event {
             if ($usingeditor) {
                 switch ($this->properties->eventtype) {
                     case 'user':
+                        $this->editorcontext = $this->properties->context;
                         $this->properties->courseid = 0;
-                        $this->properties->course = 0;
                         $this->properties->groupid = 0;
                         $this->properties->userid = $USER->id;
                         break;
                     case 'site':
+                        $this->editorcontext = $this->properties->context;
                         $this->properties->courseid = SITEID;
-                        $this->properties->course = SITEID;
                         $this->properties->groupid = 0;
                         $this->properties->userid = $USER->id;
                         break;
                     case 'course':
+                        $this->editorcontext = $this->properties->context;
                         $this->properties->groupid = 0;
                         $this->properties->userid = $USER->id;
                         break;
                     case 'group':
+                        $this->editorcontext = $this->properties->context;
                         $this->properties->userid = $USER->id;
                         break;
                     default:
@@ -1954,13 +1942,6 @@ class calendar_event {
                         // fail gracefully
                         $usingeditor = false;
                         break;
-                }
-
-                // If we are actually using the editor, we recalculate the context because some default values
-                // were set when calculate_context() was called from the constructor.
-                if ($usingeditor) {
-                    $this->properties->context = $this->calculate_context($this->properties);
-                    $this->editorcontext = $this->properties->context;
                 }
 
                 $editor = $this->properties->description;
@@ -1981,6 +1962,7 @@ class calendar_event {
                                                 $this->editoroptions,
                                                 $editor['text'],
                                                 $this->editoroptions['forcehttps']);
+
                 $DB->set_field('event', 'description', $this->properties->description, array('id'=>$this->properties->id));
             }
 

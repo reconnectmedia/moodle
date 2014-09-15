@@ -153,7 +153,7 @@ $editoroptions = array(
 );
 
 $user = file_prepare_standard_editor($user, 'description', $editoroptions, $personalcontext, 'user', 'profile', 0);
-$userform = new user_edit_form(null, array('editoroptions'=>$editoroptions, 'userid' => $user->id));
+$userform = new user_edit_form(null, array('editoroptions'=>$editoroptions));
 if (empty($user->country)) {
     // MDL-16308 - we must unset the value here so $CFG->country can be used as default one
     unset($user->country);
@@ -169,8 +169,7 @@ if ($usernew = $userform->get_data()) {
     $email_changed_html = '';
 
     if ($CFG->emailchangeconfirmation) {
-        // Users with 'moodle/user:update' can change their email address immediately
-        // Other users require a confirmation email
+        // Handle change of email carefully for non-trusted users
         if (isset($usernew->email) and $user->email != $usernew->email && !has_capability('moodle/user:update', $systemcontext)) {
             $a = new stdClass();
             $a->newemail = $usernew->preference_newemail = $usernew->email;
@@ -224,7 +223,7 @@ if ($usernew = $userform->get_data()) {
     // save custom profile fields data
     profile_save_data($usernew);
 
-    // If email was changed and confirmation is required, send confirmation email now
+    // If email was changed, send confirmation email now
     if ($email_changed && $CFG->emailchangeconfirmation) {
         $temp_user = fullclone($user);
         $temp_user->email = $usernew->preference_newemail;
@@ -238,8 +237,7 @@ if ($usernew = $userform->get_data()) {
         $emailupdatetitle = get_string('emailupdatetitle', 'auth', $a);
 
         //email confirmation directly rather than using messaging so they will definitely get an email
-        $supportuser = generate_email_supportuser();
-        if (!$mail_results = email_to_user($temp_user, $supportuser, $emailupdatetitle, $emailupdatemessage)) {
+        if (!$mail_results = email_to_user($temp_user, get_admin(), $emailupdatetitle, $emailupdatemessage)) {
             die("could not send email!");
         }
     }
@@ -280,7 +278,6 @@ $PAGE->set_title("$course->shortname: $streditmyprofile");
 $PAGE->set_heading($course->fullname);
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading($userfullname);
 
 if ($email_changed) {
     echo $email_changed_html;

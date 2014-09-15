@@ -448,15 +448,15 @@ class webservice_test extends UnitTestCase {
                     $dbcourses[$course['id']]->timecreated);
             $this->assertEqual($course['timemodified'],
                     $dbcourses[$course['id']]->timemodified);
-            if (array_key_exists('enablecompletion', $course)) {
+            if (key_exists('enablecompletion', $course)) {
                 $this->assertEqual($course['enablecompletion'],
                         $dbcourses[$course['id']]->enablecompletion);
             }
-            if (array_key_exists('completionstartonenrol', $course)) {
+            if (key_exists('completionstartonenrol', $course)) {
                 $this->assertEqual($course['completionstartonenrol'],
                         $dbcourses[$course['id']]->completionstartonenrol);
             }
-            if (array_key_exists('completionnotify', $course)) {
+            if (key_exists('completionnotify', $course)) {
                 $this->assertEqual($course['completionnotify'],
                         $dbcourses[$course['id']]->completionnotify);
             }

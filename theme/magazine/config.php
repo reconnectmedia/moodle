@@ -49,13 +49,12 @@ $THEME->editor_sheets = array('editor');
 ////////////////////////////////////////////////////
 
 $THEME->layouts = array(
-    // Most backwards compatible layout without the blocks - this is the layout used by default
     'base' => array(
         'file' => 'general.php',
-        'regions' => array(),
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-post',
     ),
-    // Standard layout with blocks, this is recommended for most pages with general information
-    'standard' => array(
+    'general' => array(
         'file' => 'general.php',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-post',

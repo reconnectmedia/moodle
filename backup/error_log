@@ -1,0 +1,5 @@
+[07-Jan-2013 12:08:39 America/Denver] PHP Fatal error:  Call to a member function is_checksum_correct() on a non-object in /home3/dkdigita/public_html/dem-main/backup/util/dbops/backup_controller_dbops.class.php on line 99
+[07-Jan-2013 12:08:45 America/Denver] PHP Fatal error:  Call to a member function is_checksum_correct() on a non-object in /home3/dkdigita/public_html/dem-main/backup/util/dbops/backup_controller_dbops.class.php on line 99
+[24-Jan-2013 06:57:12 America/Denver] PHP Fatal error:  Call to a member function is_checksum_correct() on a non-object in /home3/dkdigita/public_html/dem-main/backup/util/dbops/backup_controller_dbops.class.php on line 99
+[24-Jan-2013 06:57:18 America/Denver] PHP Fatal error:  Call to a member function is_checksum_correct() on a non-object in /home3/dkdigita/public_html/dem-main/backup/util/dbops/backup_controller_dbops.class.php on line 99
+[24-Jan-2013 06:57:26 America/Denver] PHP Fatal error:  Call to a member function is_checksum_correct() on a non-object in /home3/dkdigita/public_html/dem-main/backup/util/dbops/backup_controller_dbops.class.php on line 99

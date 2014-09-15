@@ -27,6 +27,5 @@ $string['downloadas'] = 'Download table data as';
 $string['downloadcsv'] = 'a comma separated values text file';
 $string['downloadexcel'] = 'a Microsoft Excel spreadsheet';
 $string['downloadods'] = 'an OpenDocument Spreadsheet (ODS)';
-$string['downloadoptions'] = 'Select download options';
 $string['downloadtsv'] = 'a tab separated values text file';
 $string['downloadxhtml'] = 'an unpaged XHTML document';

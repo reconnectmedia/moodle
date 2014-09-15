@@ -1,0 +1,24 @@
+[26-Sep-2012 10:23:14 UTC] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 45 of /mod/resource/view.php: call to print_error()
+
+[14-Nov-2012 00:20:56 UTC] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 45 of /mod/resource/view.php: call to print_error()
+
+[14-Nov-2012 09:31:44 UTC] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 45 of /mod/resource/view.php: call to print_error()
+
+[22-Apr-2013 17:29:52 America/Denver] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 45 of /mod/resource/view.php: call to print_error()
+
+[10-Sep-2013 20:11:40 America/Denver] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 45 of /mod/resource/view.php: call to print_error()
+
+[16-Mar-2014 01:16:11 America/Denver] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 45 of /mod/resource/view.php: call to print_error()
+

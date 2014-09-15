@@ -126,7 +126,16 @@ class enrol_cohort_plugin extends enrol_plugin {
      * @return void
      */
     public function course_updated($inserted, $course, $data) {
-        // It turns out there is no need for cohorts to deal with this hook, see MDL-34870.
+        global $CFG;
+
+        if (!$inserted) {
+            // sync cohort enrols
+            require_once("$CFG->dirroot/enrol/cohort/locallib.php");
+            enrol_cohort_sync($course->id);
+        } else {
+            // cohorts are never inserted automatically
+        }
+
     }
 
     /**

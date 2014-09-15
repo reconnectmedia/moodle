@@ -1,0 +1,15 @@
+[25-Feb-2013 15:02:43 America/Denver] Default exception handler: A required parameter (do_show) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 34 of /mod/feedback/show_entries.php: call to required_param()
+
+[25-Feb-2013 15:03:38 America/Denver] Default exception handler: A required parameter (do_show) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 34 of /mod/feedback/show_entries.php: call to required_param()
+
+[25-Feb-2013 15:03:50 America/Denver] Default exception handler: A required parameter (do_show) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 34 of /mod/feedback/show_entries.php: call to required_param()
+

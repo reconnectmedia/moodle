@@ -1,0 +1,210 @@
+[09-May-2012 01:56:30 UTC] PHP Warning:  pg_connect(): Unable to connect to PostgreSQL server: FATAL:  password authentication failed for user "dkdigita_mdl3" in /home2/dkdigita/public_html/dem-main/lib/dml/pgsql_native_moodle_database.php on line 159
+[09-May-2012 01:56:32 UTC] PHP Warning:  pg_connect(): Unable to connect to PostgreSQL server: FATAL:  password authentication failed for user "dkdigita_mdl3" in /home2/dkdigita/public_html/dem-main/lib/dml/pgsql_native_moodle_database.php on line 159
+[09-May-2012 01:56:44 UTC] PHP Warning:  pg_connect(): Unable to connect to PostgreSQL server: FATAL:  password authentication failed for user "dkdigita_mdl3" in /home2/dkdigita/public_html/dem-main/lib/dml/pgsql_native_moodle_database.php on line 159
+[09-May-2012 01:56:53 UTC] PHP Warning:  pg_connect(): Unable to connect to PostgreSQL server: FATAL:  password authentication failed for user "dkdigita_mdl3" in /home2/dkdigita/public_html/dem-main/lib/dml/pgsql_native_moodle_database.php on line 159
+[09-May-2012 02:40:23 UTC] PHP Warning:  mysqli::mysqli(): (42000/1044): Access denied for user 'dkdigita_mdl3'@'localhost' to database 'dkdigita_mdl3' in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[09-May-2012 02:40:23 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[09-May-2012 02:40:29 UTC] PHP Warning:  mysqli::mysqli(): (42000/1044): Access denied for user 'dkdigita_mdl3'@'localhost' to database 'dkdigita_mdl3' in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[09-May-2012 02:40:29 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[06-Jul-2012 19:28:38 UTC] Default exception handler: Can not find data record in database table context. Debug: SELECT * FROM {context} WHERE id = ?
+[array (
+  0 => 38,
+)]
+* line 1272 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1249 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 4831 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 1336 of /lib/accesslib.php: call to context::instance_by_id()
+* line 3199 of /lib/filelib.php: call to get_context_info_array()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[10-Sep-2012 00:06:44 UTC] PHP Notice:  Undefined variable: bodyclasses in /home3/dkdigita/public_html/dem-main/theme/mymobile/layout/embedded.php on line 50
+[10-Sep-2012 00:06:44 UTC] PHP Warning:  join(): Invalid arguments passed in /home3/dkdigita/public_html/dem-main/theme/mymobile/layout/embedded.php on line 50
+[26-Oct-2012 19:44:05 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:05 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:06 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:07 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:07 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:07 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:07 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:07 UTC] PHP Warning:  mysqli::mysqli(): (42000/1203): User dkdigita_mdl3 already has more than 'max_user_connections' active connections in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Oct-2012 19:44:08 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Oct-2012 19:44:09 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Nov-2012 12:01:26 America/Denver] PHP Warning:  mysqli::mysqli(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Nov-2012 12:01:26 America/Denver] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[26-Nov-2012 12:01:26 America/Denver] PHP Warning:  mysqli::mysqli(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[26-Nov-2012 12:01:26 America/Denver] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[22-Jan-2013 23:58:41 America/Denver] Default exception handler: A required parameter (identifier) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 33 of /help.php: call to required_param()
+
+[02-Mar-2013 20:39:21 America/Denver] Can not obtain session lock
+[02-Mar-2013 20:39:21 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+SELECT GET_LOCK('dkdigita_mdl3-mdl_-session-180059', 120)
+[NULL]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1219 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 593 of /lib/sessionlib.php: call to mysqli_native_moodle_database->get_session_lock()
+* line ? of unknownfile: call to database_session->handler_read()
+* line 184 of /lib/sessionlib.php: call to session_start()
+* line 473 of /lib/sessionlib.php: call to session_stub->__construct()
+* line 60 of /lib/sessionlib.php: call to database_session->__construct()
+* line 692 of /lib/setup.php: call to session_get_instance()
+* line 463 of /config.php: call to require_once()
+* line 31 of /pluginfile.php: call to require_once()
+
+[14-Mar-2013 04:16:19 America/Denver] Can not read or insert database sessions
+[14-Mar-2013 04:16:19 America/Denver] Can not read or insert database sessions
+[21-Mar-2013 18:34:41 America/Denver] Can not obtain session lock
+[21-Mar-2013 18:34:41 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+SELECT GET_LOCK('dkdigita_mdl3-mdl_-session-182887', 120)
+[NULL]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1219 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 593 of /lib/sessionlib.php: call to mysqli_native_moodle_database->get_session_lock()
+* line ? of unknownfile: call to database_session->handler_read()
+* line 184 of /lib/sessionlib.php: call to session_start()
+* line 473 of /lib/sessionlib.php: call to session_stub->__construct()
+* line 60 of /lib/sessionlib.php: call to database_session->__construct()
+* line 692 of /lib/setup.php: call to session_get_instance()
+* line 463 of /config.php: call to require_once()
+* line 31 of /pluginfile.php: call to require_once()
+
+[02-Apr-2013 20:52:29 America/Denver] Default exception handler: Can not find data record in database table context. Debug: SELECT * FROM {context} WHERE id = ?
+[array (
+  0 => 38,
+)]
+* line 1272 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1249 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 4831 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 1336 of /lib/accesslib.php: call to context::instance_by_id()
+* line 3199 of /lib/filelib.php: call to get_context_info_array()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[02-Apr-2013 21:30:42 America/Denver] Default exception handler: Can not find data record in database table context. Debug: SELECT * FROM {context} WHERE id = ?
+[array (
+  0 => 39,
+)]
+* line 1272 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1249 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 4831 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 1336 of /lib/accesslib.php: call to context::instance_by_id()
+* line 3199 of /lib/filelib.php: call to get_context_info_array()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[02-Apr-2013 21:36:51 America/Denver] Default exception handler: Can not find data record in database table context. Debug: SELECT * FROM {context} WHERE id = ?
+[array (
+  0 => 37,
+)]
+* line 1272 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1249 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 4831 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 1336 of /lib/accesslib.php: call to context::instance_by_id()
+* line 3199 of /lib/filelib.php: call to get_context_info_array()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[14-Jul-2013 21:18:12 America/Denver] Default exception handler: A required parameter (identifier) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 33 of /help.php: call to required_param()
+
+[09-Oct-2013 13:24:51 America/Denver] Default exception handler: Can not find data record in database table context. Debug: SELECT * FROM {context} WHERE id = ?
+[array (
+  0 => 38,
+)]
+* line 1272 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1249 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 4831 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 1336 of /lib/accesslib.php: call to context::instance_by_id()
+* line 3199 of /lib/filelib.php: call to get_context_info_array()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[10-Oct-2013 05:04:43 America/Denver] Default exception handler: Can not find data record in database table context. Debug: SELECT * FROM {context} WHERE id = ?
+[array (
+  0 => 39,
+)]
+* line 1272 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1249 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 4831 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 1336 of /lib/accesslib.php: call to context::instance_by_id()
+* line 3199 of /lib/filelib.php: call to get_context_info_array()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[10-Oct-2013 19:27:50 America/Denver] Default exception handler: Can not find data record in database table context. Debug: SELECT * FROM {context} WHERE id = ?
+[array (
+  0 => 37,
+)]
+* line 1272 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1249 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 4831 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 1336 of /lib/accesslib.php: call to context::instance_by_id()
+* line 3199 of /lib/filelib.php: call to get_context_info_array()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[26-Nov-2013 15:12:18 America/Denver] Default exception handler: A required parameter (identifier) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 33 of /help.php: call to required_param()
+
+[26-Nov-2013 15:13:13 America/Denver] Default exception handler: A required parameter (identifier) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 33 of /help.php: call to required_param()
+
+[02-Dec-2013 05:28:16 America/Denver] Default exception handler: Sorry, the requested file could not be found Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 1568 of /lib/filelib.php: call to print_error()
+* line 3653 of /lib/filelib.php: call to send_file_not_found()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[07-May-2014 18:15:31 America/Denver] Default exception handler: Can not find data record in database table context. Debug: SELECT * FROM {context} WHERE id = ?
+[array (
+  0 => 39,
+)]
+* line 1272 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1249 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 4831 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 1336 of /lib/accesslib.php: call to context::instance_by_id()
+* line 3199 of /lib/filelib.php: call to get_context_info_array()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[21-May-2014 08:50:27 America/Denver] Default exception handler: A required parameter (identifier) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 33 of /help.php: call to required_param()
+
+[27-Jun-2014 22:05:12 America/Denver] Default exception handler: Sorry, the requested file could not be found Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 1568 of /lib/filelib.php: call to print_error()
+* line 3640 of /lib/filelib.php: call to send_file_not_found()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+
+[18-Aug-2014 16:48:22 America/Denver] Default exception handler: A required parameter (identifier) was missing Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 494 of /lib/moodlelib.php: call to print_error()
+* line 33 of /help.php: call to required_param()
+
+[28-Aug-2014 16:56:58 America/Denver] Default exception handler: Sorry, the requested file could not be found Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 1568 of /lib/filelib.php: call to print_error()
+* line 3653 of /lib/filelib.php: call to send_file_not_found()
+* line 37 of /pluginfile.php: call to file_pluginfile()
+

@@ -1,0 +1,1928 @@
+[09-May-2012 01:56:44 UTC] PHP Warning:  pg_connect(): Unable to connect to PostgreSQL server: FATAL:  password authentication failed for user "dkdigita_mdl3" in /home2/dkdigita/public_html/dem-main/lib/dml/pgsql_native_moodle_database.php on line 159
+[09-May-2012 01:56:53 UTC] PHP Warning:  pg_connect(): Unable to connect to PostgreSQL server: FATAL:  password authentication failed for user "dkdigita_mdl3" in /home2/dkdigita/public_html/dem-main/lib/dml/pgsql_native_moodle_database.php on line 159
+[09-May-2012 02:40:02 UTC] PHP Warning:  mysqli::mysqli(): (42000/1044): Access denied for user 'dkdigita_mdl3'@'localhost' to database 'dkdigita_mdl3' in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[09-May-2012 02:40:02 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[09-May-2012 02:40:22 UTC] PHP Warning:  mysqli::mysqli(): (42000/1044): Access denied for user 'dkdigita_mdl3'@'localhost' to database 'dkdigita_mdl3' in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[09-May-2012 02:40:23 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[09-May-2012 02:40:28 UTC] PHP Warning:  mysqli::mysqli(): (42000/1044): Access denied for user 'dkdigita_mdl3'@'localhost' to database 'dkdigita_mdl3' in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[09-May-2012 02:40:28 UTC] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home2/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[28-May-2012 09:50:01 UTC] PHP Warning:  Unterminated comment starting line 109 in /home3/dkdigita/public_html/dem-main/lib/outputrenderers.php on line 109
+[28-May-2012 09:50:01 UTC] PHP Parse error:  syntax error, unexpected $end, expecting T_FUNCTION in /home3/dkdigita/public_html/dem-main/lib/outputrenderers.php on line 123
+[23-Dec-2012 12:30:02 America/Denver] PHP Warning:  mysqli::mysqli(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 296
+[23-Dec-2012 12:30:02 America/Denver] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /home3/dkdigita/public_html/dem-main/lib/dml/mysqli_native_moodle_database.php on line 336
+[01-Jan-2013 23:06:55 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+SELECT * FROM mdl_context WHERE contextlevel = ?
+[array (
+  0 => 10,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 809 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1297 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 1269 of /lib/dml/moodle_database.php: call to moodle_database->get_record_sql()
+* line 1249 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 5568 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 6808 of /lib/accesslib.php: call to context_system::instance()
+* line 654 of /lib/setup.php: call to get_system_context()
+* line 463 of /config.php: call to require_once()
+* line 51 of /admin/cron.php: call to require()
+
+[30-Jan-2013 12:27:27 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1359573937,
+  1 => 1359573937,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[07-Feb-2013 20:10:03 America/Denver] Default exception handler: Error reading from database Debug: Query execution was interrupted
+SELECT value FROM mdl_config_plugins WHERE plugin = ? AND name = ?
+[array (
+  0 => 'format_topics',
+  1 => 'version',
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 809 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1297 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 1372 of /lib/dml/moodle_database.php: call to moodle_database->get_record_sql()
+* line 1351 of /lib/dml/moodle_database.php: call to moodle_database->get_field_sql()
+* line 1330 of /lib/dml/moodle_database.php: call to moodle_database->get_field_select()
+* line 1290 of /lib/moodlelib.php: call to moodle_database->get_field()
+* line 8545 of /lib/moodlelib.php: call to get_config()
+* line 37 of /lib/cronlib.php: call to moodle_needs_upgrading()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-Mar-2013 12:48:21 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+            SELECT DISTINCT
+                c.id AS course,
+                cr.timeend AS timeend,
+                cr.id AS criteriaid,
+                ra.userid AS userid
+            FROM
+                mdl_course_completion_criteria cr
+            INNER JOIN
+                mdl_course c
+             ON cr.course = c.id
+            INNER JOIN
+                mdl_context con
+             ON con.instanceid = c.id
+            INNER JOIN
+                mdl_role_assignments ra
+             ON ra.contextid = con.id
+            LEFT JOIN
+                mdl_course_completion_crit_compl cc
+             ON cc.criteriaid = cr.id
+            AND cc.userid = ra.userid
+            WHERE
+                cr.criteriatype = 2
+            AND con.contextlevel = 50
+            AND c.enablecompletion = 1
+            AND cc.id IS NULL
+            AND cr.timeend < ?
+        
+[array (
+  0 => 1363286441,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 180 of /lib/completion/completion_criteria_date.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 223 of /lib/completion/cron.php: call to completion_criteria_date->cron()
+* line 43 of /lib/completion/cron.php: call to completion_cron_criteria()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[13-May-2013 21:51:41 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368503360,
+  1 => 1368503360,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[13-May-2013 22:08:52 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368504403,
+  1 => 1368504403,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[13-May-2013 22:08:52 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368504403,
+  1 => 1368504403,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[13-May-2013 22:18:57 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368505033,
+  1 => 1368505033,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[13-May-2013 22:38:59 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368506212,
+  1 => 1368506212,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[13-May-2013 23:22:27 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+            SELECT DISTINCT
+                c.id AS course,
+                cr.id AS criteriaid,
+                ra.userid AS userid,
+                cc.timecompleted AS timecompleted
+            FROM
+                mdl_course_completion_criteria cr
+            INNER JOIN
+                mdl_course c
+             ON cr.course = c.id
+            INNER JOIN
+                mdl_context con
+             ON con.instanceid = c.id
+            INNER JOIN
+                mdl_role_assignments ra
+              ON ra.contextid = con.id
+            INNER JOIN
+                mdl_course_completions cc
+             ON cc.course = cr.courseinstance
+            AND cc.userid = ra.userid
+            LEFT JOIN
+                mdl_course_completion_crit_compl ccc
+             ON ccc.criteriaid = cr.id
+            AND ccc.userid = ra.userid
+            WHERE
+                cr.criteriatype = 8
+            AND con.contextlevel = 50
+            AND c.enablecompletion = 1
+            AND ccc.id IS NULL
+            AND cc.timecompleted IS NOT NULL
+        
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 190 of /lib/completion/completion_criteria_course.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 223 of /lib/completion/cron.php: call to completion_criteria_course->cron()
+* line 43 of /lib/completion/cron.php: call to completion_cron_criteria()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[13-May-2013 23:28:00 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368509155,
+  1 => 1368509155,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[13-May-2013 23:35:05 America/Denver] Default exception handler: Error reading from database Debug: Query execution was interrupted
+SELECT i.*
+              FROM mdl_grade_items i
+             WHERE i.locked = 0 AND i.locktime > 0 AND i.locktime < ? AND EXISTS (
+                SELECT 'x' FROM mdl_grade_items c WHERE c.itemtype='course' AND c.needsupdate=0 AND c.courseid=i.courseid)
+[array (
+  0 => 1368509705,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1339 of /lib/gradelib.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 310 of /lib/cronlib.php: call to grade_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-May-2013 01:58:00 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368518113,
+  1 => 1368518113,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-May-2013 03:57:52 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368525322,
+  1 => 1368525322,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-May-2013 05:19:12 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+SELECT * FROM mdl_block_rss_client
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1035 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 979 of /lib/dml/moodle_database.php: call to moodle_database->get_recordset_select()
+* line 298 of /blocks/rss_client/block_rss_client.php: call to moodle_database->get_recordset()
+* line 290 of /lib/cronlib.php: call to block_rss_client->cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-May-2013 11:02:21 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368550809,
+  1 => 1368550809,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-May-2013 11:22:11 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368552023,
+  1 => 1368552023,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-May-2013 13:27:46 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368559547,
+  1 => 1368559547,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-May-2013 19:33:59 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368581471,
+  1 => 1368581471,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-May-2013 20:39:30 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368585455,
+  1 => 1368585455,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-May-2013 20:52:00 America/Denver] Default exception handler: Error reading from database Debug: Query execution was interrupted
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368586295,
+  1 => 1368586295,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[15-May-2013 22:38:13 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368678944,
+  1 => 1368678944,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[17-May-2013 09:55:15 America/Denver] Default exception handler: Error reading from database Debug: Query execution was interrupted
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1368805983,
+  1 => 1368805983,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[17-May-2013 11:56:47 America/Denver] Default exception handler: Error reading from database Debug: Query execution was interrupted
+
+            SELECT DISTINCT
+                c.id AS course,
+                cr.id AS criteriaid,
+                ra.userid AS userid,
+                cc.timecompleted AS timecompleted
+            FROM
+                mdl_course_completion_criteria cr
+            INNER JOIN
+                mdl_course c
+             ON cr.course = c.id
+            INNER JOIN
+                mdl_context con
+             ON con.instanceid = c.id
+            INNER JOIN
+                mdl_role_assignments ra
+              ON ra.contextid = con.id
+            INNER JOIN
+                mdl_course_completions cc
+             ON cc.course = cr.courseinstance
+            AND cc.userid = ra.userid
+            LEFT JOIN
+                mdl_course_completion_crit_compl ccc
+             ON ccc.criteriaid = cr.id
+            AND ccc.userid = ra.userid
+            WHERE
+                cr.criteriatype = 8
+            AND con.contextlevel = 50
+            AND c.enablecompletion = 1
+            AND ccc.id IS NULL
+            AND cc.timecompleted IS NOT NULL
+        
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 190 of /lib/completion/completion_criteria_course.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 223 of /lib/completion/cron.php: call to completion_criteria_course->cron()
+* line 43 of /lib/completion/cron.php: call to completion_cron_criteria()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[20-May-2013 14:27:58 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1369081556,
+  1 => 1369081556,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[20-May-2013 16:37:06 America/Denver] Default exception handler: Error reading from database Debug: Query execution was interrupted
+SELECT value FROM mdl_config_plugins WHERE plugin = ? AND name = ?
+[array (
+  0 => 'enrol_self',
+  1 => 'version',
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 809 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1297 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 1372 of /lib/dml/moodle_database.php: call to moodle_database->get_record_sql()
+* line 1351 of /lib/dml/moodle_database.php: call to moodle_database->get_field_sql()
+* line 1330 of /lib/dml/moodle_database.php: call to moodle_database->get_field_select()
+* line 1290 of /lib/moodlelib.php: call to moodle_database->get_field()
+* line 8545 of /lib/moodlelib.php: call to get_config()
+* line 37 of /lib/cronlib.php: call to moodle_needs_upgrading()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[20-May-2013 16:37:06 America/Denver] Default exception handler: Error reading from database Debug: MySQL server has gone away
+SELECT value FROM mdl_config_plugins WHERE plugin = ? AND name = ?
+[array (
+  0 => 'gradeimport_xml',
+  1 => 'version',
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 809 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1297 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 1372 of /lib/dml/moodle_database.php: call to moodle_database->get_record_sql()
+* line 1351 of /lib/dml/moodle_database.php: call to moodle_database->get_field_sql()
+* line 1330 of /lib/dml/moodle_database.php: call to moodle_database->get_field_select()
+* line 1290 of /lib/moodlelib.php: call to moodle_database->get_field()
+* line 8545 of /lib/moodlelib.php: call to get_config()
+* line 37 of /lib/cronlib.php: call to moodle_needs_upgrading()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[23-May-2013 09:52:54 America/Denver] Default exception handler: Error reading from database Debug: Query execution was interrupted
+SELECT s.*, a.course, a.name
+                                   FROM mdl_assignment_submissions s,
+                                        mdl_assignment a
+                                  WHERE s.mailed = 0
+                                        AND s.timemarked <= ?
+                                        AND s.timemarked >= ?
+                                        AND s.assignment = a.id
+[array (
+  0 => 1369322572,
+  1 => 1369236172,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 809 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 3496 of /mod/assignment/lib.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 2800 of /mod/assignment/lib.php: call to assignment_get_unmailed_submissions()
+* line 260 of /lib/cronlib.php: call to assignment_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[25-May-2013 13:13:55 America/Denver] Default exception handler: Error reading from database Debug: Query execution was interrupted
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1369509231,
+  1 => 1369509231,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[30-Mar-2014 10:15:05 America/Denver] Default exception handler: Error reading from database Debug: Query execution was interrupted
+
+            SELECT DISTINCT
+                c.id AS course,
+                cr.id AS criteriaid,
+                ra.userid AS userid,
+                gg.finalgrade AS gradefinal,
+                gg.timemodified AS timecompleted
+            FROM
+                mdl_course_completion_criteria cr
+            INNER JOIN
+                mdl_course c
+             ON cr.course = c.id
+            INNER JOIN
+                mdl_context con
+             ON con.instanceid = c.id
+            INNER JOIN
+                mdl_role_assignments ra
+              ON ra.contextid = con.id
+            INNER JOIN
+                mdl_grade_items gi
+             ON gi.courseid = c.id
+            AND gi.itemtype = 'course'
+            INNER JOIN
+                mdl_grade_grades gg
+             ON gg.itemid = gi.id
+            AND gg.userid = ra.userid
+            LEFT JOIN
+                mdl_course_completion_crit_compl cc
+             ON cc.criteriaid = cr.id
+            AND cc.userid = ra.userid
+            WHERE
+                cr.criteriatype = 6
+            AND con.contextlevel = 50
+            AND c.enablecompletion = 1
+            AND cc.id IS NULL
+            AND gg.finalgrade >= cr.gradepass
+        
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 216 of /lib/completion/completion_criteria_grade.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 223 of /lib/completion/cron.php: call to completion_criteria_grade->cron()
+* line 43 of /lib/completion/cron.php: call to completion_cron_criteria()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[01-Apr-2014 07:48:21 America/Denver] Default exception handler: Error writing to database Debug: Duplicate entry 'backup-backup_auto_running' for key 'mdl_confplug_plunam_uix'
+INSERT INTO mdl_config_plugins (plugin,name,value) VALUES(?,?,?)
+[array (
+  0 => 'backup',
+  1 => 'backup_auto_running',
+  2 => '1',
+)]
+* line 397 of /lib/dml/moodle_database.php: dml_write_exception thrown
+* line 893 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[11-Apr-2014 09:19:39 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+SELECT value FROM mdl_config_plugins WHERE plugin = ? AND name = ?
+[array (
+  0 => 'report_courseoverview',
+  1 => 'version',
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 809 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1297 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 1372 of /lib/dml/moodle_database.php: call to moodle_database->get_record_sql()
+* line 1351 of /lib/dml/moodle_database.php: call to moodle_database->get_field_sql()
+* line 1330 of /lib/dml/moodle_database.php: call to moodle_database->get_field_select()
+* line 1290 of /lib/moodlelib.php: call to moodle_database->get_field()
+* line 8545 of /lib/moodlelib.php: call to get_config()
+* line 37 of /lib/cronlib.php: call to moodle_needs_upgrading()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[11-Apr-2014 12:35:30 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+SELECT value FROM mdl_config_plugins WHERE plugin = ? AND name = ?
+[array (
+  0 => 'profilefield_datetime',
+  1 => 'version',
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 809 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1297 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 1372 of /lib/dml/moodle_database.php: call to moodle_database->get_record_sql()
+* line 1351 of /lib/dml/moodle_database.php: call to moodle_database->get_field_sql()
+* line 1330 of /lib/dml/moodle_database.php: call to moodle_database->get_field_select()
+* line 1290 of /lib/moodlelib.php: call to moodle_database->get_field()
+* line 8545 of /lib/moodlelib.php: call to get_config()
+* line 37 of /lib/cronlib.php: call to moodle_needs_upgrading()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[11-Apr-2014 12:42:56 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+SELECT name, version FROM mdl_modules  
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 809 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1129 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 1078 of /lib/dml/moodle_database.php: call to moodle_database->get_records_select()
+* line 8492 of /lib/moodlelib.php: call to moodle_database->get_records()
+* line 37 of /lib/cronlib.php: call to moodle_needs_upgrading()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[11-Apr-2014 12:47:56 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+SELECT value FROM mdl_config_plugins WHERE plugin = ? AND name = ?
+[array (
+  0 => 'enrol_manual',
+  1 => 'version',
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 809 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1297 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 1372 of /lib/dml/moodle_database.php: call to moodle_database->get_record_sql()
+* line 1351 of /lib/dml/moodle_database.php: call to moodle_database->get_field_sql()
+* line 1330 of /lib/dml/moodle_database.php: call to moodle_database->get_field_select()
+* line 1290 of /lib/moodlelib.php: call to moodle_database->get_field()
+* line 8545 of /lib/moodlelib.php: call to get_config()
+* line 37 of /lib/cronlib.php: call to moodle_needs_upgrading()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[10-Jun-2014 10:02:18 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1402416030,
+  1 => 1402416030,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[16-Jun-2014 08:02:53 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1402927252,
+  1 => 1402927252,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[16-Jun-2014 08:07:54 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1402927553,
+  1 => 1402927553,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[16-Jun-2014 08:16:54 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1402928108,
+  1 => 1402928108,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[16-Jun-2014 08:21:52 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1402928411,
+  1 => 1402928411,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[16-Jun-2014 08:27:22 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1402928716,
+  1 => 1402928716,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[16-Jun-2014 13:31:54 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1402947008,
+  1 => 1402947008,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[18-Jun-2014 10:17:09 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1403108118,
+  1 => 1403108118,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[19-Jun-2014 08:12:15 America/Denver] Default exception handler: Error reading from database Debug: Lost connection to MySQL server during query
+
+        SELECT
+            c.id AS course,
+            u.id AS userid,
+            crc.id AS completionid,
+            ue.timestart AS timeenrolled,
+            ue.timecreated
+        FROM
+            mdl_user u
+        INNER JOIN
+            mdl_user_enrolments ue
+         ON ue.userid = u.id
+        INNER JOIN
+            mdl_enrol e
+         ON e.id = ue.enrolid
+        INNER JOIN
+            mdl_course c
+         ON c.id = e.courseid
+        INNER JOIN
+            mdl_role_assignments ra
+         ON ra.userid = u.id
+        LEFT JOIN
+            mdl_course_completions crc
+         ON crc.course = c.id
+        AND crc.userid = u.id
+        WHERE
+            c.enablecompletion = 1
+        AND crc.timeenrolled IS NULL
+        AND ue.status = 0
+        AND e.status = 0
+        AND u.deleted = 0
+        AND ue.timestart < ?
+        AND (ue.timeend > ? OR ue.timeend = 0)
+             AND ra.roleid IN (5)
+        ORDER BY
+            course,
+            userid
+    
+[array (
+  0 => 1403187014,
+  1 => 1403187014,
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 122 of /lib/completion/cron.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 41 of /lib/completion/cron.php: call to completion_cron_mark_started()
+* line 323 of /lib/cronlib.php: call to completion_cron()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[09-Aug-2014 00:01:04 America/Denver] Default exception handler: Error writing to database Debug: Duplicate entry 'backup-backup_auto_running' for key 'mdl_confplug_plunam_uix'
+INSERT INTO mdl_config_plugins (plugin,name,value) VALUES(?,?,?)
+[array (
+  0 => 'backup',
+  1 => 'backup_auto_running',
+  2 => '1',
+)]
+* line 397 of /lib/dml/moodle_database.php: dml_write_exception thrown
+* line 893 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[09-Aug-2014 06:20:09 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[11-Aug-2014 21:50:12 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[14-Aug-2014 22:00:17 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[16-Aug-2014 21:50:06 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[21-Aug-2014 21:55:05 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[23-Aug-2014 06:10:04 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[25-Aug-2014 21:50:08 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[27-Aug-2014 21:50:09 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[31-Aug-2014 21:50:18 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[03-Sep-2014 21:55:05 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[05-Sep-2014 21:45:05 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[07-Sep-2014 21:50:05 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[10-Sep-2014 21:55:05 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[12-Sep-2014 21:50:10 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+
+[13-Sep-2014 21:40:10 America/Denver] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::insert_record_raw() no fields found. Debug: 
+* line 878 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 935 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 1254 of /lib/moodlelib.php: call to mysqli_native_moodle_database->insert_record()
+* line 441 of /backup/util/helper/backup_cron_helper.class.php: call to set_config()
+* line 87 of /backup/util/helper/backup_cron_helper.class.php: call to backup_cron_automated_helper::set_state_running()
+* line 427 of /lib/cronlib.php: call to backup_cron_automated_helper::run_automated_backup()
+* line 85 of /admin/cron.php: call to cron_run()
+

@@ -143,7 +143,7 @@ if (!empty($groupid)) {
     }
 
     if (!$course = $DB->get_record('course', array('id'=>$group->courseid))) {
-        print_error('invalidcourseid');
+        print_error(get_string('invalidcourseid', 'blog'));
     }
 
     $coursecontext = get_context_instance(CONTEXT_COURSE, $course->id);
@@ -183,7 +183,13 @@ if (!empty($userid)) {
             print_error('donothaveblog', 'blog');
         }
     } else {
-        if (!has_capability('moodle/blog:view', $sitecontext) || !blog_user_can_view_user_entry($userid)) {
+        $personalcontext = get_context_instance(CONTEXT_USER, $userid);
+
+        if (!has_capability('moodle/blog:view', $sitecontext) && !has_capability('moodle/user:readuserblogs', $personalcontext)) {
+            print_error('cannotviewuserblog', 'blog');
+        }
+
+        if (!blog_user_can_view_user_entry($userid)) {
             print_error('cannotviewcourseblog', 'blog');
         }
     }

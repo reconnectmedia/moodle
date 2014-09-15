@@ -160,8 +160,7 @@ class core_webservice_external extends external_api {
                     new external_single_structure(
                         array(
                             'name' => new external_value(PARAM_RAW, 'function name'),
-                            'version' => new external_value(PARAM_TEXT,
-                                        'The version number of the component to which the function belongs')
+                            'version' => new external_value(PARAM_FLOAT, 'The version number of moodle site/local plugin linked to the function')
                         ), 'functions that are available')
                     ),
                 'downloadfiles'  => new external_value(PARAM_INT, '1 if users are allowed to download files, 0 if not', VALUE_OPTIONAL),

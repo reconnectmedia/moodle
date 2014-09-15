@@ -13,6 +13,7 @@
 #chooseqtype .submitbuttons {margin: 0.7em 0;text-align: center;}
 
 #qtypechoicecontainer {display: none;}
+body.jsenabled #qtypechoicecontainer {display: block;}
 
 #qtypechoicecontainer {background: white;}
 #qtypechoicecontainer #chooseqtype {width: 30em;}
@@ -28,8 +29,6 @@
 #categoryquestions { margin: 0; }
 #categoryquestions td,
 #categoryquestions th { padding: 0 0.2em; }
-#categoryquestions th { text-align: left; font-weight: normal; }
-.dir-rtl #categoryquestions th { text-align: right; }
 .questionbank .singleselect { margin: 0; }
 
 /* Question editing form */
@@ -43,7 +42,7 @@
 .que h2.no {margin: 0;font-size: 0.8em;line-height: 1;}
 .que span.qno {font-size: 1.5em;font-weight:bold;}
 .que .info > div {font-size: 0.8em;margin-top: 0.7em;}
-.que .info .questionflag.editable {cursor:pointer;}
+.que .info .questionflag {cursor:pointer;}
 .que .info .editquestion img,
 .que .info .questionflag img,
 .que .info .questionflag input {vertical-align: bottom;}

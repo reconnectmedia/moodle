@@ -32,11 +32,7 @@ $categoryid = optional_param('category', 0, PARAM_INT); // course category - can
 $returnto = optional_param('returnto', 0, PARAM_ALPHANUM); // generic navigation return page switch
 
 $PAGE->set_pagelayout('admin');
-$pageparams = array('id'=>$id);
-if (empty($id)) {
-    $pageparams = array('category'=>$categoryid);
-}
-$PAGE->set_url('/course/edit.php', $pageparams);
+$PAGE->set_url('/course/edit.php');
 
 // basic access control checks
 if ($id) { // editing course
@@ -50,6 +46,7 @@ if ($id) { // editing course
     $category = $DB->get_record('course_categories', array('id'=>$course->category), '*', MUST_EXIST);
     $coursecontext = get_context_instance(CONTEXT_COURSE, $course->id);
     require_capability('moodle/course:update', $coursecontext);
+    $PAGE->url->param('id',$id);
 
 } else if ($categoryid) { // creating new course in this category
     $course = null;
@@ -57,6 +54,7 @@ if ($id) { // editing course
     $category = $DB->get_record('course_categories', array('id'=>$categoryid), '*', MUST_EXIST);
     $catcontext = get_context_instance(CONTEXT_COURSECAT, $category->id);
     require_capability('moodle/course:create', $catcontext);
+    $PAGE->url->param('category',$categoryid);
     $PAGE->set_context($catcontext);
 
 } else {
@@ -87,13 +85,6 @@ if (!empty($course)) {
     //editor should respect category context if course context is not set.
     $editoroptions['context'] = $catcontext;
     $course = file_prepare_standard_editor($course, 'summary', $editoroptions, null, 'course', 'summary', null);
-
-    // Set up the default restricted module list
-    if (!empty($CFG->restrictbydefault)) {
-        if (!empty($CFG->defaultallowedmodules)) {
-            $course->allowedmods = explode(',', $CFG->defaultallowedmodules);
-        }
-    }
 }
 
 // first create the form

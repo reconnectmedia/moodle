@@ -111,14 +111,14 @@ case 'create':
     redirect($CFG->wwwroot . '/mod/wiki/edit.php?pageid='.$newpageid);
     break;
 case 'new':
-    // Go straight to editing if we know the page title and we're in force format mode.
-    if ((int)$wiki->forceformat == 1 && $title != get_string('newpage', 'wiki')) {
+    if ((int)$wiki->forceformat == 1 && !empty($title)) {
         $newpageid = $wikipage->create_page($title);
         add_to_log($course->id, 'wiki', 'add page', "view.php?pageid=".$newpageid, $newpageid, $cm->id);
         redirect($CFG->wwwroot . '/mod/wiki/edit.php?pageid='.$newpageid);
     } else {
+        // create link from moodle navigation block without pagetitle
         $wikipage->print_header();
-        // Create a new page.
+        // new page without page title
         $wikipage->print_content($title);
     }
     $wikipage->print_footer();

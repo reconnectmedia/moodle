@@ -190,10 +190,12 @@
 
             var setting, control;
 
+            // Can't look these up by ID as they seem to get random IDs.
+            // Setting an id manually from mod_form made them turn into text boxes.
             var privacyControls = {
-                sendname: Y.one('#id_instructorchoicesendname'),
-                sendemailaddr: Y.one('#id_instructorchoicesendemailaddr'),
-                acceptgrades: Y.one('#id_instructorchoiceacceptgrades')
+                sendname: Y.one('input[name=instructorchoicesendname]'),
+                sendemailaddr: Y.one('input[name=instructorchoicesendemailaddr]'),
+                acceptgrades: Y.one('input[name=instructorchoiceacceptgrades]')
             };
 
             // Store a copy of user entered privacy settings as we may overwrite them

@@ -397,7 +397,7 @@ function feedback_get_recent_mod_activity(&$activities, &$index,
 
     $sql .= " WHERE fc.timemodified > ? AND fk.id = ? ";
     $sqlargs[] = $timemodified;
-    $sqlargs[] = $cm->instance;
+    $sqlargs[] = $cm->instace;
 
     if ($userid) {
         $sql .= " AND u.id = ? ";
@@ -413,12 +413,7 @@ function feedback_get_recent_mod_activity(&$activities, &$index,
         return;
     }
 
-    $cm_context = get_context_instance(CONTEXT_MODULE, $cm->id);
-
-    if (!has_capability('mod/feedback:view', $cm_context)) {
-        return;
-    }
-
+    $cm_context      = get_context_instance(CONTEXT_MODULE, $cm->id);
     $accessallgroups = has_capability('moodle/site:accessallgroups', $cm_context);
     $viewfullnames   = has_capability('moodle/site:viewfullnames', $cm_context);
     $groupmode       = groups_get_activity_groupmode($cm, $course);
@@ -2070,17 +2065,6 @@ function feedback_get_page_to_continue($feedbackid, $courseid = false, $guestid 
 ////////////////////////////////////////////////
 
 /**
- * cleans the userinput while submitting the form.
- *
- * @param mixed $value
- * @return mixed
- */
-function feedback_clean_input_value($item, $value) {
-    $itemobj = feedback_get_item_class($item->typ);
-    return $itemobj->clean_input_value($value);
-}
-
-/**
  * this saves the values of an completed.
  * if the param $tmp is set true so the values are saved temporary in table feedback_valuetmp.
  * if there is already a completed and the userid is set so the values are updated.
@@ -2214,13 +2198,10 @@ function feedback_check_values($firstitem, $lastitem) {
         $formvalname = $item->typ . '_' . $item->id;
 
         if ($itemobj->value_is_array()) {
-            //get the raw value here. It is cleaned after that by the object itself
-            $value = optional_param_array($formvalname, null, PARAM_RAW);
+            $value = optional_param_array($formvalname, null, $itemobj->value_type());
         } else {
-            //get the raw value here. It is cleaned after that by the object itself
-            $value = optional_param($formvalname, null, PARAM_RAW);
+            $value = optional_param($formvalname, null, $itemobj->value_type());
         }
-        $value = $itemobj->clean_input_value($value);
 
         //check if the value is set
         if (is_null($value) AND $item->required == 1) {

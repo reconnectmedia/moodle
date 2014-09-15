@@ -1,0 +1,192 @@
+[06-Jul-2012 19:19:52 UTC] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Learner report by Learner with grades
+Which Learners in which course and what a' at line 1
+Learner report by Learner with grades
+Which Learners in which course and what are the grades
+SELECT u.firstname AS 'Name' , u.lastname AS 'Surname', c.fullname AS 'Course', cc.name AS 'Category', 
+CASE WHEN gi.itemtype = 'Course'    
+THEN c.fullname + ' Course Total'  
+ELSE gi.itemname 
+END AS 'Item Name', ROUND(gg.finalgrade,2) AS Score,ROUND(gg.rawgrademax,2) AS Max, ROUND(gg.finalgrade / gg.rawgrademax * 100 ,2) AS Percentage,
+ 
+IF (ROUND(gg.finalgrade / gg.rawgrademax * 100 ,2) > 79,'Yes' , 'No') AS Pass
+ 
+FROM mdl_course AS c 
+JOIN mdl_context AS ctx ON c.id = ctx.instanceid 
+JOIN mdl_role_assignments AS ra ON ra.contextid = ctx.id 
+JOIN mdl_user AS u ON u.id = ra.userid 
+JOIN mdl_grade_grades AS gg ON gg.userid = u.id 
+JOIN mdl_grade_items AS gi ON gi.id = gg.itemid 
+JOIN mdl_course_categories AS cc ON cc.id = c.category 
+WHERE  gi.courseid = c.id AND gi.itemname != 'Attendance'
+ORDER BY `Name` ASC LIMIT 0, 2
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 48 of /blocks/configurable_reports/reports/sql/report.class.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 75 of /blocks/configurable_reports/components/customsql/form.php: call to report_sql->execute_query()
+* line 514 of /lib/formslib.php: call to customsql_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 88 of /blocks/configurable_reports/editcomp.php: call to moodleform->get_data()
+
+[06-Aug-2012 03:18:33 UTC] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `Name` ASC LIMIT 0, 2' at line 21
+SELECT DISTINCT u.firstname AS 'First' , u.lastname AS 'Last', u.city AS 'Site' ,
+c.fullname AS 'Course', 
+cc.name AS 'Category',
+CASE WHEN gi.itemtype = 'Course'    
+THEN c.fullname + ' Course Total'  
+ELSE gi.itemname 
+END AS 'Training', ROUND(gg.finalgrade,2) AS Score,ROUND(gg.rawgrademax,2) AS Max, ROUND(gg.finalgrade / gg.rawgrademax * 100 ,2) AS Percentage,
+
+IF (ROUND(gg.finalgrade / gg.rawgrademax * 100 ,2) > 79,'Yes' , 'No') AS Pass,
+IF (gg.finalgrade > 0, FROM_UNIXTIME(cd.timecompleted, '%m/%d/%Y'), '') AS 'Date'
+ 
+FROM mdl_course AS c 
+JOIN mdl_context AS ctx ON c.id = ctx.instanceid 
+JOIN mdl_role_assignments AS ra ON ra.contextid = ctx.id 
+JOIN mdl_user AS u ON u.id = ra.userid 
+JOIN mdl_grade_grades AS gg ON gg.userid = u.id 
+JOIN mdl_grade_items AS gi ON gi.id = gg.itemid 
+JOIN mdl_course_categories AS cc ON cc.id = c.category 
+JOIN mdl_course_completion_crit_compl AS cd ON cd.userid  = u.id AND cd.course = c.id
+WHERE  gi.courseid = c.id AND gi.itemname != 'Attendance'
+ORDER BY `Date` DESC AND `Name` ASC LIMIT 0, 2
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 48 of /blocks/configurable_reports/reports/sql/report.class.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 75 of /blocks/configurable_reports/components/customsql/form.php: call to report_sql->execute_query()
+* line 514 of /lib/formslib.php: call to customsql_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 88 of /blocks/configurable_reports/editcomp.php: call to moodleform->get_data()
+
+[09-Aug-2012 01:10:13 UTC] Default exception handler: Error reading from database Debug: Unknown column 'mdl_user.fullname' in 'field list'
+SELECT mdl_user.fullname AS employee, mdl_course.shortname AS course, mdl_grade_grades.finalgrade AS coursetotalgrade
+FROM mdl_grade_grades
+JOIN mdl_user ON mdl_grade_grades.userid = mdl_user.id
+JOIN mdl_grade_items ON mdl_grade_grades.itemid = mdl_grade_items.id
+JOIN mdl_course ON mdl_grade_items.courseid = mdl_course.id
+WHERE mdl_grade_items.itemtype = 'course'
+ORDER BY mdl_course.idnumber, mdl_user.username, mdl_grade_items.itemname, mdl_grade_grades.timemodified LIMIT 0, 2
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 48 of /blocks/configurable_reports/reports/sql/report.class.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 75 of /blocks/configurable_reports/components/customsql/form.php: call to report_sql->execute_query()
+* line 514 of /lib/formslib.php: call to customsql_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 88 of /blocks/configurable_reports/editcomp.php: call to moodleform->get_data()
+
+[09-Aug-2012 01:13:08 UTC] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.lastname  AS employee, mdl_course.shortname AS course, mdl_grade_grades.finalgr' at line 1
+SELECT mdl_user.firstname mdl_user.lastname  AS employee, mdl_course.shortname AS course, mdl_grade_grades.finalgrade AS coursetotalgrade
+FROM mdl_grade_grades
+JOIN mdl_user ON mdl_grade_grades.userid = mdl_user.id
+JOIN mdl_grade_items ON mdl_grade_grades.itemid = mdl_grade_items.id
+JOIN mdl_course ON mdl_grade_items.courseid = mdl_course.id
+WHERE mdl_grade_items.itemtype = 'course'
+ORDER BY mdl_course.idnumber, mdl_user.username, mdl_grade_items.itemname, mdl_grade_grades.timemodified LIMIT 0, 2
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 48 of /blocks/configurable_reports/reports/sql/report.class.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 75 of /blocks/configurable_reports/components/customsql/form.php: call to report_sql->execute_query()
+* line 514 of /lib/formslib.php: call to customsql_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 88 of /blocks/configurable_reports/editcomp.php: call to moodleform->get_data()
+
+[09-Aug-2012 01:21:49 UTC] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS employee, mdl_course.shortname AS course, mdl_grade_grades.finalgrade AS cour' at line 4
+SELECT mdl_user.username,
+mdl_user.firstname,
+mdl_user.lastname,
+ AS employee, mdl_course.shortname AS course, mdl_grade_grades.finalgrade AS coursetotalgrade
+FROM mdl_grade_grades
+JOIN mdl_user ON mdl_grade_grades.userid = mdl_user.id
+JOIN mdl_grade_items ON mdl_grade_grades.itemid = mdl_grade_items.id
+JOIN mdl_course ON mdl_grade_items.courseid = mdl_course.id
+WHERE mdl_grade_items.itemtype = 'course'
+ORDER BY mdl_course.idnumber, mdl_user.username, mdl_grade_items.itemname, mdl_grade_grades.timemodified LIMIT 0, 2
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 48 of /blocks/configurable_reports/reports/sql/report.class.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 75 of /blocks/configurable_reports/components/customsql/form.php: call to report_sql->execute_query()
+* line 514 of /lib/formslib.php: call to customsql_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 88 of /blocks/configurable_reports/editcomp.php: call to moodleform->get_data()
+
+[09-Aug-2012 01:29:20 UTC] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ROUND(gg.finalgrade,2) AS Score,ROUND(gg.rawgrademax,2) AS Max, ROUND(gg.finalgr' at line 6
+SELECT DISTINCT u.firstname AS 'First' , u.lastname AS 'Last', u.city AS 'Site' ,
+c.fullname AS 'Course', 
+cc.name AS 'Category',
+CASE WHEN gi.itemtype = 'Course'    
+THEN c.fullname + ' Course Total'  
+ROUND(gg.finalgrade,2) AS Score,ROUND(gg.rawgrademax,2) AS Max, ROUND(gg.finalgrade / gg.rawgrademax * 100 ,2) AS Percentage,
+
+IF (ROUND(gg.finalgrade / gg.rawgrademax * 100 ,2) > 79,'Yes' , 'No') AS Pass,
+IF (gg.finalgrade > 1, FROM_UNIXTIME(cd.timecompleted, '%m/%d/%Y'), '') AS 'Date'
+ 
+FROM mdl_course AS c 
+JOIN mdl_context AS ctx ON c.id = ctx.instanceid 
+JOIN mdl_role_assignments AS ra ON ra.contextid = ctx.id 
+JOIN mdl_user AS u ON u.id = ra.userid 
+JOIN mdl_grade_grades AS gg ON gg.userid = u.id 
+JOIN mdl_grade_items AS gi ON gi.id = gg.itemid 
+JOIN mdl_course_categories AS cc ON cc.id = c.category 
+JOIN mdl_course_completion_crit_compl AS cd ON cd.userid  = u.id AND cd.course = c.id
+WHERE  gi.courseid = c.id AND gi.itemname != 'Attendance'
+ORDER BY `Date` DESC LIMIT 0, 2
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 48 of /blocks/configurable_reports/reports/sql/report.class.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 75 of /blocks/configurable_reports/components/customsql/form.php: call to report_sql->execute_query()
+* line 514 of /lib/formslib.php: call to customsql_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 88 of /blocks/configurable_reports/editcomp.php: call to moodleform->get_data()
+
+[09-Aug-2012 01:29:46 UTC] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '
+ROUND(gg.finalgrade,2) AS Score,ROUND(gg.rawgrademax,2) AS Max, ROUND(gg.final' at line 5
+SELECT DISTINCT u.firstname AS 'First' , u.lastname AS 'Last', u.city AS 'Site' ,
+c.fullname AS 'Course', 
+cc.name AS 'Category',
+CASE WHEN gi.itemtype = 'Course'    
+THEN c.fullname + ' Course Total',
+ROUND(gg.finalgrade,2) AS Score,ROUND(gg.rawgrademax,2) AS Max, ROUND(gg.finalgrade / gg.rawgrademax * 100 ,2) AS Percentage,
+
+IF (ROUND(gg.finalgrade / gg.rawgrademax * 100 ,2) > 79,'Yes' , 'No') AS Pass,
+IF (gg.finalgrade > 1, FROM_UNIXTIME(cd.timecompleted, '%m/%d/%Y'), '') AS 'Date'
+ 
+FROM mdl_course AS c 
+JOIN mdl_context AS ctx ON c.id = ctx.instanceid 
+JOIN mdl_role_assignments AS ra ON ra.contextid = ctx.id 
+JOIN mdl_user AS u ON u.id = ra.userid 
+JOIN mdl_grade_grades AS gg ON gg.userid = u.id 
+JOIN mdl_grade_items AS gi ON gi.id = gg.itemid 
+JOIN mdl_course_categories AS cc ON cc.id = c.category 
+JOIN mdl_course_completion_crit_compl AS cd ON cd.userid  = u.id AND cd.course = c.id
+WHERE  gi.courseid = c.id AND gi.itemname != 'Attendance'
+ORDER BY `Date` DESC LIMIT 0, 2
+[array (
+)]
+* line 394 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 768 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 48 of /blocks/configurable_reports/reports/sql/report.class.php: call to mysqli_native_moodle_database->get_recordset_sql()
+* line 75 of /blocks/configurable_reports/components/customsql/form.php: call to report_sql->execute_query()
+* line 514 of /lib/formslib.php: call to customsql_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 88 of /blocks/configurable_reports/editcomp.php: call to moodleform->get_data()
+
+[16-Aug-2012 02:14:05 UTC] PHP Notice:  Undefined variable: DB in /home3/dkdigita/public_html/dem-main/blocks/configurable_reports/components/columns/component.class.php on line 79
+[16-Aug-2012 02:14:05 UTC] PHP Fatal error:  Call to a member function update_record() on a non-object in /home3/dkdigita/public_html/dem-main/blocks/configurable_reports/components/columns/component.class.php on line 79

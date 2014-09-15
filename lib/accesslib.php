@@ -1935,9 +1935,6 @@ function is_enrolled(context $context, $user = null, $withcapability = '', $only
             $coursecontext->reload_if_dirty();
             if (isset($USER->enrol['enrolled'][$coursecontext->instanceid])) {
                 if ($USER->enrol['enrolled'][$coursecontext->instanceid] > time()) {
-                    if ($withcapability and !has_capability($withcapability, $context, $userid)) {
-                        return false;
-                    }
                     return true;
                 }
             }
@@ -2898,13 +2895,8 @@ function get_user_roles_in_course($userid, $courseid) {
 function user_can_assign(context $context, $targetroleid) {
     global $DB;
 
-    // First check to see if the user is a site administrator.
-    if (is_siteadmin()) {
-        return true;
-    }
-
-    // Check if user has override capability.
-    // If not return false.
+    // first check if user has override capability
+    // if not return false;
     if (!has_capability('moodle/role:assign', $context)) {
         return false;
     }
@@ -2984,53 +2976,6 @@ function get_user_roles(context $context, $userid = 0, $checkparentcontexts = tr
           ORDER BY $order";
 
     return $DB->get_records_sql($sql ,$params);
-}
-
-/**
- * Like get_user_roles, but adds in the authenticated user role, and the front
- * page roles, if applicable.
- *
- * @param context $context the context.
- * @param int $userid optional. Defaults to $USER->id
- * @return array of objects with fields ->userid, ->contextid and ->roleid.
- */
-function get_user_roles_with_special(context $context, $userid = 0) {
-    global $CFG, $USER;
-
-    if (empty($userid)) {
-        if (empty($USER->id)) {
-            return array();
-        }
-        $userid = $USER->id;
-    }
-
-    $ras = get_user_roles($context, $userid);
-
-    // Add front-page role if relevant.
-    $defaultfrontpageroleid = isset($CFG->defaultfrontpageroleid) ? $CFG->defaultfrontpageroleid : 0;
-    $isfrontpage = ($context->contextlevel == CONTEXT_COURSE && $context->instanceid == SITEID) ||
-            is_inside_frontpage($context);
-    if ($defaultfrontpageroleid && $isfrontpage) {
-        $frontpagecontext = context_course::instance(SITEID);
-        $ra = new stdClass();
-        $ra->userid = $userid;
-        $ra->contextid = $frontpagecontext->id;
-        $ra->roleid = $defaultfrontpageroleid;
-        $ras[] = $ra;
-    }
-
-    // Add authenticated user role if relevant.
-    $defaultuserroleid      = isset($CFG->defaultuserroleid) ? $CFG->defaultuserroleid : 0;
-    if ($defaultuserroleid && !isguestuser($userid)) {
-        $systemcontext = context_system::instance();
-        $ra = new stdClass();
-        $ra->userid = $userid;
-        $ra->contextid = $systemcontext->id;
-        $ra->roleid = $defaultuserroleid;
-        $ras[] = $ra;
-    }
-
-    return $ras;
 }
 
 /**
@@ -4143,15 +4088,6 @@ function role_get_name($role, context_course $coursecontext) {
     } else {
         return strip_tags(format_string($role->name));
     }
-}
-
-/**
- * Get all the localised role names for a context.
- * @param context $context the context
- * @param array of role objects with a ->localname field containing the context-specific role name.
- */
-function role_get_names(context $context) {
-    return role_fix_names(get_all_roles(), $context);
 }
 
 /**
@@ -6210,7 +6146,7 @@ class context_course extends context {
                 if ($short){
                     $name .= format_string($course->shortname, true, array('context' => $this));
                 } else {
-                    $name .= format_string(get_course_display_name_for_list($course));
+                    $name .= format_string($course->fullname);
                }
             }
         }
@@ -6424,7 +6360,7 @@ class context_module extends context {
                     if ($withprefix){
                         $name = get_string('modulename', $cm->modname).': ';
                     }
-                    $name .= format_string($mod->name, true, array('context' => $this));
+                    $name .= $mod->name;
                 }
             }
         return $name;

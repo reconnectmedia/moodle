@@ -150,18 +150,6 @@ function xmldb_assignment_upgrade($oldversion) {
     /// Launch rename field format
         $dbman->rename_field($table, $field, 'introformat');
 
-    /// Conditionally migrate to html format in intro
-        if ($CFG->texteditors !== 'textarea') {
-            $rs = $DB->get_recordset('assignment', array('introformat' => FORMAT_MOODLE), '', 'id,intro,introformat');
-            foreach ($rs as $a) {
-                $a->intro       = text_to_html($a->intro, false, false, true);
-                $a->introformat = FORMAT_HTML;
-                $DB->update_record('assignment', $a);
-                upgrade_set_timeout();
-            }
-            $rs->close();
-        }
-
     /// assignment savepoint reached
         upgrade_mod_savepoint(true, 2009042001, 'assignment');
     }
@@ -171,43 +159,6 @@ function xmldb_assignment_upgrade($oldversion) {
 
     // Moodle v2.2.0 release upgrade line
     // Put any upgrade step following this
-
-    if ($oldversion < 2011112901) {
-        // Fixed/updated numfiles field in assignment_submissions table to count the actual
-        // number of files has been uploaded when sendformarking is disabled
-        upgrade_set_timeout(600);  // increase excution time for in large sites
-        $fs = get_file_storage();
-
-        // Fetch the moduleid for use in the course_modules table
-        $moduleid = $DB->get_field('modules', 'id', array('name' => 'assignment'), MUST_EXIST);
-
-        $selectcount = 'SELECT COUNT(s.id) ';
-        $select      = 'SELECT s.id, cm.id AS cmid ';
-        $query       = 'FROM {assignment_submissions} s
-                        JOIN {assignment} a ON a.id = s.assignment
-                        JOIN {course_modules} cm ON a.id = cm.instance AND cm.module = :moduleid
-                        WHERE assignmenttype = :assignmenttype';
-
-        $params = array('moduleid' => $moduleid, 'assignmenttype' => 'upload');
-
-        $countsubmissions = $DB->count_records_sql($selectcount.$query, $params);
-        $submissions = $DB->get_recordset_sql($select.$query, $params);
-
-        $pbar = new progress_bar('assignmentupgradenumfiles', 500, true);
-        $i = 0;
-        foreach ($submissions as $sub) {
-            $i++;
-            if ($context = context_module::instance($sub->cmid)) {
-                $sub->numfiles = count($fs->get_area_files($context->id, 'mod_assignment', 'submission', $sub->id, 'sortorder', false));
-                $DB->update_record('assignment_submissions', $sub);
-            }
-            $pbar->update($i, $countsubmissions, "Counting files of submissions ($i/$countsubmissions)");
-        }
-        $submissions->close();
-
-        // assignment savepoint reached
-        upgrade_mod_savepoint(true, 2011112901, 'assignment');
-    }
 
     return true;
 }

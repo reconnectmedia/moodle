@@ -1,0 +1,4 @@
+[19-Sep-2012 20:31:49 UTC] Default exception handler: Please select a single group before choosing this option Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 60 of /group/index.php: call to print_error()
+

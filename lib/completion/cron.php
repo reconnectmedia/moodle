@@ -322,7 +322,7 @@ function completion_cron_completions() {
             foreach ($completions as $params) {
                 $timecompleted = max($timecompleted, $params->timecompleted);
 
-                $completion = new completion_criteria_completion((array)$params, false);
+                $completion = new completion_criteria_completion($params, false);
 
                 // Handle aggregation special cases
                 if ($params->criteriatype == COMPLETION_CRITERIA_TYPE_ACTIVITY) {
@@ -382,11 +382,10 @@ function completion_cron_completions() {
         SET
             reaggregate = 0
         WHERE
-            reaggregate < :timestarted
-        AND reaggregate > 0
+            reaggregate < {$timestarted}
     ";
 
-    $DB->execute($sql, array('timestarted' => $timestarted));
+    $DB->execute($sql);
 }
 
 /**

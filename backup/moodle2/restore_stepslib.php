@@ -189,15 +189,6 @@ class restore_gradebook_structure_step extends restore_structure_step {
                 $data->id = $newitemid = $existinggradeitem->id;
                 $DB->update_record('grade_items', $data);
             }
-        } else if ($data->itemtype == 'manual') {
-            // Manual items aren't assigned to a cm, so don't go duplicating them in the target if one exists.
-            $gi = array(
-                'itemtype' => $data->itemtype,
-                'courseid' => $data->courseid,
-                'itemname' => $data->itemname,
-                'categoryid' => $data->categoryid,
-            );
-            $newitemid = $DB->get_field('grade_items', 'id', $gi);
         }
 
         if (empty($newitemid)) {
@@ -215,25 +206,21 @@ class restore_gradebook_structure_step extends restore_structure_step {
         global $DB;
 
         $data = (object)$data;
-        $olduserid = $data->userid;
+        $oldid = $data->id;
 
         $data->itemid = $this->get_new_parentid('grade_item');
 
-        $data->userid = $this->get_mappingid('user', $data->userid, null);
-        if (!empty($data->userid)) {
-            $data->usermodified = $this->get_mappingid('user', $data->usermodified, null);
-            $data->locktime     = $this->apply_date_offset($data->locktime);
-            // TODO: Ask, all the rest of locktime/exported... work with time... to be rolled?
-            $data->overridden = $this->apply_date_offset($data->overridden);
-            $data->timecreated  = $this->apply_date_offset($data->timecreated);
-            $data->timemodified = $this->apply_date_offset($data->timemodified);
+        $data->userid = $this->get_mappingid('user', $data->userid, NULL);
+        $data->usermodified = $this->get_mappingid('user', $data->usermodified, NULL);
+        $data->locktime     = $this->apply_date_offset($data->locktime);
+        // TODO: Ask, all the rest of locktime/exported... work with time... to be rolled?
+        $data->overridden = $this->apply_date_offset($data->overridden);
+        $data->timecreated  = $this->apply_date_offset($data->timecreated);
+        $data->timemodified = $this->apply_date_offset($data->timemodified);
 
-            $newitemid = $DB->insert_record('grade_grades', $data);
-        } else {
-            debugging("Mapped user id not found for user id '{$olduserid}', grade item id '{$data->itemid}'");
-        }
+        $newitemid = $DB->insert_record('grade_grades', $data);
+        //$this->set_mapping('grade_grade', $oldid, $newitemid);
     }
-
     protected function process_grade_category($data) {
         global $DB;
 
@@ -278,14 +265,7 @@ class restore_gradebook_structure_step extends restore_structure_step {
 
         $data->contextid = get_context_instance(CONTEXT_COURSE, $this->get_courseid())->id;
 
-        $gradeletter = (array)$data;
-        unset($gradeletter['id']);
-        if (!$DB->record_exists('grade_letters', $gradeletter)) {
-            $newitemid = $DB->insert_record('grade_letters', $data);
-        } else {
-            $newitemid = $data->id;
-        }
-
+        $newitemid = $DB->insert_record('grade_letters', $data);
         $this->set_mapping('grade_letter', $oldid, $newitemid);
     }
     protected function process_grade_setting($data) {
@@ -296,13 +276,8 @@ class restore_gradebook_structure_step extends restore_structure_step {
 
         $data->courseid = $this->get_courseid();
 
-        if (!$DB->record_exists('grade_settings', array('courseid' => $data->courseid, 'name' => $data->name))) {
-            $newitemid = $DB->insert_record('grade_settings', $data);
-        } else {
-            $newitemid = $data->id;
-        }
-
-        $this->set_mapping('grade_setting', $oldid, $newitemid);
+        $newitemid = $DB->insert_record('grade_settings', $data);
+        //$this->set_mapping('grade_setting', $oldid, $newitemid);
     }
 
     /**
@@ -1048,7 +1023,7 @@ class restore_section_structure_step extends restore_structure_step {
         // Section exists, update non-empty information
         } else {
             $section->id = $secrec->id;
-            if ((string)$secrec->name === '') {
+            if (empty($secrec->name)) {
                 $section->name = $data->name;
             }
             if (empty($secrec->summary)) {
@@ -1619,23 +1594,6 @@ class restore_calendarevents_structure_step extends restore_structure_step {
         if (!empty($data->groupid)) {
             $data->groupid = $this->get_mappingid('group', $data->groupid);
             if ($data->groupid === false) {
-                return;
-            }
-        }
-        // Handle events with empty eventtype //MDL-32827
-        if(empty($data->eventtype)) {
-            if ($data->courseid == $SITE->id) {                                // Site event
-                $data->eventtype = "site";
-            } else if ($data->courseid != 0 && $data->groupid == 0 && ($data->modulename == 'assignment' || $data->modulename == 'assign')) {
-                // Course assingment event
-                $data->eventtype = "due";
-            } else if ($data->courseid != 0 && $data->groupid == 0) {      // Course event
-                $data->eventtype = "course";
-            } else if ($data->groupid) {                                      // Group event
-                $data->eventtype = "group";
-            } else if ($data->userid) {                                       // User event
-                $data->eventtype = "user";
-            } else {
                 return;
             }
         }
@@ -2264,43 +2222,33 @@ class restore_activity_grades_structure_step extends restore_structure_step {
 
     protected function process_grade_grade($data) {
         $data = (object)($data);
-        $olduserid = $data->userid;
+
         unset($data->id);
-
         $data->itemid = $this->get_new_parentid('grade_item');
+        $data->userid = $this->get_mappingid('user', $data->userid);
+        $data->usermodified = $this->get_mappingid('user', $data->usermodified);
+        $data->rawscaleid = $this->get_mappingid('scale', $data->rawscaleid);
+        // TODO: Ask, all the rest of locktime/exported... work with time... to be rolled?
+        $data->overridden = $this->apply_date_offset($data->overridden);
 
-        $data->userid = $this->get_mappingid('user', $data->userid, null);
-        if (!empty($data->userid)) {
-            $data->usermodified = $this->get_mappingid('user', $data->usermodified, null);
-            $data->rawscaleid = $this->get_mappingid('scale', $data->rawscaleid);
-            // TODO: Ask, all the rest of locktime/exported... work with time... to be rolled?
-            $data->overridden = $this->apply_date_offset($data->overridden);
-
-            $grade = new grade_grade($data, false);
-            $grade->insert('restore');
-            // no need to save any grade_grade mapping
-        } else {
-            debugging("Mapped user id not found for user id '{$olduserid}', grade item id '{$data->itemid}'");
-        }
+        $grade = new grade_grade($data, false);
+        $grade->insert('restore');
+        // no need to save any grade_grade mapping
     }
 
     /**
      * process activity grade_letters. Note that, while these are possible,
-     * because grade_letters are contextid based, in practice, only course
+     * because grade_letters are contextid based, in proctice, only course
      * context letters can be defined. So we keep here this method knowing
      * it won't be executed ever. gradebook restore will restore course letters.
      */
     protected function process_grade_letter($data) {
         global $DB;
 
-        $data['contextid'] = $this->task->get_contextid();
-        $gradeletter = (object)$data;
+        $data = (object)$data;
 
-        // Check if it exists before adding it
-        unset($data['id']);
-        if (!$DB->record_exists('grade_letters', $data)) {
-            $newitemid = $DB->insert_record('grade_letters', $gradeletter);
-        }
+        $data->contextid = $this->task->get_contextid();
+        $newitemid = $DB->insert_record('grade_letters', $data);
         // no need to save any grade_letter mapping
     }
 }
@@ -2779,6 +2727,9 @@ class restore_create_categories_and_questions extends restore_structure_step {
             $data->penalty = 1;
         }
 
+        $data->timecreated  = $this->apply_date_offset($data->timecreated);
+        $data->timemodified = $this->apply_date_offset($data->timemodified);
+
         $userid = $this->get_mappingid('user', $data->createdby);
         $data->createdby = $userid ? $userid : $this->task->get_userid();
 
@@ -2832,22 +2783,6 @@ class restore_create_categories_and_questions extends restore_structure_step {
                        AND ' . $DB->sql_compare_text('hint', 255) . ' = ' . $DB->sql_compare_text('?', 255);
             $params = array($newquestionid, $data->hint);
             $newitemid = $DB->get_field_sql($sql, $params);
-
-            // Not able to find the hint, let's try cleaning the hint text
-            // of all the question's hints in DB as slower fallback. MDL-33863.
-            if (!$newitemid) {
-                $potentialhints = $DB->get_records('question_hints',
-                        array('questionid' => $newquestionid), '', 'id, hint');
-                foreach ($potentialhints as $potentialhint) {
-                    // Clean in the same way than {@link xml_writer::xml_safe_utf8()}.
-                    $cleanhint = preg_replace('/[\x-\x8\xb-\xc\xe-\x1f\x7f]/is','', $potentialhint->hint); // Clean CTRL chars.
-                    $cleanhint = preg_replace("/\r\n|\r/", "\n", $cleanhint); // Normalize line ending.
-                    if ($cleanhint === $data->hint) {
-                        $newitemid = $data->id;
-                    }
-                }
-            }
-
             // If we haven't found the newitemid, something has gone really wrong, question in DB
             // is missing hints, exception
             if (!$newitemid) {

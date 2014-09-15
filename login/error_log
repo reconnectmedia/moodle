@@ -1,0 +1,926 @@
+[01-Jul-2012 17:58:47 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  gregjelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[01-Jul-2012 17:59:12 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  gregjelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[02-Jul-2012 16:49:03 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  roberjl  Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5
+[03-Jul-2012 11:53:44 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  safflelt  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2)
+[03-Jul-2012 11:53:59 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  safflelt  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2)
+[03-Jul-2012 12:08:30 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  william.pipp@demtaic.ocm  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; GTB7.3; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C)
+[03-Jul-2012 15:03:31 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  mokrzykj  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; GTB7.3; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2)
+[03-Jul-2012 15:04:12 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  mokrzykj  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; GTB7.3; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2)
+[03-Jul-2012 15:04:21 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; GTB7.3; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2)
+[03-Jul-2012 19:50:19 UTC] [client 72.215.153.194]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; MS-RTC LM 8)
+[04-Jul-2012 18:39:10 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  etgagno@wal-mart.com  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[04-Jul-2012 18:39:30 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  etgagno@wal-mart.com  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[04-Jul-2012 18:39:47 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  p7smith@wal-mart.com  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[04-Jul-2012 20:08:52 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  gregjelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[05-Jul-2012 13:48:00 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  roy.nickerson@dematic.com  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[05-Jul-2012 13:48:48 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[05-Jul-2012 13:48:53 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[05-Jul-2012 14:30:44 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:    Mozilla/5.0 (Windows NT 5.1; rv:13.0) Gecko/20100101 Firefox/13.0.1
+[06-Jul-2012 17:39:59 UTC] [client 198.185.96.245]  http://www.dematictraining.com  Failed Login:  roy.tafoya@dematic.com  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Jul-2012 17:40:37 UTC] [client 198.185.96.245]  http://www.dematictraining.com  Failed Login:  roy.tafoya@dematic.com  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Jul-2012 17:41:11 UTC] [client 198.185.96.245]  http://www.dematictraining.com  Failed Login:  roy.tafoya@dematic.com  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Jul-2012 17:41:38 UTC] [client 198.185.96.245]  http://www.dematictraining.com  Failed Login:  roy.tafoya@dematic.com  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[09-Jul-2012 19:14:53 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  emily.lane  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2)
+[10-Jul-2012 14:19:21 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  pachecrv  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2; .NET CLR 1.1.4322)
+[10-Jul-2012 14:35:05 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  christopher.puente@dematic.com  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2; .NET CLR 1.1.4322)
+[10-Jul-2012 14:35:25 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  christopher.puente@dematic.com  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2; .NET CLR 1.1.4322)
+[10-Jul-2012 17:37:43 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2; .NET CLR 1.1.4322)
+[10-Jul-2012 17:52:22 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:    Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2; .NET CLR 1.1.4322)
+[10-Jul-2012 18:02:10 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2; .NET CLR 1.1.4322)
+[10-Jul-2012 20:01:47 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[10-Jul-2012 20:01:53 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[10-Jul-2012 20:02:10 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[10-Jul-2012 20:02:18 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[10-Jul-2012 20:02:49 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  dematic  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[10-Jul-2012 20:03:32 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  dematic  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[10-Jul-2012 20:03:49 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[11-Jul-2012 21:37:38 UTC] [client 70.166.140.57]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C)
+[06-Aug-2012 18:36:03 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:52:00 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:52:07 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:52:14 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:52:39 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:52:46 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:52:53 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:54:49 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:54:57 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:58:14 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:58:20 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:58:20 UTC] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[06-Aug-2012 18:58:33 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:58:33 UTC] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[06-Aug-2012 18:59:06 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 18:59:45 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 19:02:06 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 19:02:07 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 19:02:58 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Aug-2012 19:03:09 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  janniemi  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[07-Aug-2012 16:50:03 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  kevin.heath  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET4.0C; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0E)
+[07-Aug-2012 16:50:12 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  kevin.heath  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET4.0C; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0E)
+[08-Aug-2012 11:23:31 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  nmccorm@amazon.com  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1
+[08-Aug-2012 11:23:38 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1
+[08-Aug-2012 11:23:44 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1
+[10-Aug-2012 12:49:27 UTC] [client 193.99.42.56]  http://www.dematictraining.com  Failed Login:  paulo.garcia  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E)
+[10-Aug-2012 14:54:41 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; InfoPath.2)
+[11-Aug-2012 14:59:39 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  scottchester  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C)
+[11-Aug-2012 14:59:53 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  scottchester  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C)
+[11-Aug-2012 15:00:29 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  scott chester  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C)
+[11-Aug-2012 15:00:59 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  scottchester  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C)
+[11-Aug-2012 15:03:26 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  scottchester  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C)
+[11-Aug-2012 15:04:41 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  scottchester  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C)
+[11-Aug-2012 15:19:02 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  scottchester  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C)
+[11-Aug-2012 15:19:26 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  scottchester  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C)
+[11-Aug-2012 15:20:56 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  scottchester  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; MS-RTC LM 8; .NET4.0C)
+[12-Aug-2012 16:03:48 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  b1beeme  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2; .NET CLR 2.0.50727)
+[12-Aug-2012 16:04:43 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  b1beeme  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2; .NET CLR 2.0.50727)
+[12-Aug-2012 16:04:47 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2; .NET CLR 2.0.50727)
+[12-Aug-2012 16:05:05 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2; .NET CLR 2.0.50727)
+[12-Aug-2012 16:09:00 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  garyhathaway  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.6) Gecko/20100101 Firefox/10.0.6
+[12-Aug-2012 20:30:26 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  gregjelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[13-Aug-2012 05:36:33 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  alanshaffer  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:37:14 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  alanshaffer  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:38:47 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  stevenarnold  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:39:05 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  stevarno  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:39:30 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  stevenar  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:41:08 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  shaff  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:41:21 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  shaff  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:41:39 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  alanshaffer  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:41:59 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  shafferalan  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:42:17 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  shaff  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:42:21 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:42:33 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[13-Aug-2012 05:42:44 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 c9d771ef
+[14-Aug-2012 14:40:46 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  jeffrey.tozer  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[14-Aug-2012 18:09:26 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  michael.mecher@dematic.com  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; GTB7.3; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+[14-Aug-2012 18:10:18 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; GTB7.3; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+[15-Aug-2012 09:37:55 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  alvinhunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[15-Aug-2012 09:38:37 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  alvinhunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[15-Aug-2012 09:40:46 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  alvinhunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[15-Aug-2012 09:40:54 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  alvinhunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[15-Aug-2012 09:41:08 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  alvinhunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[15-Aug-2012 09:41:47 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  alvinhunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[15-Aug-2012 09:42:01 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  alvinhunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[15-Aug-2012 14:07:51 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  alahshaffer  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.5) Gecko/20100101 Firefox/10.0.5
+[15-Aug-2012 14:08:01 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  alahshaffer  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.5) Gecko/20100101 Firefox/10.0.5
+[15-Aug-2012 14:08:07 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  alahshaffer  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.5) Gecko/20100101 Firefox/10.0.5
+[15-Aug-2012 14:08:17 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  alahshaffer  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.5) Gecko/20100101 Firefox/10.0.5
+[15-Aug-2012 14:08:22 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  alanshaffer  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.5) Gecko/20100101 Firefox/10.0.5
+[15-Aug-2012 14:08:30 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  alanshaffer  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.5) Gecko/20100101 Firefox/10.0.5
+[16-Aug-2012 14:46:19 UTC] [client 12.148.112.2]  http://www.dematictraining.com  Failed Login:  kevinbailey  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[16-Aug-2012 15:28:44 UTC] [client 63.85.50.241]  http://www.dematictraining.com  Failed Login:  steven.swatkowski@grainger.com  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.1; MS-RTC LM 8; .NET4.0C; .NET4.0E)
+[16-Aug-2012 15:29:09 UTC] [client 63.85.50.241]  http://www.dematictraining.com  Failed Login:  steve.swatkowski@grainger.com  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.1; MS-RTC LM 8; .NET4.0C; .NET4.0E)
+[16-Aug-2012 15:29:23 UTC] [client 63.85.50.241]  http://www.dematictraining.com  Failed Login:  steve.swatkowski  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.1; MS-RTC LM 8; .NET4.0C; .NET4.0E)
+[16-Aug-2012 15:30:19 UTC] [client 63.85.50.241]  http://www.dematictraining.com  Failed Login:  steven,swatkowski@grainger.com  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.1; MS-RTC LM 8; .NET4.0C; .NET4.0E)
+[16-Aug-2012 15:30:55 UTC] [client 63.85.50.241]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.1; MS-RTC LM 8; .NET4.0C; .NET4.0E)
+[16-Aug-2012 15:33:56 UTC] [client 63.85.50.241]  http://www.dematictraining.com  Failed Login:  steveswatkowski  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.1; MS-RTC LM 8; .NET4.0C; .NET4.0E)
+[16-Aug-2012 15:34:15 UTC] [client 63.85.50.241]  http://www.dematictraining.com  Failed Login:  steve,swatkowski  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.1; MS-RTC LM 8; .NET4.0C; .NET4.0E)
+[16-Aug-2012 15:34:24 UTC] [client 63.85.50.241]  http://www.dematictraining.com  Failed Login:  steve,swatkowski  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.1; MS-RTC LM 8; .NET4.0C; .NET4.0E)
+[16-Aug-2012 19:14:09 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  victormatthews  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; GTB7.3; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C)
+[17-Aug-2012 15:17:54 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  ahunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2)
+[17-Aug-2012 15:18:20 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  ahunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2)
+[17-Aug-2012 15:18:51 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  ahunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2)
+[20-Aug-2012 02:15:19 UTC] [client 192.247.47.4]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727)
+[20-Aug-2012 12:36:46 UTC] [client 12.148.112.2]  http://www.dematictraining.com  Failed Login:  kevinbailey  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[22-Aug-2012 16:05:14 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  ahunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2)
+[22-Aug-2012 16:05:36 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  ahunnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2)
+[22-Aug-2012 16:06:41 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  ahuinnicut  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; InfoPath.2)
+[23-Aug-2012 02:40:12 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  thomaspayne  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 d2a51370
+[23-Aug-2012 02:40:23 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  thomaspayne  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 d2a51370
+[23-Aug-2012 02:40:47 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  thomaspayne  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 d2a51370
+[23-Aug-2012 02:41:39 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  thomaspayne  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 d2a51370
+[23-Aug-2012 02:42:25 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  thomaspayne  Mozilla/5.0 (X11; FC Linux i686; rv:2.0.1) Gecko/20110429 Firefox/4.0.1 d2a51370
+[26-Aug-2012 10:08:07 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  jamesgeddes  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; InfoPath.1; .NET CLR 3.0.04506.30; .NET4.0C; .NET4.0E)
+[26-Aug-2012 10:08:57 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  jamesgeddes  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; InfoPath.1; .NET CLR 3.0.04506.30; .NET4.0C; .NET4.0E)
+[26-Aug-2012 10:09:01 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; InfoPath.1; .NET CLR 3.0.04506.30; .NET4.0C; .NET4.0E)
+[26-Aug-2012 10:09:09 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; InfoPath.1; .NET CLR 3.0.04506.30; .NET4.0C; .NET4.0E)
+[31-Aug-2012 04:34:56 UTC] [client 63.73.199.69]  http://www.dematictraining.com  Failed Login:  ted.friedberg@walgreens.com  Mozilla/5.0 (Windows NT 5.1; rv:15.0) Gecko/20100101 Firefox/15.0
+[31-Aug-2012 04:35:11 UTC] [client 63.73.199.69]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (Windows NT 5.1; rv:15.0) Gecko/20100101 Firefox/15.0
+[31-Aug-2012 04:35:21 UTC] [client 63.73.199.69]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (Windows NT 5.1; rv:15.0) Gecko/20100101 Firefox/15.0
+[31-Aug-2012 04:36:11 UTC] [client 63.73.199.69]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (Windows NT 5.1; rv:15.0) Gecko/20100101 Firefox/15.0
+[03-Sep-2012 18:48:48 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  greg.jelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[03-Sep-2012 18:49:01 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  greg.jelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[03-Sep-2012 18:49:31 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  grzegorz.jelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[03-Sep-2012 18:49:58 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  grzegorz.jelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Sep-2012 01:15:02 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  gregjelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Sep-2012 01:15:17 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  gregjelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Sep-2012 01:15:28 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  gregjelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[06-Sep-2012 01:15:34 UTC] [client 75.25.55.23]  http://www.dematictraining.com  Failed Login:  gregjelonek  Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+[07-Sep-2012 14:45:20 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  devirn.watford@dematic.com  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+[07-Sep-2012 14:47:31 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  devirn.watford@dematic.com  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+[07-Sep-2012 14:47:43 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+[07-Sep-2012 14:49:48 UTC] [client 205.159.94.63]  http://www.dematictraining.com  Failed Login:  devirn.watford@dematic.com  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; InfoPath.2; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+[08-Sep-2012 07:57:48 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 07:58:04 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 07:58:29 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 08:04:59 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 08:09:40 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 08:10:18 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 08:10:26 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 08:12:57 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 08:13:18 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 08:14:41 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 08:19:23 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  miguelsanchez  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[08-Sep-2012 08:19:23 UTC] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[09-Sep-2012 14:02:10 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  rickdoucet  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727)
+[09-Sep-2012 14:02:33 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  rickdoucet  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727)
+[09-Sep-2012 14:04:31 UTC] [client 161.165.196.84]  http://www.dematictraining.com  Failed Login:  rickdoucet  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.0.3705; .NET CLR 1.1.4322; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727)
+[09-Sep-2012 19:39:44 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  guest  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.6) Gecko/20100101 Firefox/10.0.6
+[10-Sep-2012 00:26:26 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  andrewcochran  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.6) Gecko/20100101 Firefox/10.0.6
+[10-Sep-2012 00:26:42 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  andrewcochran  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.6) Gecko/20100101 Firefox/10.0.6
+[10-Sep-2012 05:02:29 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  andrewcochran  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.6) Gecko/20100101 Firefox/10.0.6
+[10-Sep-2012 05:02:38 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  andrewcochran  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.6) Gecko/20100101 Firefox/10.0.6
+[10-Sep-2012 05:21:52 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  andrewcochran  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.6) Gecko/20100101 Firefox/10.0.6
+[10-Sep-2012 05:22:01 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  andrewcochran  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.6) Gecko/20100101 Firefox/10.0.6
+[10-Sep-2012 05:22:09 UTC] [client 72.21.198.66]  http://www.dematictraining.com  Failed Login:  andrewcochran  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.6) Gecko/20100101 Firefox/10.0.6
+[17-Sep-2012 18:53:51 UTC] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[17-Sep-2012 18:54:17 UTC] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[17-Sep-2012 19:21:34 UTC] Default exception handler: Invalid password reset URL Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 113 of /login/forgot_password.php: call to print_error()
+
+[17-Sep-2012 19:22:32 UTC] Default exception handler: Change password confirmation link was already used, password was not changed Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 77 of /login/forgot_password.php: call to print_error()
+
+[17-Sep-2012 19:22:52 UTC] Default exception handler: Change password confirmation link was already used, password was not changed Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 77 of /login/forgot_password.php: call to print_error()
+
+[26-Oct-2012 19:37:04 UTC] Default exception handler: Web services must be enabled in Advanced features. Debug: 
+* line 36 of /login/token.php: moodle_exception thrown
+
+[26-Oct-2012 19:38:11 UTC] Default exception handler: The username was not found in the database Debug: 
+* line 179 of /login/token.php: moodle_exception thrown
+
+[26-Oct-2012 19:38:22 UTC] Default exception handler: The username was not found in the database Debug: 
+* line 179 of /login/token.php: moodle_exception thrown
+
+[26-Oct-2012 19:38:39 UTC] Default exception handler: The username was not found in the database Debug: 
+* line 179 of /login/token.php: moodle_exception thrown
+
+[26-Oct-2012 19:39:54 UTC] Default exception handler: The username was not found in the database Debug: 
+* line 179 of /login/token.php: moodle_exception thrown
+
+[26-Oct-2012 19:42:10 UTC] Default exception handler: The username was not found in the database Debug: 
+* line 179 of /login/token.php: moodle_exception thrown
+
+[26-Oct-2012 19:42:26 UTC] Default exception handler: The username was not found in the database Debug: 
+* line 179 of /login/token.php: moodle_exception thrown
+
+[29-Oct-2012 14:35:50 UTC] [client 146.235.66.52]  http://www.dematictraining.com  Suspended Login:  davidkrolick  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2)
+[13-Jan-2013 14:14:02 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Jan-2013 14:14:40 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Jan-2013 14:15:00 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Jan-2013 14:16:23 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Jan-2013 14:16:45 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[26-Jan-2013 16:51:38 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[05-Mar-2013 16:15:39 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[05-Mar-2013 16:16:00 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[05-Mar-2013 16:16:23 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[20-Mar-2013 13:34:38 America/Denver] [client 146.235.66.52]  http://www.dematictraining.com  Suspended Login:  davidkrolick  Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2)
+[09-Apr-2013 00:08:46 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[09-Apr-2013 00:09:28 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[09-Apr-2013 00:10:25 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[09-Apr-2013 00:11:06 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[21-Apr-2013 17:06:40 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Apr-2013 02:21:14 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Apr-2013 02:29:57 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Apr-2013 02:30:45 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[29-May-2013 12:39:24 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[29-May-2013 12:39:55 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[29-May-2013 12:58:16 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[29-May-2013 12:58:25 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Jun-2013 14:52:04 America/Denver] [client 50.77.242.81]  http://www.dematictraining.com  Suspended Login:  thinkck  Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36
+[13-Jun-2013 14:52:18 America/Denver] [client 50.77.242.81]  http://www.dematictraining.com  Suspended Login:  thinkck  Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36
+[13-Jun-2013 14:52:27 America/Denver] [client 50.77.242.81]  http://www.dematictraining.com  Suspended Login:  thinkck  Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36
+[13-Jun-2013 14:53:05 America/Denver] [client 50.77.242.81]  http://www.dematictraining.com  Suspended Login:  thinkck  Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36
+[13-Jun-2013 14:54:37 America/Denver] [client 50.77.242.81]  http://www.dematictraining.com  Suspended Login:  thinkck  Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)
+[14-Jun-2013 11:03:58 America/Denver] [client 50.77.242.81]  http://www.dematictraining.com  Suspended Login:  thinkck  Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)
+[19-Jun-2013 01:45:02 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[19-Jun-2013 01:45:23 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[29-Jun-2013 10:22:14 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[29-Jun-2013 10:22:24 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[01-Jul-2013 08:50:12 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 76 of /login/change_password_form.php: call to update_login_count()
+* line 514 of /lib/formslib.php: call to login_change_password_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 107 of /login/change_password.php: call to moodleform->get_data()
+
+[01-Jul-2013 09:03:36 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 76 of /login/change_password_form.php: call to update_login_count()
+* line 514 of /lib/formslib.php: call to login_change_password_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 107 of /login/change_password.php: call to moodleform->get_data()
+
+[01-Jul-2013 09:07:01 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 76 of /login/change_password_form.php: call to update_login_count()
+* line 514 of /lib/formslib.php: call to login_change_password_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 107 of /login/change_password.php: call to moodleform->get_data()
+
+[01-Jul-2013 09:09:00 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 76 of /login/change_password_form.php: call to update_login_count()
+* line 514 of /lib/formslib.php: call to login_change_password_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 107 of /login/change_password.php: call to moodleform->get_data()
+
+[01-Jul-2013 09:11:48 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 76 of /login/change_password_form.php: call to update_login_count()
+* line 514 of /lib/formslib.php: call to login_change_password_form->validation()
+* line 463 of /lib/formslib.php: call to moodleform->validate_defined_fields()
+* line 560 of /lib/formslib.php: call to moodleform->is_validated()
+* line 107 of /login/change_password.php: call to moodleform->get_data()
+
+[17-Jul-2013 07:34:27 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[17-Jul-2013 07:46:29 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[17-Jul-2013 07:49:10 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[22-Jul-2013 06:36:31 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[02-Aug-2013 10:58:56 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[02-Aug-2013 10:59:18 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[05-Aug-2013 20:23:30 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[05-Aug-2013 20:23:53 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Aug-2013 17:18:40 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Aug-2013 17:19:01 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Aug-2013 17:19:07 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Aug-2013 17:20:57 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Aug-2013 17:22:48 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Aug-2013 17:24:04 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Aug-2013 17:25:30 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Aug-2013 17:25:59 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[13-Aug-2013 17:26:33 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[14-Aug-2013 09:27:15 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Aug-2013 14:49:26 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[20-Aug-2013 17:08:51 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[20-Aug-2013 17:10:23 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Aug-2013 23:05:08 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[15-Sep-2013 13:34:51 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[23-Sep-2013 09:41:58 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[14-Oct-2013 13:30:46 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[14-Oct-2013 13:31:02 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[14-Oct-2013 13:32:30 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[14-Oct-2013 13:32:56 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[15-Oct-2013 09:50:21 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[15-Oct-2013 09:55:21 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[08-Nov-2013 11:07:05 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[08-Nov-2013 11:07:26 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[11-Nov-2013 18:48:18 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[11-Nov-2013 18:53:44 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[11-Nov-2013 18:54:10 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[11-Nov-2013 19:06:59 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[11-Nov-2013 19:26:25 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[11-Nov-2013 19:26:25 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[14-Nov-2013 07:42:04 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  timavant  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[14-Nov-2013 07:42:22 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  timavant  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[14-Nov-2013 07:42:53 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  timavant  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[14-Nov-2013 07:43:09 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  timavant  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[14-Nov-2013 07:43:51 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  timavant  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[14-Nov-2013 07:45:05 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  timavant  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[20-Nov-2013 09:56:23 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  timavant  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[20-Nov-2013 09:56:40 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  timavant  Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; .NET4.0C; .NET4.0E)
+[21-Nov-2013 15:36:06 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  dougsmith  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36
+[21-Nov-2013 15:36:18 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  dougsmith  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36
+[23-Jan-2014 16:03:14 America/Denver] Default exception handler: Web service is not available (it doesn't exist or might be disabled) Debug: 
+* line 76 of /login/token.php: moodle_exception thrown
+
+[23-Jan-2014 16:03:36 America/Denver] Default exception handler: Web service is not available (it doesn't exist or might be disabled) Debug: 
+* line 76 of /login/token.php: moodle_exception thrown
+
+[28-Jan-2014 09:29:11 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[11-Feb-2014 13:24:13 America/Denver] Default exception handler: You are not confirmed yet because an error occurred.  If you clicked on a link in an email to get here, make sure that the line in your email wasn't broken or wrapped. You may have to use cut and paste to reconstruct the link properly. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 104 of /login/confirm.php: call to print_error()
+
+[11-Feb-2014 13:24:17 America/Denver] Default exception handler: You are not confirmed yet because an error occurred.  If you clicked on a link in an email to get here, make sure that the line in your email wasn't broken or wrapped. You may have to use cut and paste to reconstruct the link properly. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 104 of /login/confirm.php: call to print_error()
+
+[14-Feb-2014 10:52:13 America/Denver] Default exception handler: You are not confirmed yet because an error occurred.  If you clicked on a link in an email to get here, make sure that the line in your email wasn't broken or wrapped. You may have to use cut and paste to reconstruct the link properly. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 104 of /login/confirm.php: call to print_error()
+
+[18-Feb-2014 20:24:46 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  samcramer  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36
+[18-Feb-2014 20:26:10 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  samcramer  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36
+[18-Feb-2014 20:26:23 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  samcramer  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36
+[21-Feb-2014 09:25:24 America/Denver] Default exception handler: You are not confirmed yet because an error occurred.  If you clicked on a link in an email to get here, make sure that the line in your email wasn't broken or wrapped. You may have to use cut and paste to reconstruct the link properly. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 104 of /login/confirm.php: call to print_error()
+
+[21-Feb-2014 09:26:03 America/Denver] Default exception handler: You are not confirmed yet because an error occurred.  If you clicked on a link in an email to get here, make sure that the line in your email wasn't broken or wrapped. You may have to use cut and paste to reconstruct the link properly. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 104 of /login/confirm.php: call to print_error()
+
+[03-Mar-2014 06:24:40 America/Denver] Default exception handler: You are not confirmed yet because an error occurred.  If you clicked on a link in an email to get here, make sure that the line in your email wasn't broken or wrapped. You may have to use cut and paste to reconstruct the link properly. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 104 of /login/confirm.php: call to print_error()
+
+[26-Mar-2014 10:04:49 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[26-Mar-2014 10:05:04 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[19-Apr-2014 12:28:34 America/Denver] [client 68.229.216.205]  http://www.dematictraining.com  Suspended Login:  jameskline  Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0
+[24-Apr-2014 14:10:16 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Apr-2014 14:11:08 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Apr-2014 14:11:34 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Apr-2014 14:12:35 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[28-Apr-2014 11:33:01 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[28-Apr-2014 11:33:22 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[28-Apr-2014 11:33:43 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[28-Apr-2014 11:33:58 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[28-Apr-2014 11:34:26 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[28-Apr-2014 12:00:13 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[08-May-2014 00:45:00 America/Denver] [client 12.148.112.2]  http://www.dematictraining.com  Suspended Login:  dougsmith  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+[09-May-2014 14:10:32 America/Denver] [client 0.0.0.0]  http://www.dematictraining.com  Suspended Login:  kevinbailey  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+[09-May-2014 14:10:42 America/Denver] [client 0.0.0.0]  http://www.dematictraining.com  Suspended Login:  kevinbailey  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+[09-May-2014 14:11:14 America/Denver] [client 0.0.0.0]  http://www.dematictraining.com  Suspended Login:  kevinbailey  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+[09-May-2014 14:11:20 America/Denver] [client 0.0.0.0]  http://www.dematictraining.com  Suspended Login:  kevinbailey  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+[09-May-2014 14:11:35 America/Denver] [client 0.0.0.0]  http://www.dematictraining.com  Suspended Login:  kevinbailey  Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+[27-May-2014 14:42:22 America/Denver] Default exception handler: You are not confirmed yet because an error occurred.  If you clicked on a link in an email to get here, make sure that the line in your email wasn't broken or wrapped. You may have to use cut and paste to reconstruct the link properly. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 104 of /login/confirm.php: call to print_error()
+
+[27-May-2014 14:42:41 America/Denver] Default exception handler: You are not confirmed yet because an error occurred.  If you clicked on a link in an email to get here, make sure that the line in your email wasn't broken or wrapped. You may have to use cut and paste to reconstruct the link properly. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 104 of /login/confirm.php: call to print_error()
+
+[04-Jun-2014 03:43:41 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Jun-2014 23:22:38 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Jun-2014 23:23:01 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Jun-2014 23:23:17 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Jun-2014 23:23:39 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Jun-2014 23:24:46 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Jun-2014 23:26:06 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Jun-2014 23:35:05 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Jun-2014 23:37:41 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[18-Jun-2014 23:38:20 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[21-Jun-2014 23:54:57 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[23-Jun-2014 16:57:34 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[27-Jun-2014 12:10:00 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 05:58:30 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 05:58:44 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 06:04:54 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 06:05:33 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 06:06:13 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 06:06:39 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 06:07:51 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 06:08:34 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 06:10:39 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[24-Jul-2014 06:12:45 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[25-Jul-2014 01:41:26 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[25-Jul-2014 01:43:42 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[25-Jul-2014 01:43:54 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[25-Jul-2014 01:47:09 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[25-Jul-2014 01:47:10 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Jul-2014 23:00:45 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Jul-2014 23:01:24 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Jul-2014 23:02:23 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Jul-2014 23:03:22 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Jul-2014 23:03:50 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Jul-2014 23:04:49 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[30-Jul-2014 23:05:20 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[31-Jul-2014 20:17:57 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[31-Jul-2014 20:45:43 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[01-Aug-2014 09:34:55 America/Denver] Default exception handler: Incorrect sesskey submitted, form not accepted! Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 253 of /lib/formslib.php: call to print_error()
+* line 180 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 46 of /login/signup.php: call to moodleform->moodleform()
+
+[12-Aug-2014 08:39:53 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[07-Sep-2014 06:06:48 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+
+[07-Sep-2014 06:11:25 America/Denver] Default exception handler: Sorry, you have exceeded the allowed number of login attempts. Restart your browser. Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 3279 of /lib/moodlelib.php: call to print_error()
+* line 151 of /login/index.php: call to update_login_count()
+

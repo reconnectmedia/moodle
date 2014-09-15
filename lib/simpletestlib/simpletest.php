@@ -3,7 +3,7 @@
  *  Global state for SimpleTest and kicker script in future versions.
  *  @package    SimpleTest
  *  @subpackage UnitTester
- *  @version    $Id$
+ *  @version    $Id: simpletest.php,v 1.6 2010/12/14 17:35:45 moodlerobot Exp $
  */
 
 /**#@+

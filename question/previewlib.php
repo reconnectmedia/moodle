@@ -228,9 +228,6 @@ function question_preview_question_pluginfile($course, $context, $component,
         $filearea, $qubaid, $slot, $args, $forcedownload) {
     global $USER, $DB, $CFG;
 
-    list($context, $course, $cm) = get_context_info_array($context->id);
-    require_login($course, false, $cm);
-
     $quba = question_engine::load_questions_usage_by_activity($qubaid);
 
     if (!question_has_capability_on($quba->get_question($slot), 'use')) {
@@ -315,31 +312,4 @@ function restart_preview($previewid, $questionid, $displayoptions, $context) {
     }
     redirect(question_preview_url($questionid, $displayoptions->behaviour,
             $displayoptions->maxmark, $displayoptions, $displayoptions->variant, $context));
-}
-
-/**
- * Scheduled tasks relating to question preview. Specifically, delete any old
- * previews that are left over in the database.
- */
-function question_preview_cron() {
-    $maxage = 24*60*60; // We delete previews that have not been touched for 24 hours.
-    $lastmodifiedcutoff = time() - $maxage;
-
-    mtrace("\n  Cleaning up old question previews...", '');
-    $oldpreviews = new qubaid_join('{question_usages} quba', 'quba.id',
-            'quba.component = :qubacomponent
-                    AND NOT EXISTS (
-                        SELECT 1
-                          FROM {question_attempts} qa
-                          JOIN {question_attempt_steps} qas ON qas.questionattemptid = qa.id
-                         WHERE qa.questionusageid = quba.id
-                           AND (qa.timemodified > :qamodifiedcutoff
-                                    OR qas.timecreated > :stepcreatedcutoff)
-                    )
-            ',
-            array('qubacomponent' => 'core_question_preview',
-                'qamodifiedcutoff' => $lastmodifiedcutoff, 'stepcreatedcutoff' => $lastmodifiedcutoff));
-
-    question_engine::delete_questions_usage_by_activities($oldpreviews);
-    mtrace('done.');
 }

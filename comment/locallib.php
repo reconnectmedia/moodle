@@ -89,7 +89,7 @@ class comment_manager {
      */
     private function setup_course($courseid) {
         global $PAGE, $DB;
-        if (!empty($this->course) && $this->course->id == $courseid) {
+        if (!empty($this->course)) {
             // already set, stop
             return;
         }

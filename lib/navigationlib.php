@@ -153,7 +153,7 @@ class navigation_node implements renderable {
                 $this->shorttext = $properties['shorttext'];
             }
             if (!array_key_exists('icon', $properties)) {
-                $properties['icon'] = new pix_icon('i/navigationitem', '');
+                $properties['icon'] = new pix_icon('i/navigationitem', 'moodle');
             }
             $this->icon = $properties['icon'];
             if ($this->icon instanceof pix_icon) {
@@ -1633,9 +1633,6 @@ class global_navigation extends navigation_node {
         $activities = array();
 
         foreach ($sections as $key => $section) {
-            // Clone and unset summary to prevent $SESSION bloat (MDL-31802).
-            $sections[$key] = clone($section);
-            unset($sections[$key]->summary);
             $sections[$key]->hasactivites = false;
             if (!array_key_exists($section->section, $modinfo->sections)) {
                 continue;
@@ -2021,7 +2018,7 @@ class global_navigation extends navigation_node {
 
         $context = get_context_instance(CONTEXT_USER, $USER->id);
         if ($iscurrentuser && has_capability('moodle/user:manageownfiles', $context)) {
-            $url = new moodle_url('/user/filesedit.php');
+            $url = new moodle_url('/user/files.php');
             $usernode->add(get_string('myfiles'), $url, self::TYPE_SETTING);
         }
 
@@ -3138,9 +3135,9 @@ class settings_navigation extends navigation_node {
                         continue;
                     }
                     if ($type->modclass == MOD_CLASS_RESOURCE) {
-                        $resources[html_entity_decode($type->type, ENT_QUOTES, 'UTF-8')] = $type->typestr;
+                        $resources[html_entity_decode($type->type)] = $type->typestr;
                     } else {
-                        $activities[html_entity_decode($type->type, ENT_QUOTES, 'UTF-8')] = $type->typestr;
+                        $activities[html_entity_decode($type->type)] = $type->typestr;
                     }
                 }
             } else {
@@ -3177,7 +3174,7 @@ class settings_navigation extends navigation_node {
 
         if (has_capability('moodle/course:update', $coursecontext)) {
             // Add the turn on/off settings
-            $url = new moodle_url('/course/view.php', array('id'=>$course->id, 'return'=>str_replace($CFG->wwwroot, '', $this->page->url->out(false)), 'sesskey'=>sesskey()));
+            $url = new moodle_url('/course/view.php', array('id'=>$course->id, 'sesskey'=>sesskey()));
             if ($this->page->user_is_editing()) {
                 $url->param('edit', 'off');
                 $editstring = get_string('turneditingoff');
@@ -3785,7 +3782,7 @@ class settings_navigation extends navigation_node {
 
         // Messaging
         if (($currentuser && has_capability('moodle/user:editownmessageprofile', $systemcontext)) || (!isguestuser($user) && has_capability('moodle/user:editmessageprofile', $usercontext) && !is_primary_admin($user->id))) {
-            $url = new moodle_url('/message/edit.php', array('id'=>$user->id));
+            $url = new moodle_url('/message/edit.php', array('id'=>$user->id, 'course'=>$course->id));
             $usersetting->add(get_string('editmymessage', 'message'), $url, self::TYPE_SETTING);
         }
 
@@ -4070,7 +4067,7 @@ class navigation_json {
         }
 
         if ($child->forcetitle || $child->title !== $child->text) {
-            $attributes['title'] = htmlentities($child->title, ENT_QUOTES, 'UTF-8');
+            $attributes['title'] = htmlentities($child->title);
         }
         if (array_key_exists($child->key.':'.$child->type, $this->expandable)) {
             $attributes['expandable'] = $child->key;

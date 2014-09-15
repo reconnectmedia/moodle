@@ -766,7 +766,7 @@ function wiki_user_can_view($subwiki) {
         //      Each person owns a wiki.
         if ($wiki->wikimode == 'collaborative' || $wiki->wikimode == 'individual') {
             // Only members of subwiki group could view that wiki
-            if (groups_is_member($subwiki->groupid)) {
+            if ($subwiki->groupid == groups_get_activity_group($cm)) {
                 // Only view capability needed
                 return has_capability('mod/wiki:viewpage', $context);
 
@@ -1273,7 +1273,7 @@ function wiki_print_page_content($page, $context, $subwikiid) {
         }
     }
     $html = file_rewrite_pluginfile_urls($page->cachedcontent, 'pluginfile.php', $context->id, 'mod_wiki', 'attachments', $subwikiid);
-    $html = format_text($html, FORMAT_MOODLE, array('overflowdiv'=>true, 'allowid'=>true));
+    $html = format_text($html, FORMAT_MOODLE, array('overflowdiv'=>true));
     echo $OUTPUT->box($html);
 
     if (!empty($CFG->usetags)) {

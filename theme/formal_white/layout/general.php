@@ -31,9 +31,6 @@ if ($hascustommenu) {
 /************************************************************************************************/
 if (!empty($PAGE->theme->settings->logo)) {
     $logourl = $PAGE->theme->settings->logo;
-    if (strtolower(substr($logourl, 0, 4)) != 'http') {
-        $logourl = $CFG->wwwroot.'/'.$logourl;
-    }
 } else {
     $logourl = $OUTPUT->pix_url('logo_small', 'theme');
 }
@@ -220,7 +217,7 @@ if ($hasfooter) {
             <?php
                 }
             ?>
-            <?php
+            <?php                   
                 echo $OUTPUT->standard_footer_html();
             ?>
             </div>

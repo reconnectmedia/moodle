@@ -211,7 +211,6 @@ a.skip:active {position: static;display: block;}
 .mform .fitem .fitemtitle div {display: inline;}
 .mform .fitem .felement {border-width: 0;width:80%;margin-left:16%;}
 .mform .fitem fieldset.felement {margin-left:0;padding-left:1%;margin-bottom:0}
-.dir-rtl .mform .fitem fieldset.felement {padding-right: 1%;margin-right: 0;}
 .mform .error,
 .mform .required {color:#A00;}
 .mform .required .fgroup span label {color:#000;}
@@ -285,7 +284,6 @@ input#id_externalurl {direction:ltr;}
 .loginbox .subcontent {margin:5px;padding:10px;text-align:center;}
 .loginbox .loginpanel .desc {margin:0;padding:0;margin-bottom:5px;}
 .loginbox .signuppanel .subcontent {text-align:left;}
-.dir-rtl .loginbox .signuppanel .subcontent {text-align: right;}
 .loginbox .loginsub {margin-left:0;margin-right:0;}
 .loginbox .guestsub,
 .loginbox .forgotsub,
@@ -569,11 +567,8 @@ body.tag .managelink {padding: 5px;}
 #helppopupbox {background-color: #eee; border: 1px solid #848484;z-index: 10000 !important;}
 #helppopupbox .yui3-widget-hd {float:right;margin:3px 3px 0 0;}
 #helppopupbox .yui3-widget-bd {margin:0 1em 1em 1em;border-top:1px solid #eee;}
-#helppopupbox .yui3-widget-ft {text-align: center;}
-#helppopupbox .yui3-widget-ft .closebtn {margin:0 1em 1em 1em;}
 #helppopupbox .helpheading {font-size: 1em;}
 #helppopupbox .spinner {margin:1em;}
-.dir-rtl #helppopupbox .yui3-widget-hd {float:left;margin:3px 0 0 3px;}
 
 /**
  * Custom menu
@@ -605,7 +600,7 @@ body.tag .managelink {padding: 5px;}
 #custommenu .yui3-menu-horizontal .yui3-menu-label,
 #custommenu .yui3-menu-horizontal .yui3-menu-content {background-image:none;background-position:right center;background-repeat:no-repeat;}
 #custommenu .yui3-menu-label,
-#custommenu .yui3-menu .yui3-menu .yui3-menu-label {background-image:url([[pix:theme|vertical-menu-submenu-indicator]]); padding-right: 20px;}
+#custommenu .yui3-menu .yui3-menu .yui3-menu-label {background-image:url([[pix:theme|vertical-menu-submenu-indicator]]);}
 #custommenu .yui3-menu .yui3-menu .yui3-menu-label-menuvisible {background-image:url([[pix:theme|horizontal-menu-submenu-indicator]]);}
 
 /**
@@ -764,8 +759,6 @@ body.tag .managelink {padding: 5px;}
 
 /* Resourcelib mp3 player size: only width could be changed here, height hardcoded in JS */
 .resourcecontent .resourcemediaplugin_mp3 object {height:25px; width: 600px}
-/** Large resource images should avoid hidden overflow **/
-.resourceimage {max-width: 100%;}
 
 /*
 Fix for SubScript & SuperScript

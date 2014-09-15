@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -18,58 +19,65 @@
 /**
  * Course completion critieria aggregation
  *
- * @package core_completion
- * @category completion
+ * @package   moodlecore
  * @copyright 2009 Catalyst IT Ltd
- * @author Aaron Barnes <aaronb@catalyst.net.nz>
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author    Aaron Barnes <aaronb@catalyst.net.nz>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir.'/completion/data_object.php');
 
 /**
  * Course completion critieria aggregation
- *
- * @package core_completion
- * @category completion
- * @copyright 2009 Catalyst IT Ltd
- * @author Aaron Barnes <aaronb@catalyst.net.nz>
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class completion_aggregation extends data_object {
 
-    /* @var string Database table name that stores completion aggregation information */
+    /**
+     * DB Table
+     * @var string $table
+     */
     public $table = 'course_completion_aggr_methd';
 
     /**
      * Array of required table fields, must start with 'id'.
-     * Defaults to id, course, criteriatype, method, value
-     * @var array
+     * @var array $required_fields
      */
     public $required_fields = array('id', 'course', 'criteriatype', 'method', 'value');
 
-    /* @var array Array of unique fields, used in where clauses */
-    public $unique_fields = array('course', 'criteriatype');
-
-    /* @var int Course id */
+    /**
+     * Course id
+     * @access  public
+     * @var     int
+     */
     public $course;
 
-    /* @var int Criteria type this aggregation method applies to, or NULL for overall course aggregation */
+    /**
+     * Criteria type this aggregation method applies to, or NULL for overall course aggregation
+     * @access  public
+     * @var     int
+     */
     public $criteriatype;
 
-    /* @var int Aggregation method (COMPLETION_AGGREGATION_* constant) */
+    /**
+     * Aggregation method (COMPLETION_AGGREGATION_* constant)
+     * @access  public
+     * @var     int
+     */
     public $method;
 
-    /* @var mixed Method value */
+    /**
+     * Method value
+     * @access  public
+     * @var     mixed
+     */
     public $value;
 
 
     /**
      * Finds and returns a data_object instance based on params.
+     * @static abstract
      *
      * @param array $params associative arrays varname=>value
-     * @return data_object instance of data_object or false if none found.
+     * @return object data_object instance or false if none found.
      */
     public static function fetch($params) {
         return self::fetch_helper('course_completion_aggr_methd', __CLASS__, $params);
@@ -78,6 +86,7 @@ class completion_aggregation extends data_object {
 
     /**
      * Finds and returns all data_object instances based on params.
+     * @static abstract
      *
      * @param array $params associative arrays varname=>value
      * @return array array of data_object insatnces or false if none found.
@@ -86,8 +95,9 @@ class completion_aggregation extends data_object {
 
     /**
      * Set the aggregation method
-     *
-     * @param int $method One of COMPLETION_AGGREGATION_ALL or COMPLETION_AGGREGATION_ANY
+     * @access  public
+     * @param   $method     int
+     * @return  void
      */
     public function setMethod($method) {
         $methods = array(
@@ -99,21 +109,6 @@ class completion_aggregation extends data_object {
             $this->method = $method;
         } else {
             $this->method = COMPLETION_AGGREGATION_ALL;
-        }
-    }
-
-
-    /**
-     * Save aggregation method to database
-     *
-     * @access  public
-     * @return  boolean
-     */
-    public function save() {
-        if ($this->id) {
-            return $this->update();
-        } else {
-            return $this->insert();
         }
     }
 }

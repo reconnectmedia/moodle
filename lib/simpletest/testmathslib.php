@@ -23,7 +23,7 @@ require_once($CFG->libdir . '/mathslib.php');
  * Unit tests of mathslib wrapper and underlying EvalMath library.
  *
  * @author Petr Skoda (skodak)
- * @version $Id$
+ * @version $Id: testmathslib.php,v 1.13 2011/07/01 22:24:42 moodlerobot Exp $
  */
 class mathsslib_test extends UnitTestCase {
 
@@ -149,10 +149,6 @@ class mathsslib_test extends UnitTestCase {
     }
 
     public function test_rounding_function() {
-
-        // Rounding to the default number of decimal places
-        // The default == 0
-
         $formula = new calc_formula('=round(2.5)');
         $this->assertEqual($formula->evaluate(), 3);
 
@@ -206,20 +202,6 @@ class mathsslib_test extends UnitTestCase {
 
         $formula = new calc_formula('=floor(-2.5)');
         $this->assertEqual($formula->evaluate(), -3);
-
-        // Rounding to an explicit number of decimal places
-
-        $formula = new calc_formula('=round(2.5, 1)');
-        $this->assertEqual($formula->evaluate(), 2.5);
-
-        $formula = new calc_formula('=round(2.5, 0)');
-        $this->assertEqual($formula->evaluate(), 3);
-
-        $formula = new calc_formula('=round(1.2345, 2)');
-        $this->assertEqual($formula->evaluate(), 1.23);
-
-        $formula = new calc_formula('=round(123.456, -1)');
-        $this->assertEqual($formula->evaluate(), 120);
 
     }
 

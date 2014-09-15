@@ -285,11 +285,7 @@ if ($formdata = $mform2->is_cancelled()) {
             $userserrors++;
             continue;
         }
-        if ($user->username !== clean_param($user->username, PARAM_USERNAME)) {
-            $upt->track('status', get_string('invalidusername', 'error', 'username'), 'error');
-            $upt->track('username', $errorstr, 'error');
-            $userserrors++;
-        }
+
         if ($existinguser = $DB->get_record('user', array('username'=>$user->username, 'mnethostid'=>$CFG->mnet_localhost_id))) {
             $upt->track('id', $existinguser->id, 'normal', false);
         }
@@ -857,8 +853,6 @@ if ($formdata = $mform2->is_cancelled()) {
                         if ($duration > 0) { // sanity check
                             $timeend = $today + $duration;
                         }
-                    } else if ($manualcache[$courseid]->enrolperiod > 0) {
-                        $timeend = $today + $manualcache[$courseid]->enrolperiod;
                     }
 
                     $manual->enrol_user($manualcache[$courseid], $user->id, $rid, $today, $timeend);

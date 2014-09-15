@@ -1,0 +1,8 @@
+[21-Apr-2014 03:26:50 America/Denver] Default exception handler: glossary/invalidid Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 47 of /mod/glossary/view.php: call to print_error()
+
+[07-May-2014 03:29:52 America/Denver] Default exception handler: glossary/invalidid Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 47 of /mod/glossary/view.php: call to print_error()
+

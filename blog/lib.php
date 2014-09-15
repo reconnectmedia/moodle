@@ -65,36 +65,35 @@ function blog_user_can_view_user_entry($targetuserid, $blogentry=null) {
     global $CFG, $USER, $DB;
 
     if (empty($CFG->bloglevel)) {
-        return false; // Blog system disabled.
+        return false; // blog system disabled
     }
 
     if (isloggedin() && $USER->id == $targetuserid) {
-        return true; // Can view own entries in any case.
+        return true; // can view own entries in any case
     }
 
     $sitecontext = get_context_instance(CONTEXT_SYSTEM);
     if (has_capability('moodle/blog:manageentries', $sitecontext)) {
-        return true; // Can manage all entries.
+        return true; // can manage all entries
     }
 
-    // If blog is in draft state, then make sure user have proper capability.
+    // coming for 1 entry, make sure it's not a draft
     if ($blogentry && $blogentry->publishstate == 'draft' && !has_capability('moodle/blog:viewdrafts', $sitecontext)) {
-        return false;  // Can not view draft of others.
+        return false;  // can not view draft of others
     }
 
-    // If blog entry is not public, make sure user is logged in.
+    // coming for 0 entry, make sure user is logged in, if not a public blog
     if ($blogentry && $blogentry->publishstate != 'public' && !isloggedin()) {
         return false;
     }
 
-    // If blogentry is not passed or all above checks pass, then check capability based on system config.
     switch ($CFG->bloglevel) {
         case BLOG_GLOBAL_LEVEL:
             return true;
         break;
 
         case BLOG_SITE_LEVEL:
-            if (isloggedin()) { // Not logged in viewers forbidden.
+            if (isloggedin()) { // not logged in viewers forbidden
                 return true;
             }
             return false;
@@ -102,7 +101,6 @@ function blog_user_can_view_user_entry($targetuserid, $blogentry=null) {
 
         case BLOG_USER_LEVEL:
         default:
-            // If user is viewing other user blog, then user should have user:readuserblogs capability.
             $personalcontext = get_context_instance(CONTEXT_USER, $targetuserid);
             return has_capability('moodle/user:readuserblogs', $personalcontext);
         break;
@@ -613,14 +611,11 @@ function blog_get_options_for_module($module, $user=null) {
     $canparticipate = (is_enrolled($modcontext) or is_viewing($modcontext));
 
     if (has_capability('moodle/blog:view', $modcontext)) {
-        // Save correct module name for later usage.
-        $modulename = get_string('modulename', $module->modname);
-
         // We can view!
         if ($CFG->bloglevel >= BLOG_SITE_LEVEL) {
             // View all entries about this module
             $a = new stdClass;
-            $a->type = $modulename;
+            $a->type = $module->modname;
             $options['moduleview'] = array(
                 'string' => get_string('viewallmodentries', 'blog', $a),
                 'link' => new moodle_url('/blog/index.php', array('modid'=>$module->id))
@@ -628,13 +623,13 @@ function blog_get_options_for_module($module, $user=null) {
         }
         // View MY entries about this module
         $options['moduleviewmine'] = array(
-            'string' => get_string('viewmyentriesaboutmodule', 'blog', $modulename),
+            'string' => get_string('viewmyentriesaboutmodule', 'blog', $module->modname),
             'link' => new moodle_url('/blog/index.php', array('modid'=>$module->id, 'userid'=>$USER->id))
         );
         if (!empty($user) && ($CFG->bloglevel >= BLOG_SITE_LEVEL)) {
             // View the given users entries about this module
             $a = new stdClass;
-            $a->mod = $modulename;
+            $a->mod = $module->modname;
             $a->user = fullname($user);
             $options['moduleviewuser'] = array(
                 'string' => get_string('blogentriesbyuseraboutmodule', 'blog', $a),
@@ -646,7 +641,7 @@ function blog_get_options_for_module($module, $user=null) {
     if (has_capability('moodle/blog:create', $sitecontext) and $canparticipate) {
         // The user can blog about this module
         $options['moduleadd'] = array(
-            'string' => get_string('blogaboutthismodule', 'blog', $modulename),
+            'string' => get_string('blogaboutthismodule', 'blog', $module->modname),
             'link' => new moodle_url('/blog/edit.php', array('action'=>'add', 'modid'=>$module->id))
         );
     }
@@ -1004,8 +999,6 @@ function blog_get_associated_count($courseid, $cmid=null) {
  * may have switch to turn on/off comments option, this callback will
  * affect UI display, not like pluginname_comment_validate only throw
  * exceptions.
- * blog_comment_validate will be called before viewing/adding/deleting
- * comment, so don't repeat checks.
  * Capability check has been done in comment->check_permissions(), we
  * don't need to do it again here.
  *
@@ -1019,17 +1012,7 @@ function blog_get_associated_count($courseid, $cmid=null) {
  * @return array
  */
 function blog_comment_permissions($comment_param) {
-    global $DB;
-
-    // If blog is public and current usre is guest, then don't let him post comments.
-    $blogentry = $DB->get_record('post', array('id' => $comment_param->itemid), 'publishstate', MUST_EXIST);
-
-    if ($blogentry->publishstate != 'public') {
-        if (!isloggedin() || isguestuser()) {
-            return array('post' => false, 'view' => true);
-        }
-    }
-    return array('post' => true, 'view' => true);
+    return array('post'=>true, 'view'=>true);
 }
 
 /**
@@ -1045,21 +1028,16 @@ function blog_comment_permissions($comment_param) {
  * @return boolean
  */
 function blog_comment_validate($comment_param) {
-    global $CFG, $DB, $USER;
-
-    // Check if blogs are enabled user can comment.
-    if (empty($CFG->bloglevel) || empty($CFG->blogusecomments)) {
-        throw new comment_exception('nopermissiontocomment');
+    global $DB;
+    // validate comment itemid
+    if (!$entry = $DB->get_record('post', array('id'=>$comment_param->itemid))) {
+        throw new comment_exception('invalidcommentitemid');
     }
-
-    // Validate comment area.
+    // validate comment area
     if ($comment_param->commentarea != 'format_blog') {
         throw new comment_exception('invalidcommentarea');
     }
-
-    $blogentry = $DB->get_record('post', array('id' => $comment_param->itemid), '*', MUST_EXIST);
-
-    // Validation for comment deletion.
+    // validation for comment deletion
     if (!empty($comment_param->commentid)) {
         if ($record = $DB->get_record('comments', array('id'=>$comment_param->commentid))) {
             if ($record->commentarea != 'format_blog') {
@@ -1075,11 +1053,7 @@ function blog_comment_validate($comment_param) {
             throw new comment_exception('invalidcommentid');
         }
     }
-
-    // Validate if user has blog view permission.
-    $sitecontext = get_context_instance(CONTEXT_SYSTEM);
-    return has_capability('moodle/blog:view', $sitecontext) &&
-            blog_user_can_view_user_entry($blogentry->userid, $blogentry);
+    return true;
 }
 
 /**

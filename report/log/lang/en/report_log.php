@@ -25,7 +25,6 @@
 
 $string['log:view'] = 'View course logs';
 $string['log:viewtoday'] = 'View today\'s logs';
-$string['logsformat'] = 'Logs format';
 $string['page-report-log-x'] = 'Any log report';
 $string['page-report-log-index'] = 'Course log report';
 $string['page-report-log-user'] = 'User course log report';

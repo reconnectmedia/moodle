@@ -57,13 +57,7 @@ if (isguestuser($user)) {
 }
 
 if (!empty($CFG->forceloginforprofiles)) {
-    require_login(); // We can not log in to course due to the parent hack below.
-
-    // Guests do not have permissions to view anyone's profile if forceloginforprofiles is set.
-    if (isguestuser()) {
-        $SESSION->wantsurl = $PAGE->url->out(false);
-        redirect(get_login_url());
-    }
+    require_login(); // we can not log in to course due to the parent hack below
 }
 
 $PAGE->set_context($coursecontext);
@@ -154,12 +148,9 @@ if ($currentuser) {
     }
 }
 
-$PAGE->set_title("$course->fullname: $strpersonalprofile: $fullname");
-$PAGE->set_heading($course->fullname);
-$PAGE->set_pagelayout('standard');
 
-// Locate the users settings in the settings navigation and force it open.
-// This MUST be done after we've set up the page as it is going to cause theme and output to initialise.
+/// We've established they can see the user's name at least, so what about the rest?
+
 if (!$currentuser) {
     $PAGE->navigation->extend_for_user($user);
     if ($node = $PAGE->settingsnav->get('userviewingsettings'.$user->id)) {
@@ -172,6 +163,9 @@ if ($node = $PAGE->settingsnav->get('courseadmin')) {
     $node->forceopen = false;
 }
 
+$PAGE->set_title("$course->fullname: $strpersonalprofile: $fullname");
+$PAGE->set_heading($course->fullname);
+$PAGE->set_pagelayout('standard');
 echo $OUTPUT->header();
 
 echo '<div class="userprofile">';
@@ -360,7 +354,7 @@ echo $OUTPUT->footer();
 /// Functions ///////
 
 function print_row($left, $right) {
-    echo "\n<tr><th class=\"label c0\">$left</th><td class=\"info c1\">$right</td></tr>\n";
+    echo "\n<tr><td class=\"label c0\">$left</td><td class=\"info c1\">$right</td></tr>\n";
 }
 
 

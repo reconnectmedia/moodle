@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -14,70 +15,103 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+
 /**
  * Course completion status for a particular user/course
  *
- * @package core_completion
- * @category completion
+ * @package   moodlecore
  * @copyright 2009 Catalyst IT Ltd
- * @author Aaron Barnes <aaronb@catalyst.net.nz>
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author    Aaron Barnes <aaronb@catalyst.net.nz>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir.'/completion/data_object.php');
 
+
 /**
  * Course completion status for a particular user/course
- *
- * @package core_completion
- * @category completion
- * @copyright 2009 Catalyst IT Ltd
- * @author Aaron Barnes <aaronb@catalyst.net.nz>
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class completion_completion extends data_object {
 
-    /* @var string $table Database table name that stores completion information */
+    /**
+     * DB Table
+     * @var string $table
+     */
     public $table = 'course_completions';
 
-    /* @var array $required_fields Array of required table fields, must start with 'id'. */
+    /**
+     * Array of required table fields, must start with 'id'.
+     * @var array $required_fields
+     */
     public $required_fields = array('id', 'userid', 'course', 'deleted', 'timenotified',
         'timeenrolled', 'timestarted', 'timecompleted', 'reaggregate');
 
-    /* @var int $userid User ID */
+    /**
+     * User ID
+     * @access  public
+     * @var     int
+     */
     public $userid;
 
-    /* @var int $course Course ID */
+    /**
+     * Course ID
+     * @access  public
+     * @var     int
+     */
     public $course;
 
-    /* @var int $deleted set to 1 if this record has been deleted */
+    /**
+     * Set to 1 if this record has been deleted
+     * @access  public
+     * @var     int
+     */
     public $deleted;
 
-    /* @var int Timestamp the interested parties were notified of this user's completion. */
+    /**
+     * Timestamp the interested parties were notified
+     * of this user's completion
+     * @access  public
+     * @var     int
+     */
     public $timenotified;
 
-    /* @var int Time of course enrolment {@link completion_completion::mark_enrolled()} */
+    /**
+     * Time of course enrolment
+     * @see     completion_completion::mark_enrolled()
+     * @access  public
+     * @var     int
+     */
     public $timeenrolled;
 
     /**
-     * Time the user started their course completion {@link completion_completion::mark_inprogress()}
-     * @var int
+     * Time the user started their course completion
+     * @see     completion_completion::mark_inprogress()
+     * @access  public
+     * @var     int
      */
     public $timestarted;
 
-    /* @var int Timestamp of course completion {@link completion_completion::mark_complete()} */
+    /**
+     * Timestamp of course completion
+     * @see     completion_completion::mark_complete()
+     * @access  public
+     * @var     int
+     */
     public $timecompleted;
 
-    /* @var int Flag to trigger cron aggregation (timestamp) */
+    /**
+     * Flag to trigger cron aggregation (timestamp)
+     * @access  public
+     * @var     int
+     */
     public $reaggregate;
 
 
     /**
      * Finds and returns a data_object instance based on params.
+     * @static abstract
      *
-     * @param array $params associative arrays varname = >value
-     * @return data_object instance of data_object or false if none found.
+     * @param array $params associative arrays varname=>value
+     * @return object data_object instance or false if none found.
      */
     public static function fetch($params) {
         $params['deleted'] = null;
@@ -86,8 +120,8 @@ class completion_completion extends data_object {
 
     /**
      * Return status of this completion
-     *
-     * @return bool
+     * @access  public
+     * @return  boolean
      */
     public function is_complete() {
         return (bool) $this->timecompleted;
@@ -98,7 +132,9 @@ class completion_completion extends data_object {
      *
      * If the user is already marked as started, no change will occur
      *
-     * @param integer $timeenrolled Time enrolled (optional)
+     * @access  public
+     * @param   integer $timeenrolled Time enrolled (optional)
+     * @return  void
      */
     public function mark_enrolled($timeenrolled = null) {
 
@@ -111,15 +147,18 @@ class completion_completion extends data_object {
             $this->timeenrolled = $timeenrolled;
         }
 
-        return $this->_save();
+        $this->_save();
     }
 
     /**
      * Mark this user as inprogress in this course
      *
-     * If the user is already marked as inprogress, the time will not be changed
+     * If the user is already marked as inprogress,
+     * the time will not be changed
      *
-     * @param integer $timestarted Time started (optional)
+     * @access  public
+     * @param   integer $timestarted Time started (optional)
+     * @return  void
      */
     public function mark_inprogress($timestarted = null) {
 
@@ -137,7 +176,7 @@ class completion_completion extends data_object {
             $this->timestarted = $timestarted;
         }
 
-        return $this->_save();
+        $this->_save();
     }
 
     /**
@@ -146,8 +185,9 @@ class completion_completion extends data_object {
      * This generally happens when the required completion criteria
      * in the course are complete.
      *
-     * @param integer $timecomplete Time completed (optional)
-     * @return void
+     * @access  public
+     * @param   integer $timecomplete Time completed (optional)
+     * @return  void
      */
     public function mark_complete($timecomplete = null) {
 
@@ -165,36 +205,39 @@ class completion_completion extends data_object {
         $this->timecompleted = $timecomplete;
 
         // Save record
-        return $this->_save();
+        $this->_save();
     }
 
     /**
      * Save course completion status
      *
      * This method creates a course_completions record if none exists
-     * @access  private
-     * @return  bool
+     * @access  public
+     * @return  void
      */
     private function _save() {
+
+        global $DB;
+
         if ($this->timeenrolled === null) {
             $this->timeenrolled = 0;
         }
 
         // Save record
         if ($this->id) {
-            return $this->update();
+            $this->update();
         } else {
             // Make sure reaggregate field is not null
             if (!$this->reaggregate) {
                 $this->reaggregate = 0;
             }
 
-            // Make sure timestarted is not null
-            if (!$this->timestarted) {
-                $this->timestarted = 0;
-            }
-
-            return $this->insert();
+			// Make sure timestarted is not null
+			if (!$this->timestarted) {
+				$this->timestarted = 0;
+			}
+			
+            $this->insert();
         }
     }
 }

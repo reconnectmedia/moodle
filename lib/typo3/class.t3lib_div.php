@@ -27,7 +27,7 @@
 /**
  * Contains the reknown class "t3lib_div" with general purpose functions
  *
- * $Id$
+ * $Id: class.t3lib_div.php,v 1.10 2011/10/27 17:26:27 moodlerobot Exp $
  * Revised for TYPO3 3.6 July/2003 by Kasper Skårhøj
  * XHTML compliant
  * Usage counts are based on search 22/2 2003 through whole source including tslib/

@@ -479,12 +479,11 @@ function wiki_search_form($cm, $search = '') {
     $output = '<div class="wikisearch">';
     $output .= '<form method="post" action="' . $CFG->wwwroot . '/mod/wiki/search.php" style="display:inline">';
     $output .= '<fieldset class="invisiblefieldset">';
-    $output .= '<label class="accesshide" for="searchwiki">' . get_string("searchwikis", "wiki") . '</label>';
-    $output .= '<input id="searchwiki" name="searchstring" type="text" size="18" value="' . s($search, true) . '" alt="search" />';
+    $output .= '<input name="searchstring" type="text" size="18" value="' . s($search, true) . '" alt="search" />';
     $output .= '<input name="courseid" type="hidden" value="' . $cm->course . '" />';
     $output .= '<input name="cmid" type="hidden" value="' . $cm->id . '" />';
     $output .= '<input name="searchwikicontent" type="hidden" value="1" />';
-    $output .= '<input value="' . get_string('searchwikis', 'wiki') . '" type="submit" />';
+    $output .= ' <input value="' . get_string('searchwikis', 'wiki') . '" type="submit" />';
     $output .= '</fieldset>';
     $output .= '</form>';
     $output .= '</div>';
@@ -536,7 +535,7 @@ function wiki_extend_navigation(navigation_node $navref, $course, $module, $cm) 
             $node = $navref->add(get_string('view', 'wiki'), $link, navigation_node::TYPE_SETTING);
         }
 
-        if (wiki_user_can_edit($subwiki)) {
+        if (has_capability('mod/wiki:editpage', $context)) {
             $link = new moodle_url('/mod/wiki/edit.php', array('pageid' => $pageid));
             $node = $navref->add(get_string('edit', 'wiki'), $link, navigation_node::TYPE_SETTING);
         }

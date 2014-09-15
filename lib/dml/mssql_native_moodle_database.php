@@ -335,7 +335,7 @@ class mssql_native_moodle_database extends moodle_database {
         }
         $this->tables = array();
         $sql = "SELECT table_name
-                  FROM INFORMATION_SCHEMA.TABLES
+                  FROM information_schema.tables
                  WHERE table_name LIKE '$this->prefix%'
                    AND table_type = 'BASE TABLE'";
         $this->query_start($sql, null, SQL_QUERY_AUX);
@@ -427,7 +427,7 @@ class mssql_native_moodle_database extends moodle_database {
                            columnproperty(object_id(quotename(table_schema) + '.' +
                                quotename(table_name)), column_name, 'IsIdentity') AS auto_increment,
                            column_default AS default_value
-                      FROM INFORMATION_SCHEMA.COLUMNS
+                      FROM information_schema.columns
                      WHERE table_name = '{" . $table . "}'
                   ORDER BY ordinal_position";
         } else { // temp table, get metadata from tempdb schema
@@ -440,7 +440,7 @@ class mssql_native_moodle_database extends moodle_database {
                            columnproperty(object_id(quotename(table_schema) + '.' +
                                quotename(table_name)), column_name, 'IsIdentity') AS auto_increment,
                            column_default AS default_value
-                      FROM tempdb.INFORMATION_SCHEMA.COLUMNS
+                      FROM tempdb.information_schema.columns
                       JOIN tempdb..sysobjects ON name = table_name
                      WHERE id = object_id('tempdb..{" . $table . "}')
                   ORDER BY ordinal_position";
@@ -810,7 +810,7 @@ class mssql_native_moodle_database extends moodle_database {
         } else {
             unset($params['id']);
             if ($returnid) {
-                $returning = "OUTPUT inserted.id";
+                $returning = "; SELECT SCOPE_IDENTITY()";
             }
         }
 
@@ -822,29 +822,18 @@ class mssql_native_moodle_database extends moodle_database {
         $qms    = array_fill(0, count($params), '?');
         $qms    = implode(',', $qms);
 
-        $sql = "INSERT INTO {" . $table . "} ($fields) $returning VALUES ($qms)";
+        $sql = "INSERT INTO {" . $table . "} ($fields) VALUES($qms) $returning";
 
         list($sql, $params, $type) = $this->fix_sql_params($sql, $params);
         $rawsql = $this->emulate_bound_params($sql, $params);
 
         $this->query_start($sql, $params, SQL_QUERY_INSERT);
         $result = mssql_query($rawsql, $this->mssql);
-        // Expected results are:
-        //     - true: insert ok and there isn't returned information.
-        //     - false: insert failed and there isn't returned information.
-        //     - resource: insert executed, need to look for returned (output)
-        //           values to know if the insert was ok or no. Posible values
-        //           are false = failed, integer = insert ok, id returned.
-        $end = false;
-        if (is_bool($result)) {
-            $end = $result;
-        } else if (is_resource($result)) {
-            $end = mssql_result($result, 0, 0); // Fetch 1st column from 1st row.
-        }
-        $this->query_end($end); // End the query with the calculated $end.
+        $this->query_end($result);
 
         if ($returning !== "") {
-            $params['id'] = $end;
+            $row = mssql_fetch_assoc($result);
+            $params['id'] = reset($row);
         }
         $this->free_result($result);
 

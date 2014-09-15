@@ -1,0 +1,5 @@
+[26-Sep-2012 01:50:47 UTC] Default exception handler: "fistname" is not a valid field name Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 208 of /admin/tool/uploaduser/locallib.php: call to print_error()
+* line 126 of /admin/tool/uploaduser/index.php: call to uu_validate_user_upload_columns()
+

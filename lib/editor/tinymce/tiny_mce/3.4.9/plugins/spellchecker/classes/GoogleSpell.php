@@ -1,6 +1,6 @@
 <?php
 /**
- * $Id: editor_plugin_src.js 201 2007-02-12 15:56:56Z spocke $
+ * $Id$
  *
  * @package MCManager.includes
  * @author Moxiecode
@@ -39,7 +39,7 @@ class GoogleSpell extends SpellChecker {
 		$matches = $this->_getMatches($lang, $word);
 
 		if (count($matches) > 0)
-			$sug = explode("\t", $this->_unhtmlentities($matches[0][4]));
+			$sug = explode("\t", utf8_encode($this->_unhtmlentities($matches[0][4])));
 
 		// Remove empty
 		foreach ($sug as $item) {
@@ -51,8 +51,6 @@ class GoogleSpell extends SpellChecker {
 	}
 
 	function &_getMatches($lang, $str) {
-		$lang = preg_replace('/[^a-z\-]/i', '', $lang); // Sanitize, remove everything but a-z or -
-		$str = preg_replace('/[\x00-\x1F\x7F]/', '', $str); // Sanitize, remove all control characters
 		$server = "www.google.com";
 		$port = 443;
 		$path = "/tbproxy/spell?lang=" . $lang . "&hl=en";

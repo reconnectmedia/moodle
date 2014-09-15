@@ -1,0 +1,4 @@
+[06-Nov-2012 12:33:38 UTC] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 52 of /mod/forum/view.php: call to print_error()
+

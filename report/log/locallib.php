@@ -245,10 +245,7 @@ function report_log_print_mnet_selector_form($hostid, $course, $selecteduser=0, 
     $timemidnight = $today = usergetmidnight($timenow);
 
     // Put today up the top of the list
-    $dates = array(
-        "0" => get_string('alldays'),
-        "$timemidnight" => get_string("today").", ".userdate($timenow, $strftimedate)
-    );
+    $dates = array("$timemidnight" => get_string("today").", ".userdate($timenow, $strftimedate) );
 
     if (!$course->startdate or ($course->startdate > $timenow)) {
         $course->startdate = $course->timecreated;
@@ -262,7 +259,7 @@ function report_log_print_mnet_selector_form($hostid, $course, $selecteduser=0, 
         $numdates++;
     }
 
-    if ($selecteddate === "today") {
+    if ($selecteddate == "today") {
         $selecteddate = $today;
     }
 
@@ -273,12 +270,10 @@ function report_log_print_mnet_selector_form($hostid, $course, $selecteduser=0, 
     echo "<input type=\"hidden\" name=\"showcourses\" value=\"$showcourses\" />\n";
     if (has_capability('report/log:view', $sitecontext) && $showcourses) {
         $cid = empty($course->id)? '1' : $course->id;
-        echo html_writer::label(get_string('selectacoursesite'), 'menuhost_course', false, array('class' => 'accesshide'));
         echo html_writer::select($dropdown, "host_course", $hostid.'/'.$cid);
     } else {
         $courses = array();
         $courses[$course->id] = $course->fullname . ((empty($course->category)) ? ' ('.get_string('site').') ' : '');
-        echo html_writer::label(get_string('selectacourse'), 'menuid', false, array('class' => 'accesshide'));
         echo html_writer::select($courses,"id",$course->id, false);
         if (has_capability('report/log:view', $sitecontext)) {
             $a = new stdClass();
@@ -297,12 +292,10 @@ function report_log_print_mnet_selector_form($hostid, $course, $selecteduser=0, 
         else {
             $groups = array();
         }
-        echo html_writer::label(get_string('selectagroup'), 'menugroup', false, array('class' => 'accesshide'));
         echo html_writer::select($groups, "group", $selectedgroup, get_string("allgroups"));
     }
 
     if ($showusers) {
-        echo html_writer::label(get_string('participantslist'), 'menuuser', false, array('class' => 'accesshide'));
         echo html_writer::select($users, "user", $selecteduser, get_string("allparticipants"));
     }
     else {
@@ -314,25 +307,20 @@ function report_log_print_mnet_selector_form($hostid, $course, $selecteduser=0, 
         else {
             $users[0] = get_string('allparticipants');
         }
-        echo html_writer::label(get_string('participantslist'), 'menuuser', false, array('class' => 'accesshide'));
         echo html_writer::select($users, "user", $selecteduser, false);
         $a->url = "$CFG->wwwroot/report/log/index.php?chooselog=0&group=$selectedgroup&user=$selecteduser"
             ."&id=$course->id&date=$selecteddate&modid=$selectedactivity&showusers=1&showcourses=$showcourses";
         print_string('logtoomanyusers','moodle',$a);
     }
 
-    echo html_writer::label(get_string('date'), 'menudate', false, array('class' => 'accesshide'));
-    echo html_writer::select($dates, "date", $selecteddate, false);
-    echo html_writer::label(get_string('showreports'), 'menumodid', false, array('class' => 'accesshide'));
+    echo html_writer::select($dates, "date", $selecteddate, get_string("alldays"));
     echo html_writer::select($activities, "modid", $selectedactivity, get_string("allactivities"));
-    echo html_writer::label(get_string('actions'), 'menumodaction', false, array('class' => 'accesshide'));
     echo html_writer::select($actions, 'modaction', $modaction, get_string("allactions"));
 
     $logformats = array('showashtml' => get_string('displayonpage'),
                         'downloadascsv' => get_string('downloadtext'),
                         'downloadasods' => get_string('downloadods'),
                         'downloadasexcel' => get_string('downloadexcel'));
-    echo html_writer::label(get_string('logsformat', 'report_log'), 'menulogformat', false, array('class' => 'accesshide'));
     echo html_writer::select($logformats, 'logformat', $logformat, false);
     echo '<input type="submit" value="'.get_string('gettheselogs').'" />';
     echo '</div>';
@@ -499,13 +487,11 @@ function report_log_print_selector_form($course, $selecteduser=0, $selecteddate=
     echo "<input type=\"hidden\" name=\"showusers\" value=\"$showusers\" />\n";
     echo "<input type=\"hidden\" name=\"showcourses\" value=\"$showcourses\" />\n";
     if (has_capability('report/log:view', $sitecontext) && $showcourses) {
-        echo html_writer::label(get_string('selectacourse'), 'menuid', false, array('class' => 'accesshide'));
         echo html_writer::select($courses, "id", $course->id, false);
     } else {
         //        echo '<input type="hidden" name="id" value="'.$course->id.'" />';
         $courses = array();
         $courses[$course->id] = $course->fullname . (($course->id == SITEID) ? ' ('.get_string('site').') ' : '');
-        echo html_writer::label(get_string('selectacourse'), 'menuid', false, array('class' => 'accesshide'));
         echo html_writer::select($courses,"id",$course->id, false);
         if (has_capability('report/log:view', $sitecontext)) {
             $a = new stdClass();
@@ -524,12 +510,10 @@ function report_log_print_selector_form($course, $selecteduser=0, $selecteddate=
         else {
             $groups = array();
         }
-        echo html_writer::label(get_string('selectagroup'), 'menugroup', false, array('class' => 'accesshide'));
         echo html_writer::select($groups, "group", $selectedgroup, get_string("allgroups"));
     }
 
     if ($showusers) {
-        echo html_writer::label(get_string('selctauser'), 'menuuser', false, array('class' => 'accesshide'));
         echo html_writer::select($users, "user", $selecteduser, get_string("allparticipants"));
     }
     else {
@@ -541,19 +525,15 @@ function report_log_print_selector_form($course, $selecteduser=0, $selecteddate=
         else {
             $users[0] = get_string('allparticipants');
         }
-        echo html_writer::label(get_string('selctauser'), 'menuuser', false, array('class' => 'accesshide'));
         echo html_writer::select($users, "user", $selecteduser, false);
         $a = new stdClass();
         $a->url = "$CFG->wwwroot/report/log/index.php?chooselog=0&group=$selectedgroup&user=$selecteduser"
             ."&id=$course->id&date=$selecteddate&modid=$selectedactivity&showusers=1&showcourses=$showcourses";
         print_string('logtoomanyusers','moodle',$a);
     }
-    echo html_writer::label(get_string('date'), 'menudate', false, array('class' => 'accesshide'));
     echo html_writer::select($dates, "date", $selecteddate, get_string("alldays"));
 
-    echo html_writer::label(get_string('activities'), 'menumodid', false, array('class' => 'accesshide'));
     echo html_writer::select($activities, "modid", $selectedactivity, get_string("allactivities"));
-    echo html_writer::label(get_string('actions'), 'menumodaction', false, array('class' => 'accesshide'));
     echo html_writer::select($actions, 'modaction', $modaction, get_string("allactions"));
 
     $logformats = array('showashtml' => get_string('displayonpage'),
@@ -561,7 +541,6 @@ function report_log_print_selector_form($course, $selecteduser=0, $selecteddate=
                         'downloadasods' => get_string('downloadods'),
                         'downloadasexcel' => get_string('downloadexcel'));
 
-    echo html_writer::label(get_string('logsformat', 'report_log'), 'menulogformat', false, array('class' => 'accesshide'));
     echo html_writer::select($logformats, 'logformat', $logformat, false);
     echo '<input type="submit" value="'.get_string('gettheselogs').'" />';
     echo '</div>';

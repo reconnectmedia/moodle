@@ -38,39 +38,40 @@ class repository_webdav extends repository {
         if ($this->options['webdav_auth'] == 'none') {
             $this->options['webdav_auth'] = false;
         }
+        $this->dav = new webdav_client($this->options['webdav_server'], $this->options['webdav_user'], $this->options['webdav_password'], $this->options['webdav_auth']);
         if (empty($this->options['webdav_type'])) {
             $this->webdav_type = '';
         } else {
             $this->webdav_type = 'ssl://';
         }
         if (empty($this->options['webdav_port'])) {
-            $port = '';
             if (empty($this->webdav_type)) {
-                $this->webdav_port = 80;
+                $this->dav->port = 80;
             } else {
-                $this->webdav_port = 443;
-                $port = ':443';
+                $this->dav->port = 443;
             }
+            $port = '';
         } else {
-            $this->webdav_port = $this->options['webdav_port'];
-            $port = ':' . $this->webdav_port;
+            $this->dav->port = $this->options['webdav_port'];
+            $port = ':'.$this->options['webdav_port'];
         }
         $this->webdav_host = $this->webdav_type.$this->options['webdav_server'].$port;
-        $this->dav = new webdav_client($this->options['webdav_server'], $this->options['webdav_user'],
-                $this->options['webdav_password'], $this->options['webdav_auth'], $this->webdav_type);
-        $this->dav->port = $this->webdav_port;
         $this->dav->debug = false;
     }
     public function check_login() {
         return true;
     }
     public function get_file($url, $title) {
+        global $CFG;
         $url = urldecode($url);
         $path = $this->prepare_file($title);
+        $buffer = '';
         if (!$this->dav->open()) {
             return false;
         }
-        $this->dav->get_file($url, $path);
+        $this->dav->get($url, $buffer);
+        $fp = fopen($path, 'wb');
+        fwrite($fp, $buffer);
         return array('path'=>$path);
     }
     public function global_search() {
@@ -88,14 +89,12 @@ class repository_webdav extends repository {
         if (!$this->dav->open()) {
             return $ret;
         }
-
-        $webdavroot = '/' . trim($this->options['webdav_path'], './@#$ ');
-        if ($webdavroot != '/') {
-            $webdavroot .= '/';
-        }
-
         if (empty($path)) {
-            $path = $webdavroot;
+            if ($this->options['webdav_path'] == '/') {
+                $path = '/';
+            } else {
+                $path = '/' . trim($this->options['webdav_path'], './@#$ ') . '/';
+            }
             $dir = $this->dav->ls($path);
         } else {
             $path = urldecode($path);
@@ -104,28 +103,12 @@ class repository_webdav extends repository {
             } else {
                 $partern = '#https://'.$this->webdav_host.'/#';
             }
-            $path = '/'.preg_replace($partern, '', ltrim($path, '/'));
+            $path = '/'.preg_replace($partern, '', $path);
             $dir = $this->dav->ls($path);
         }
-
-        // Building breadcrumb
-        $pathrel = preg_replace('|^' . preg_quote($webdavroot) . '|', '', $path);
-        if (!empty($pathrel)) {
-            $chunks = preg_split('|/|', trim($pathrel, '/'));
-            for ($i = 0; $i < count($chunks); $i++) {
-                $ret['path'][] = array(
-                    'name' => urldecode($chunks[$i]),
-                    'path' => $webdavroot . join('/', array_slice($chunks, 0, $i+1)). '/'
-                );
-            }
-        }
-
         if (!is_array($dir)) {
             return $ret;
         }
-
-        $files = array();
-        $folders = array();
         foreach ($dir as $v) {
             if (!empty($v['creationdate'])) {
                 $ts = $this->dav->iso8601totime($v['creationdate']);
@@ -133,13 +116,9 @@ class repository_webdav extends repository {
             } else {
                 $filedate = '';
             }
-
-            // Remove the server URL from the path (if present), otherwise links will not work - MDL-37014
-            $server = preg_quote($this->options['webdav_server']);
-            $v['href'] = preg_replace("#https?://{$server}#", '', $v['href']);
             if (!empty($v['resourcetype']) && $v['resourcetype'] == 'collection') {
                 // a folder
-                if (ltrim($path, '/') != urldecode(ltrim($v['href'], '/'))) {
+                if (ltrim($path, '/') != ltrim($v['href'], '/')) {
                     $matches = array();
                     preg_match('#(\w+)$#i', $v['href'], $matches);
                     if (!empty($matches[1])) {
@@ -147,7 +126,7 @@ class repository_webdav extends repository {
                     } else {
                         $title = urldecode($v['href']);
                     }
-                    $folders[strtoupper($title)] = array(
+                    $ret['list'][] = array(
                         'title'=>urldecode(basename($title)),
                         'thumbnail'=>$OUTPUT->pix_url('f/folder-32')->out(false),
                         'children'=>array(),
@@ -156,17 +135,13 @@ class repository_webdav extends repository {
                         'path'=>$v['href']
                     );
                 }
-            } else {
-                // A file.
+            }else{
+                // a file
                 $path = rtrim($path,'/');
-                if (empty($path)) {
-                    $title = urldecode($v['href']);
-                } else {
-                    $title = urldecode(substr($v['href'], strpos($v['href'], $path) + strlen($path)));
-                }
+                $title = urldecode(substr($v['href'], strpos($v['href'], $path)+strlen($path)));
                 $title = basename($title);
                 $size = !empty($v['getcontentlength'])? $v['getcontentlength']:'';
-                $files[strtoupper($title)] = array(
+                $ret['list'][] = array(
                     'title'=>$title,
                     'thumbnail' => $OUTPUT->pix_url(file_extension_icon($title, 32))->out(false),
                     'size'=>$size,
@@ -175,9 +150,6 @@ class repository_webdav extends repository {
                 );
             }
         }
-        ksort($files);
-        ksort($folders);
-        $ret['list'] = array_merge($folders, $files);
         return $ret;
     }
     public static function get_instance_option_names() {
@@ -198,14 +170,14 @@ class repository_webdav extends repository {
         $choices = array();
         $choices['none'] = get_string('none');
         $choices['basic'] = get_string('webdavbasicauth', 'repository_webdav');
-        $choices['digest'] = get_string('webdavdigestauth', 'repository_webdav');
+        //$choices['digest'] = get_string('webdavdigestauth', 'repository_webdav');
         $mform->addElement('select', 'webdav_auth', get_string('authentication', 'admin'), $choices);
         $mform->addRule('webdav_auth', get_string('required'), 'required', null, 'client');
 
+
         $mform->addElement('text', 'webdav_port', get_string('webdav_port', 'repository_webdav'), array('size' => '40'));
         $mform->addElement('text', 'webdav_user', get_string('webdav_user', 'repository_webdav'), array('size' => '40'));
-        $mform->addElement('password', 'webdav_password', get_string('webdav_password', 'repository_webdav'),
-            array('size' => '40'));
+        $mform->addElement('text', 'webdav_password', get_string('webdav_password', 'repository_webdav'), array('size' => '40'));
     }
     public function supported_returntypes() {
         return (FILE_INTERNAL | FILE_EXTERNAL);

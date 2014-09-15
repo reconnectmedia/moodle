@@ -398,7 +398,7 @@ class core_renderer extends renderer_base {
                 $link= '<a title="' . $title . '" href="' . $url . '">' . $txt . '</a>';
                 $output .= '<div class="profilingfooter">' . $link . '</div>';
             }
-            $output .= '<div class="purgecaches"><a href="'.$CFG->wwwroot.'/'.$CFG->admin.'/purgecaches.php?confirm=1&amp;sesskey='.sesskey().'">'.get_string('purgecaches', 'admin').'</a></div>';
+            $output .= '<div class="purgecaches"><a href="'.$CFG->wwwroot.'/admin/purgecaches.php?confirm=1&amp;sesskey='.sesskey().'">'.get_string('purgecaches', 'admin').'</a></div>';
         }
         if (!empty($CFG->debugvalidators)) {
             $output .= '<div class="validators"><ul>
@@ -433,6 +433,99 @@ class core_renderer extends renderer_base {
         // for now. This will be replaced with the real content in {@link footer()}.
         return $this->unique_end_html_token;
     }
+
+
+    /**
+     * Return the user id of the person longed in.
+     * @return user id.
+     */
+    public function userid_info() {
+        global $USER, $CFG, $DB, $SESSION;
+
+        if (during_initial_install()) {
+            return '';
+        }
+
+        $loginapge = ((string)$this->page->url === get_login_url());
+        $course = $this->page->course;
+
+        if (session_is_loggedinas()) {
+            $realuser = session_get_realuser();
+            $fullname = fullname($realuser, true);
+            $realuserinfo = " [<a href=\"$CFG->wwwroot/course/loginas.php?id=$course->id&amp;sesskey=".sesskey()."\">$fullname</a>] ";
+        } else {
+            $realuserinfo = '';
+        }
+
+        $loginurl = get_login_url();
+
+        if (empty($course->id)) {
+            // $course->id is not defined during installation
+            return '';
+        } else if (isloggedin()) {
+            $context = get_context_instance(CONTEXT_COURSE, $course->id);
+
+            $fullname = fullname($USER, true);
+            // Since Moodle 2.0 this link always goes to the public profile page (not the course profile page)
+            $username = "<a href=\"$CFG->wwwroot/user/profile.php?id=$USER->id\">$fullname</a>";
+            $userid = $USER->id;
+            
+            if (is_mnet_remote_user($USER) and $idprovider = $DB->get_record('mnet_host', array('id'=>$USER->mnethostid))) {
+                $username .= " from <a href=\"{$idprovider->wwwroot}\">{$idprovider->name}</a>";
+            }
+            if (isguestuser()) {
+                $loggedinas = $realuserinfo.get_string('loggedinasguest');
+                if (!$loginapge) {
+                    $loggedinas .= " (<a href=\"$loginurl\">".get_string('login').'</a>)';
+                }
+            } else if (is_role_switched($course->id)) { // Has switched roles
+                $rolename = '';
+                if ($role = $DB->get_record('role', array('id'=>$USER->access['rsw'][$context->path]))) {
+                    $rolename = ': '.format_string($role->name);
+                }
+                $loggedinas = get_string('loggedinas', 'moodle', $username).$rolename.
+                          " (<a href=\"$CFG->wwwroot/course/view.php?id=$course->id&amp;switchrole=0&amp;sesskey=".sesskey()."\">".get_string('switchrolereturn').'</a>)';
+            } else {
+                $loggedinas = $realuserinfo.get_string('loggedinas', 'moodle', $username).' '.
+                          " (<a href=\"$CFG->wwwroot/login/logout.php?sesskey=".sesskey()."\">".get_string('logout').'</a>)';
+            }
+        } else {
+            $loggedinas = get_string('loggedinnot', 'moodle');
+            if (!$loginapge) {
+                $loggedinas .= " (<a href=\"$loginurl\">".get_string('login').'</a>)';
+            }
+        }
+
+        $loggedinas = '<div class="logininfo">'.$loggedinas.'</div>';
+
+        if (isset($SESSION->justloggedin)) {
+            unset($SESSION->justloggedin);
+            if (!empty($CFG->displayloginfailures)) {
+                if (!isguestuser()) {
+                    if ($count = count_login_failures($CFG->displayloginfailures, $USER->username, $USER->lastlogin)) {
+                        $loggedinas .= '&nbsp;<div class="loginfailures">';
+                        if (empty($count->accounts)) {
+                            $loggedinas .= get_string('failedloginattempts', '', $count);
+                        } else {
+                            $loggedinas .= get_string('failedloginattemptsall', '', $count);
+                        }
+                        if (file_exists("$CFG->dirroot/report/log/index.php") and has_capability('report/log:view', get_context_instance(CONTEXT_SYSTEM))) {
+                            $loggedinas .= ' (<a href="'.$CFG->wwwroot.'/report/log/index.php'.
+                                                 '?chooselog=1&amp;id=1&amp;modid=site_errors">'.get_string('logs').'</a>)';
+                        }
+                        $loggedinas .= '</div>';
+                    }
+                }
+            }
+        }
+
+        return $userid;
+    }
+
+
+
+
+
 
     /**
      * Return the standard string that says whether you are logged in (and switched
@@ -1234,7 +1327,7 @@ class core_renderer extends renderer_base {
         }
 
         if ($select->label) {
-            $output .= html_writer::label($select->label, $select->attributes['id'], false, $select->labelattributes);
+            $output .= html_writer::label($select->label, $select->attributes['id']);
         }
 
         if ($select->helpicon instanceof help_icon) {
@@ -1242,6 +1335,7 @@ class core_renderer extends renderer_base {
         } else if ($select->helpicon instanceof old_help_icon) {
             $output .= $this->render($select->helpicon);
         }
+
         $output .= html_writer::select($select->options, $select->name, $select->selected, $select->nothing, $select->attributes);
 
         $go = html_writer::empty_tag('input', array('type'=>'submit', 'value'=>get_string('go')));
@@ -1309,7 +1403,7 @@ class core_renderer extends renderer_base {
         $output = '';
 
         if ($select->label) {
-            $output .= html_writer::label($select->label, $select->attributes['id'], false, $select->labelattributes);
+            $output .= html_writer::label($select->label, $select->attributes['id']);
         }
 
         if ($select->helpicon instanceof help_icon) {
@@ -1520,7 +1614,6 @@ class core_renderer extends renderer_base {
 
             $scalearray = array(RATING_UNSET_RATING => $strrate.'...') + $rating->settings->scale->scaleitems;
             $scaleattrs = array('class'=>'postratingmenu ratinginput','id'=>'menurating'.$rating->itemid);
-            $ratinghtml .= html_writer::label($rating->rating, 'menurating'.$rating->itemid, false, array('class' => 'accesshide'));
             $ratinghtml .= html_writer::select($scalearray, 'rating', $rating->rating, false, $scaleattrs);
 
             //output submit button
@@ -1530,13 +1623,7 @@ class core_renderer extends renderer_base {
             $ratinghtml .= html_writer::empty_tag('input', $attributes);
 
             if (!$rating->settings->scale->isnumeric) {
-                // If a global scale, try to find current course ID from the context
-                if (empty($rating->settings->scale->courseid) and $coursecontext = $rating->context->get_course_context(false)) {
-                    $courseid = $coursecontext->instanceid;
-                } else {
-                    $courseid = $rating->settings->scale->courseid;
-                }
-                $ratinghtml .= $this->help_icon_scale($courseid, $rating->settings->scale);
+                $ratinghtml .= $this->help_icon_scale($rating->settings->scale->courseid, $rating->settings->scale);
             }
             $ratinghtml .= html_writer::end_tag('span');
             $ratinghtml .= html_writer::end_tag('div');
@@ -1623,13 +1710,12 @@ class core_renderer extends renderer_base {
         // note: this title is displayed only if JS is disabled, otherwise the link will have the new ajax tooltip
         $title = get_string('helpprefix2', '', trim($helpicon->title, ". \t"));
 
-        $attributes = array('href'=>$url, 'title'=>$title, 'aria-haspopup' => 'true');
+        $attributes = array('href'=>$url, 'title'=>$title);
         $id = html_writer::random_id('helpicon');
         $attributes['id'] = $id;
         $output = html_writer::tag('a', $output, $attributes);
 
         $this->page->requires->js_init_call('M.util.help_icon.add', array(array('id'=>$id, 'url'=>$url->out(false))));
-        $this->page->requires->string_for_js('close', 'form');
 
         // and finally span
         return html_writer::tag('span', $output, array('class' => 'helplink'));
@@ -1688,13 +1774,12 @@ class core_renderer extends renderer_base {
         // note: this title is displayed only if JS is disabled, otherwise the link will have the new ajax tooltip
         $title = get_string('helpprefix2', '', trim($title, ". \t"));
 
-        $attributes = array('href'=>$url, 'title'=>$title, 'aria-haspopup' => 'true');
+        $attributes = array('href'=>$url, 'title'=>$title);
         $id = html_writer::random_id('helpicon');
         $attributes['id'] = $id;
         $output = html_writer::tag('a', $output, $attributes);
 
         $this->page->requires->js_init_call('M.util.help_icon.add', array(array('id'=>$id, 'url'=>$url->out(false))));
-        $this->page->requires->string_for_js('close', 'form');
 
         // and finally span
         return html_writer::tag('span', $output, array('class' => 'helplink'));

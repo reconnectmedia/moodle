@@ -109,9 +109,7 @@ class repository_googledocs extends repository {
     }
 
     public function get_file($url, $file) {
-        if (empty($url)) {
-           throw new repository_exception('cannotdownload', 'repository');
-        }
+        global $CFG;
         $path = $this->prepare_file($file);
 
         $fp = fopen($path, 'w');

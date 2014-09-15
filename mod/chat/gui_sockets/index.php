@@ -27,7 +27,9 @@ if (!$cm = get_coursemodule_from_instance('chat', $chat->id, $course->id)) {
 require_login($course, false, $cm);
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 
-require_capability('mod/chat:chat', $context);
+if (isguestuser()) {
+    print_error('noguests', 'chat');
+}
 
 /// Check to see if groups are being used here
  if ($groupmode = groups_get_activity_groupmode($cm)) {   // Groups are being used
@@ -62,7 +64,7 @@ $courseshortname = format_string($course->shortname, true, array('context' => ge
   </title>
  </head>
  <frameset cols="*,200" border="5" framespacing="no" frameborder="yes" marginwidth="2" marginheight="1">
-  <frameset rows="0,*,70" border="0" framespacing="no" frameborder="no" marginwidth="2" marginheight="1">
+  <frameset rows="0,*,50" border="0" framespacing="no" frameborder="no" marginwidth="2" marginheight="1">
    <frame src="../empty.php" name="empty" scrolling="auto" noresize marginwidth="2" marginheight="0">
    <frame src="<?php echo "http://$CFG->chat_serverhost:$CFG->chat_serverport?win=chat&amp;$params"; ?>" scrolling="auto" name="msg" noresize marginwidth="2" marginheight="0">
    <frame src="chatinput.php?<?php echo $params ?>" name="input" scrolling="no" marginwidth="2" marginheight="1">

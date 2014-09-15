@@ -209,44 +209,39 @@ function get_grade_options() {
 }
 
 /**
- * Check whether a given grade is one of a list of allowed options. If not,
- * depending on $matchgrades, either return the nearest match, or return false
- * to signal an error.
+ * match grade options
+ * if no match return error or match nearest
  * @param array $gradeoptionsfull list of valid options
  * @param int $grade grade to be tested
  * @param string $matchgrades 'error' or 'nearest'
- * @return mixed either 'fixed' value or false if error.
+ * @return mixed either 'fixed' value or false if erro
  */
-function match_grade_options($gradeoptionsfull, $grade, $matchgrades = 'error') {
-
+function match_grade_options($gradeoptionsfull, $grade, $matchgrades='error') {
     if ($matchgrades == 'error') {
-        // (Almost) exact match, or an error.
+        // if we just need an error...
         foreach ($gradeoptionsfull as $value => $option) {
-            // Slightly fuzzy test, never check floats for equality.
+            // slightly fuzzy test, never check floats for equality :-)
             if (abs($grade - $value) < 0.00001) {
-                return $value; // Be sure the return the proper value.
+                return $grade;
             }
         }
-        // Didn't find a match so that's an error.
+        // didn't find a match so that's an error
         return false;
-
     } else if ($matchgrades == 'nearest') {
-        // Work out nearest value
-        $best = false;
-        $bestmismatch = 2;
+        // work out nearest value
+        $hownear = array();
         foreach ($gradeoptionsfull as $value => $option) {
-            $newmismatch = abs($grade - $value);
-            if ($newmismatch < $bestmismatch) {
-                $best = $value;
-                $bestmismatch = $newmismatch;
+            if ($grade==$value) {
+                return $grade;
             }
+            $hownear[ $value ] = abs( $grade - $value );
         }
-        return $best;
-
+        // reverse sort list of deltas and grab the last (smallest)
+        asort( $hownear, SORT_NUMERIC );
+        reset( $hownear );
+        return key( $hownear );
     } else {
-        // Unknow option passed.
-        throw new coding_exception('Unknown $matchgrades ' . $matchgrades .
-                ' passed to match_grade_options');
+        return false;
     }
 }
 
@@ -785,22 +780,14 @@ function question_load_questions($questionids, $extrafields = '', $join = '') {
  */
 function _tidy_question($question, $loadtags = false) {
     global $CFG;
-
-    // Load question-type specific fields.
     if (!question_bank::is_qtype_installed($question->qtype)) {
         $question->questiontext = html_writer::tag('p', get_string('warningmissingtype',
                 'qtype_missingtype')) . $question->questiontext;
     }
     question_bank::get_qtype($question->qtype)->get_question_options($question);
-
-    // Convert numeric fields to float. (Prevents these being displayed as 1.0000000.)
-    $question->defaultmark += 0;
-    $question->penalty += 0;
-
     if (isset($question->_partiallyloaded)) {
         unset($question->_partiallyloaded);
     }
-
     if ($loadtags && !empty($CFG->usetags)) {
         require_once($CFG->dirroot . '/tag/lib.php');
         $question->tags = tag_get_tags_array('question', $question->id);
@@ -1005,7 +992,7 @@ function question_category_select_menu($contexts, $top = false, $currentcat = 0,
     foreach ($categoriesarray as $group => $opts) {
         $options[] = array($group => $opts);
     }
-    echo html_writer::label($selected, 'menucategory', false, array('class' => 'accesshide'));
+
     echo html_writer::select($options, 'category', $selected, $choose);
 }
 
@@ -1117,18 +1104,16 @@ function question_category_options($contexts, $top = false, $currentcat = 0,
 
     // sort cats out into different contexts
     $categoriesarray = array();
-    foreach ($pcontexts as $contextid) {
-        $context = context::instance_by_id($contextid);
-        $contextstring = $context->get_context_name(true, true);
+    foreach ($pcontexts as $pcontext) {
+        $contextstring = print_context_name(
+                get_context_instance_by_id($pcontext), true, true);
         foreach ($categories as $category) {
-            if ($category->contextid == $contextid) {
+            if ($category->contextid == $pcontext) {
                 $cid = $category->id;
                 if ($currentcat != $cid || $currentcat == 0) {
                     $countstring = !empty($category->questioncount) ?
                             " ($category->questioncount)" : '';
-                    $categoriesarray[$contextstring][$cid] =
-                            format_string($category->indentedname, true,
-                                array('context' => $context)) . $countstring;
+                    $categoriesarray[$contextstring][$cid] = $category->indentedname.$countstring;
                 }
             }
         }
@@ -1179,25 +1164,12 @@ function question_add_tops($categories, $pcontexts) {
 function question_categorylist($categoryid) {
     global $DB;
 
-    // final list of category IDs
-    $categorylist = array();
+    $subcategories = $DB->get_records('question_categories',
+            array('parent' => $categoryid), 'sortorder ASC', 'id, 1');
 
-    // a list of category IDs to check for any sub-categories
-    $subcategories = array($categoryid);
-
-    while ($subcategories) {
-        foreach ($subcategories as $subcategory) {
-            // if anything from the temporary list was added already, then we have a loop
-            if (isset($categorylist[$subcategory])) {
-                throw new coding_exception("Category id=$subcategory is already on the list - loop of categories detected.");
-            }
-            $categorylist[$subcategory] = $subcategory;
-        }
-
-        list ($in, $params) = $DB->get_in_or_equal($subcategories);
-
-        $subcategories = $DB->get_records_select_menu('question_categories',
-                "parent $in", $params, NULL, 'id,id AS id2');
+    $categorylist = array($categoryid);
+    foreach ($subcategories as $subcategory) {
+        $categorylist = array_merge($categorylist, question_categorylist($subcategory->id));
     }
 
     return $categorylist;
@@ -1797,10 +1769,10 @@ function question_pluginfile($course, $context, $component, $filearea, $args, $f
         send_file_not_found();
     }
 
-    if ($filearea === 'export') {
-        list($context, $course, $cm) = get_context_info_array($context->id);
-        require_login($course, false, $cm);
+    list($context, $course, $cm) = get_context_info_array($context->id);
+    require_login($course, false, $cm);
 
+    if ($filearea === 'export') {
         require_once($CFG->dirroot . '/question/editlib.php');
         $contexts = new question_edit_contexts($context);
         // check export capability

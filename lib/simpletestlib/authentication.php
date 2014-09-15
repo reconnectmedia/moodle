@@ -3,7 +3,7 @@
  *  Base include file for SimpleTest
  *  @package    SimpleTest
  *  @subpackage WebTester
- *  @version    $Id$
+ *  @version    $Id: authentication.php,v 1.4 2010/12/14 17:35:45 moodlerobot Exp $
  */
 /**
  *  include http class

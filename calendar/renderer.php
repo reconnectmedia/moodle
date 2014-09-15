@@ -460,7 +460,7 @@ class core_calendar_renderer extends plugin_renderer_base {
         // Paddding (the first week may have blank days in the beginning)
         for($i = $display->minwday; $i < $startwday; ++$i) {
             $cell = new html_table_cell('&nbsp;');
-            $cell->attributes = array('class'=>'nottoday dayblank');
+            $cell->attributes = array('class'=>'nottoday');
             $row->cells[] = $cell;
         }
 
@@ -519,10 +519,10 @@ class core_calendar_renderer extends plugin_renderer_base {
             }
 
             // Special visual fx for today
-            if ($display->thismonth && $calendar->day == $date['mday']) {
-                $cellclasses[] = 'day today';
+            if($display->thismonth && $calendar->day == $calendar->day) {
+                $cellclasses[] = 'today';
             } else {
-                $cellclasses[] = 'day nottoday';
+                $cellclasses[] = 'nottoday';
             }
             $cell->attributes = array('class'=>join(' ',$cellclasses));
 
@@ -553,7 +553,7 @@ class core_calendar_renderer extends plugin_renderer_base {
         // Paddding (the last week may have blank days at the end)
         for($i = $dayweek; $i <= $display->maxwday; ++$i) {
             $cell = new html_table_cell('&nbsp;');
-            $cell->attributes = array('class'=>'nottoday dayblank');
+            $cell->attributes = array('class'=>'nottoday');
             $row->cells[] = $cell;
         }
         $table->data[] = $row;
@@ -710,9 +710,7 @@ class core_calendar_renderer extends plugin_renderer_base {
         $select = new single_select(new moodle_url(CALENDAR_URL.'set.php', array('return' => base64_encode($returnurl->out(false)), 'var' => 'setcourse', 'sesskey'=>sesskey())), 'id', $courseoptions, $selected, null);
         $select->class = 'cal_courses_flt';
         if ($label !== null) {
-            $select->set_label($label);
-        } else {
-            $select->set_label(get_string('listofcourses'), array('class' => 'accesshide'));
+            $select->label = $label;
         }
         return $this->output->render($select);
     }

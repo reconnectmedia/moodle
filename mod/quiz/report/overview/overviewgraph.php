@@ -90,9 +90,7 @@ while ($bands > 20 || $bands <= 10) {
     }
 }
 
-// See MDL-34589. Using doubles as array keys causes problems in PHP 5.4,
-// hence the explicit cast to int.
-$bands = (int) ceil($bands);
+$bands = ceil($bands);
 $bandwidth = $quiz->grade / $bands;
 $bandlabels = array();
 for ($i = 1; $i <= $bands; $i++) {

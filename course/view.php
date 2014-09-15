@@ -17,7 +17,6 @@
     $move        = optional_param('move', 0, PARAM_INT);
     $marker      = optional_param('marker',-1 , PARAM_INT);
     $switchrole  = optional_param('switchrole',-1, PARAM_INT);
-    $return      = optional_param('return', 0, PARAM_LOCALURL);
 
     if (empty($id) && empty($name) && empty($idnumber)) {
         print_error('unspecifycourseid', 'error');
@@ -111,8 +110,6 @@
             // Redirect to site root if Editing is toggled on frontpage
             if ($course->id == SITEID) {
                 redirect($CFG->wwwroot .'/?redirect=0');
-            } else if (!empty($return)) {
-                redirect($CFG->wwwroot . $return);
             } else {
                 redirect($PAGE->url);
             }
@@ -125,23 +122,20 @@
             // Redirect to site root if Editing is toggled on frontpage
             if ($course->id == SITEID) {
                 redirect($CFG->wwwroot .'/?redirect=0');
-            } else if (!empty($return)) {
-                redirect($CFG->wwwroot . $return);
             } else {
                 redirect($PAGE->url);
             }
         }
 
-        if (has_capability('moodle/course:sectionvisibility', $context)) {
+        if (has_capability('moodle/course:update', $context)) {
             if ($hide && confirm_sesskey()) {
                 set_section_visible($course->id, $hide, '0');
             }
+
             if ($show && confirm_sesskey()) {
                 set_section_visible($course->id, $show, '1');
             }
-        }
 
-        if (has_capability('moodle/course:update', $context)) {
             if (!empty($section)) {
                 if (!empty($move) and confirm_sesskey()) {
                     if (move_section($course, $section, $move)) {

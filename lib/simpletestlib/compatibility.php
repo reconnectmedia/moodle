@@ -2,7 +2,7 @@
 /**
  *  base include file for SimpleTest
  *  @package    SimpleTest
- *  @version    $Id$
+ *  @version    $Id: compatibility.php,v 1.4 2010/12/14 17:35:45 moodlerobot Exp $
  */
 
 /**

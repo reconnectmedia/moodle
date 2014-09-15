@@ -71,7 +71,7 @@ if (!confirm_sesskey()) {
 }
 
 /// Get repository instance information
-$sql = 'SELECT i.name, i.typeid, i.contextid, r.type FROM {repository} r, {repository_instances} i WHERE i.id=? AND i.typeid=r.id';
+$sql = 'SELECT i.name, i.typeid, r.type FROM {repository} r, {repository_instances} i WHERE i.id=? AND i.typeid=r.id';
 
 if (!$repository = $DB->get_record_sql($sql, array($repo_id))) {
     $err->error = get_string('invalidrepositoryid', 'repository');
@@ -83,12 +83,11 @@ if (!$repository = $DB->get_record_sql($sql, array($repo_id))) {
 /// Check permissions
 repository::check_capability($contextid, $repository);
 
-$coursemaxbytes = 0;
-if (!empty($course)) {
-   $coursemaxbytes = $course->maxbytes;
+$moodle_maxbytes = get_max_upload_file_size();
+// to prevent maxbytes greater than moodle maxbytes setting
+if ($maxbytes == 0 || $maxbytes>=$moodle_maxbytes) {
+    $maxbytes = $moodle_maxbytes;
 }
-// Make sure maxbytes passed is within site filesize limits.
-$maxbytes = get_max_upload_file_size($CFG->maxbytes, $coursemaxbytes, $maxbytes);
 
 /// Wait as long as it takes for this script to finish
 set_time_limit(0);

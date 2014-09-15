@@ -70,8 +70,7 @@ if ($scaleid) {
             echo $OUTPUT->box_start();
             echo $OUTPUT->heading($scale->name);
             echo "<center>";
-            echo html_writer::label(get_string('scales'), 'scaleunused'. $scaleid, false, array('class' => 'accesshide'));
-            echo html_writer::select($scalemenu, 'unused', '', array('' => 'choosedots'), array('id' => 'scaleunused'.$scaleid));
+            echo html_writer::select($scalemenu, 'unused');
             echo "</center>";
             echo text_to_html($scale->description);
             echo $OUTPUT->box_end();
@@ -102,8 +101,7 @@ if ($scales = $DB->get_records("scale", array("courseid"=>$course->id), "name AS
         echo $OUTPUT->box_start();
         echo $OUTPUT->heading($scale->name);
         echo "<center>";
-        echo html_writer::label(get_string('scales'), 'courseunused' . $scale->id, false, array('class' => 'accesshide'));
-        echo html_writer::select($scalemenu, 'unused', '', array('' => 'choosedots'), array('id' => 'courseunused' . $scale->id));
+        echo html_writer::select($scalemenu, 'unused');
         echo "</center>";
         echo text_to_html($scale->description);
         echo $OUTPUT->box_end();
@@ -129,8 +127,7 @@ if ($scales = $DB->get_records("scale", array("courseid"=>0), "name ASC")) {
         echo $OUTPUT->box_start();
         echo $OUTPUT->heading($scale->name);
         echo "<center>";
-        echo html_writer::label(get_string('scales'), 'sitescale' . $scale->id, false, array('class' => 'accesshide'));
-        echo html_writer::select($scalemenu, 'unused', '', array('' => 'choosedots'), array('id' => 'sitescale' . $scale->id));
+        echo html_writer::select($scalemenu, 'unused');
         echo "</center>";
         echo text_to_html($scale->description);
         echo $OUTPUT->box_end();

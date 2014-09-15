@@ -1,0 +1,8 @@
+[21-Apr-2014 03:27:06 America/Denver] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 25 of /mod/assignment/upload.php: call to print_error()
+
+[07-May-2014 03:29:58 America/Denver] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 25 of /mod/assignment/upload.php: call to print_error()
+

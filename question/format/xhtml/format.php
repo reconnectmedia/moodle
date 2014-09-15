@@ -95,14 +95,12 @@ class qformat_xhtml extends qformat_default {
             break;
         case SHORTANSWER:
             $expout .= "<ul class=\"shortanswer\">\n";
-            $expout .= "  <li>" . html_writer::label(get_string('answer'), 'quest_'.$id, false, array('class' => 'accesshide'));
-            $expout .= "    <input id=\"quest_$id\" name=\"quest_$id\" type=\"text\" /></li>\n";
+            $expout .= "  <li><input name=\"quest_$id\" type=\"text\" /></li>\n";
             $expout .= "</ul>\n";
             break;
         case NUMERICAL:
             $expout .= "<ul class=\"numerical\">\n";
-            $expout .= "  <li>" . html_writer::label(get_string('answer'), 'quest_'.$id, false, array('class' => 'accesshide'));
-            $expout .= "    <input id=\"quest_$id\" name=\"quest_$id\" type=\"text\" /></li>\n";
+            $expout .= "  <li><input name=\"quest_$id\" type=\"text\" /></li>\n";
             $expout .= "</ul>\n";
             break;
         case MATCH:
@@ -115,22 +113,18 @@ class qformat_xhtml extends qformat_default {
             }
             shuffle( $ans_list ); // random display order
 
-            // Build select options.
-            $selectoptions = '';
+            // build drop down for answers
+            $dropdown = "<select name=\"quest_$id\">\n";
             foreach($ans_list as $ans) {
-                $selectoptions .= "<option value=\"" . s($ans) . "\">" . s($ans) . "</option>\n";
+                $dropdown .= "<option value=\"" . s($ans) . "\">" . s($ans) . "</option>\n";
             }
+            $dropdown .= "</select>\n";
 
-            // display
-            $option = 0;
+            // finally display
             foreach($question->options->subquestions as $subquestion) {
-                // build drop down for answers
-                $quest_text = $this->repchar( $subquestion->questiontext );
-                $dropdown = html_writer::label(get_string('answer', 'qtype_match', $option+1), 'quest_'.$id.'_'.$option, false, array('class' => 'accesshide'));
-                $dropdown .= "<select id=\"quest_{$id}_{$option}\" name=\"quest_{$id}_{$option}\">\n".$selectoptions."</select>\n";
-                $expout .= "  <li>$quest_text</li>\n";
-                $expout .= $dropdown;
-                $option++;
+              $quest_text = $this->repchar( $subquestion->questiontext );
+              $expout .= "  <li>$quest_text</li>\n";
+              $expout .= $dropdown;
             }
             $expout .= "</ul>\n";
             break;

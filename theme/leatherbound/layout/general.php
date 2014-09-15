@@ -26,6 +26,27 @@ echo $OUTPUT->doctype() ?>
     <title><?php echo $PAGE->title ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->pix_url('favicon', 'theme')?>" />
     <?php echo $OUTPUT->standard_head_html() ?>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+ <script>
+ (function($){
+    $.contentExpirator = function(prfx){
+        var pfix = prfx || 'exp';
+        $("[class|="+pfix+"]").each(function(){
+            var eString = $(this).attr('class').split(' ')[0];
+            var dString = eString.split('-');
+            var d = new Date(dString[1],dString[2].toString()-1,dString[3]);
+            var today = new Date();
+            if(d < today){
+                $(this).css('display','none');
+            }
+        });
+    }
+})(jQuery);</script>
+ <script>
+    $(document).ready(function(){
+      jQuery.contentExpirator();
+    });
+  </script>
 </head>
 
 <body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join(' ', $bodyclasses)) ?>">
@@ -36,7 +57,9 @@ echo $OUTPUT->doctype() ?>
     <div id="page-header">
         <div id="page-header-wrapper" class="wrapper clearfix">
             <?php if ($hasheading) { ?>
-                <h1 class="headermain inside"><?php echo $PAGE->heading ?></h1>
+                
+                <h1 class="headermain"><a href="/"><img src="/images/dematic-logo.jpg" /></a><?php //echo $PAGE->heading ?></h1>
+    	   
                 <div class="headermenu"><?php
                     echo $OUTPUT->login_info();
                         if (!empty($PAGE->layout_options['langmenu'])) {
@@ -45,6 +68,8 @@ echo $OUTPUT->doctype() ?>
                     echo $PAGE->headingmenu ?>
                 </div>
             <?php } ?>
+		<br /><br />
+		        <a href="/"><img border="0" align="right" src="/images/dematicu2.png" /></a>
         </div>
     </div>
 
@@ -71,7 +96,7 @@ echo $OUTPUT->doctype() ?>
                 <div id="region-main-wrap">
                     <div id="region-main">
                         <div class="region-content">
-                            <?php echo $OUTPUT->main_content() ?>
+                            <?php echo core_renderer::MAIN_CONTENT_TOKEN ?>
                         </div>
                     </div>
                 </div>
@@ -100,12 +125,23 @@ echo $OUTPUT->doctype() ?>
 <!-- START OF FOOTER -->
     <?php if ($hasfooter) { ?>
     <div id="page-footer" class="wrapper">
-        <p class="helplink"><?php echo page_doc_link(get_string('moodledocslink')) ?></p>
+        <table align="center" border="0">
+<tbody>
+<tr>
+<td><a href="http://www.dkdigitalmedia.com/dematic/pdf/TermsofUse.pdf">Terms of Use</a></span></td>
+<td><a href="http://www.dkdigitalmedia.com/dematic/pdf/DataPrivacyProtectionPolicy.pdf">Data Privacy</a></span></td>
+<td><a href="http://www.dkdigitalmedia.com/dematic/pdf/ContactUs.pdf">Contact Us</a></span></td></tr>
+</tr>
+</tbody>
+</table>
+        <p class="helplink"><?php //echo page_doc_link(get_string('moodledocslink')) ?></p>
         <?php
         echo $OUTPUT->login_info();
-        echo $OUTPUT->home_link();
-        echo $OUTPUT->standard_footer_html();
+        // echo $OUTPUT->home_link();
+       // echo $OUTPUT->standard_footer_html();
         ?>
+        <br />
+        <a href="/"><img src="/images/school.png" border="0" /></a>
     </div>
     <?php } ?>
 </div>

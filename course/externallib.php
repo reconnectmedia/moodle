@@ -56,7 +56,7 @@ class core_course_external extends external_api {
      * @param array $options, not used yet, might be used in later version
      * @return array
      */
-    public static function get_course_contents($courseid, $options = array()) {
+    public static function get_course_contents($courseid, $options) {
         global $CFG, $DB;
         require_once($CFG->dirroot . "/course/lib.php");
 
@@ -198,7 +198,7 @@ class core_course_external extends external_api {
                                 array(
                                     'id' => new external_value(PARAM_INT, 'activity id'),
                                     'url' => new external_value(PARAM_URL, 'activity url', VALUE_OPTIONAL),
-                                    'name' => new external_value(PARAM_RAW, 'activity module name'),
+                                    'name' => new external_value(PARAM_TEXT, 'activity module name'),
                                     'description' => new external_value(PARAM_RAW, 'activity description', VALUE_OPTIONAL),
                                     'visible' => new external_value(PARAM_INT, 'is the module visible', VALUE_OPTIONAL),
                                     'modicon' => new external_value(PARAM_URL, 'activity icon url'),
@@ -258,7 +258,7 @@ class core_course_external extends external_api {
      * @param array $options
      * @return array
      */
-    public static function get_courses($options = array()) {
+    public static function get_courses($options) {
         global $CFG, $DB;
         require_once($CFG->dirroot . "/course/lib.php");
 
@@ -267,7 +267,7 @@ class core_course_external extends external_api {
                         array('options' => $options));
 
         //retrieve courses
-        if (!array_key_exists('ids', $params['options'])
+        if (!key_exists('ids', $params['options'])
                 or empty($params['options']['ids'])) {
             $courses = $DB->get_records('course');
         } else {
@@ -504,13 +504,13 @@ class core_course_external extends external_api {
             require_capability('moodle/course:create', $context);
 
             // Make sure lang is valid
-            if (array_key_exists('lang', $course) and empty($availablelangs[$course['lang']])) {
+            if (key_exists('lang', $course) and empty($availablelangs[$course['lang']])) {
                 throw new moodle_exception(
                         get_string('errorinvalidparam', 'webservice', 'lang'));
             }
 
             // Make sure theme is valid
-            if (array_key_exists('forcetheme', $course)) {
+            if (key_exists('forcetheme', $course)) {
                 if (!empty($CFG->allowcoursethemes)) {
                     if (empty($availablethemes[$course['forcetheme']])) {
                         throw new moodle_exception(
@@ -530,10 +530,10 @@ class core_course_external extends external_api {
             //set default value for completion
             $courseconfig = get_config('moodlecourse');
             if (completion_info::is_enabled_for_site()) {
-                if (!array_key_exists('enablecompletion', $course)) {
+                if (!key_exists('enablecompletion', $course)) {
                     $course['enablecompletion'] = $courseconfig->enablecompletion;
                 }
-                if (!array_key_exists('completionstartonenrol', $course)) {
+                if (!key_exists('completionstartonenrol', $course)) {
                     $course['completionstartonenrol'] = $courseconfig->completionstartonenrol;
                 }
             } else {

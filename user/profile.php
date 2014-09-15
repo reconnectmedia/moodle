@@ -61,7 +61,7 @@ $user = $DB->get_record('user', array('id' => $userid));
 if ($user->deleted) {
     $PAGE->set_context(get_context_instance(CONTEXT_SYSTEM));
     echo $OUTPUT->header();
-    echo $OUTPUT->notification(get_string('userdeleted'));
+    echo $OUTPUT->heading(get_string('userdeleted'));
     echo $OUTPUT->footer();
     die;
 }
@@ -82,7 +82,7 @@ if (!$currentuser &&
     $PAGE->set_url('/user/profile.php', array('id'=>$userid));
     $PAGE->navbar->add($struser);
     echo $OUTPUT->header();
-    echo $OUTPUT->notification(get_string('usernotavailable', 'error'));
+    echo $OUTPUT->heading(get_string('usernotavailable', 'error'));
     echo $OUTPUT->footer();
     exit;
 }
@@ -116,12 +116,6 @@ if (has_capability('moodle/user:viewhiddendetails', $context)) {
     $hiddenfields = array();
 } else {
     $hiddenfields = array_flip(explode(',', $CFG->hiddenuserfields));
-}
-
-if (has_capability('moodle/site:viewuseridentity', $context)) {
-    $identityfields = array_flip(explode(',', $CFG->showuseridentity));
-} else {
-    $identityfields = array();
 }
 
 // Start setting up the page
@@ -253,34 +247,23 @@ if (! isset($hiddenfields['city']) && $user->city) {
     print_row(get_string('city') . ':', $user->city);
 }
 
-if (isset($identityfields['address']) && $user->address) {
-    print_row(get_string("address").":", "$user->address");
+if (has_capability('moodle/user:viewhiddendetails', $context)) {
+    if ($user->address) {
+        print_row(get_string("address").":", "$user->address");
+    }
+    if ($user->phone1) {
+        print_row(get_string("phone").":", "$user->phone1");
+    }
+    if ($user->phone2) {
+        print_row(get_string("phone2").":", "$user->phone2");
+    }
 }
 
-if (isset($identityfields['phone1']) && $user->phone1) {
-    print_row(get_string("phone").":", "$user->phone1");
-}
-
-if (isset($identityfields['phone2']) && $user->phone2) {
-    print_row(get_string("phone2").":", "$user->phone2");
-}
-
-if (isset($identityfields['institution']) && $user->institution) {
-    print_row(get_string("institution").":", "$user->institution");
-}
-
-if (isset($identityfields['department']) && $user->department) {
-    print_row(get_string("department").":", "$user->department");
-}
-
-if (isset($identityfields['idnumber']) && $user->idnumber) {
-    print_row(get_string("idnumber").":", "$user->idnumber");
-}
-
-if (isset($identityfields['email']) and ($currentuser
+if ($currentuser
   or $user->maildisplay == 1
   or has_capability('moodle/course:useremail', $context)
-  or ($user->maildisplay == 2 and enrol_sharing_course($user, $USER)))) {
+  or ($user->maildisplay == 2 and enrol_sharing_course($user, $USER))) {
+
     print_row(get_string("email").":", obfuscate_mailto($user->email, ''));
 }
 
@@ -394,5 +377,5 @@ echo $OUTPUT->footer();
 
 
 function print_row($left, $right) {
-    echo "\n<tr><th class=\"label c0\">$left</th><td class=\"info c1\">$right</td></tr>\n";
+    echo "\n<tr><td class=\"label c0\">$left</td><td class=\"info c1\">$right</td></tr>\n";
 }

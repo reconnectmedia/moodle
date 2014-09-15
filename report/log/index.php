@@ -43,7 +43,7 @@ if (empty($host_course)) {
 
 $group       = optional_param('group', 0, PARAM_INT); // Group to display
 $user        = optional_param('user', 0, PARAM_INT); // User to display
-$date        = optional_param('date', 0, PARAM_INT); // Date to display
+$date        = optional_param('date', 0, PARAM_FILE); // Date to display - number or some string
 $modname     = optional_param('modname', '', PARAM_PLUGIN); // course_module->id
 $modid       = optional_param('modid', 0, PARAM_FILE); // number or 'site_errors'
 $modaction   = optional_param('modaction', '', PARAM_PATH); // an action as recorded in the logs
@@ -122,11 +122,6 @@ $strlogs = get_string('logs');
 $stradministration = get_string('administration');
 $strreports = get_string('reports');
 
-// Before we close session, make sure we have editing information in session.
-$adminediting = optional_param('adminedit', -1, PARAM_BOOL);
-if ($PAGE->user_allowed_editing() && $adminediting != -1) {
-    $USER->editing = $adminediting;
-}
 session_get_instance()->write_close();
 
 if (!empty($chooselog)) {
