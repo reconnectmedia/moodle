@@ -170,8 +170,6 @@
                             self.toolTypeCache[selectedToolType] = toolInfo;
                         }
 
-                        Y.one('#id_urlmatchedtypeid').set('value', toolInfo.toolid);
-
                         continuation(toolInfo);
                     }
                 });

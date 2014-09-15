@@ -360,7 +360,7 @@ function lti_get_tool_table($tools, $id) {
         ";
 
         foreach ($tools as $type) {
-            $date = userdate($type->timecreated, get_string('strftimedatefullshort', 'core_langconfig'));
+            $date = userdate($type->timecreated);
             $accept = get_string('accept', 'lti');
             $update = get_string('update', 'lti');
             $delete = get_string('delete', 'lti');
@@ -615,7 +615,7 @@ function lti_get_types_for_add_instance() {
     $admintypes = $DB->get_records_sql($query, array('siteid' => $SITE->id, 'courseid' => $COURSE->id, 'active' => LTI_TOOL_STATE_CONFIGURED));
 
     $types = array();
-    $types[0] = (object)array('name' => get_string('automatic', 'lti'), 'course' => 0);
+    $types[0] = (object)array('name' => get_string('automatic', 'lti'), 'course' => $SITE->id);
 
     foreach ($admintypes as $type) {
         $types[$type->id] = $type;

@@ -53,14 +53,7 @@ if ($sharedsecret === false) {
     throw new Exception('Message signature not valid');
 }
 
-// TODO MDL-46023 Replace this code with a call to the new library.
-$origentity = libxml_disable_entity_loader(true);
-$xml = simplexml_load_string($rawbody);
-if (!$xml) {
-    libxml_disable_entity_loader($origentity);
-    throw new Exception('Invalid XML content');
-}
-libxml_disable_entity_loader($origentity);
+$xml = new SimpleXMLElement($rawbody);
 
 $body = $xml->imsx_POXBody;
 foreach ($body->children() as $child) {

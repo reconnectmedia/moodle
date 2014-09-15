@@ -41,7 +41,7 @@ if (!empty($CFG->gradepublishing)) {
     $CFG->gradepublishing = has_capability('gradeimport/xml:publish', $context);
 }
 
-$mform = new grade_import_form(null, array('acceptedtypes' => array('.xml')));
+$mform = new grade_import_form();
 
 if ($data = $mform->get_data()) {
     // Large files are likely to take their time and memory. Let PHP know

@@ -109,7 +109,6 @@ class enrol_manual_external extends external_api {
             }
 
             // Check manual enrolment plugin instance is enabled/exist.
-            $instance = null;
             $enrolinstances = enrol_get_instances($enrolment['courseid'], true);
             foreach ($enrolinstances as $courseenrolinstance) {
               if ($courseenrolinstance->enrol == "manual") {

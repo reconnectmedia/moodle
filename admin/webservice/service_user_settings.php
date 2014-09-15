@@ -68,7 +68,7 @@ if ($usersettingsform->is_cancelled()) {
     //TODO: assign capability
 
     //display successful notification
-    $notification = $OUTPUT->notification(get_string('usersettingssaved', 'webservice'), 'notifysuccess');
+    $notification = $OUTPUT->notification(get_string('usersettingssaved', 'webservice'), 'success');
 }
 
 echo $OUTPUT->header();

@@ -234,13 +234,7 @@ class restore_gradebook_structure_step extends restore_structure_step {
             $data->timecreated  = $this->apply_date_offset($data->timecreated);
             $data->timemodified = $this->apply_date_offset($data->timemodified);
 
-            $gradeexists = $DB->record_exists('grade_grades', array('userid' => $data->userid, 'itemid' => $data->itemid));
-            if ($gradeexists) {
-                $message = "User id '{$data->userid}' already has a grade entry for grade item id '{$data->itemid}'";
-                $this->log($message, backup::LOG_DEBUG);
-            } else {
-                $newitemid = $DB->insert_record('grade_grades', $data);
-            }
+            $newitemid = $DB->insert_record('grade_grades', $data);
         } else {
             debugging("Mapped user id not found for user id '{$olduserid}', grade item id '{$data->itemid}'");
         }
@@ -2216,7 +2210,6 @@ class restore_calendarevents_structure_step extends restore_structure_step {
         $result = $DB->record_exists_sql($sql, $arg);
         if (empty($result)) {
             $newitemid = $DB->insert_record('event', $params);
-            $this->set_mapping('event', $oldid, $newitemid);
             $this->set_mapping('event_description', $oldid, $newitemid, $restorefiles);
         }
 
@@ -2825,12 +2818,6 @@ class restore_activity_grades_structure_step extends restore_structure_step {
             $newitemid = $DB->insert_record('grade_letters', $gradeletter);
         }
         // no need to save any grade_letter mapping
-    }
-
-    public function after_restore() {
-        // Fix grade item's sortorder after restore, as it might have duplicates.
-        $courseid = $this->get_task()->get_courseid();
-        grade_item::fix_duplicate_sortorder($courseid);
     }
 }
 
@@ -4053,9 +4040,6 @@ abstract class restore_questions_activity_structure_step extends restore_activit
 
         $data->questionusageid = $this->get_new_parentid($nameprefix . 'question_usage');
         $data->questionid      = $question->newitemid;
-        if (!property_exists($data, 'variant')) {
-            $data->variant = 1;
-        }
         $data->timemodified    = $this->apply_date_offset($data->timemodified);
 
         $newitemid = $DB->insert_record('question_attempts', $data);

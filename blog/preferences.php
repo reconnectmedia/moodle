@@ -53,7 +53,7 @@ if ($groupid !== null) {
 }
 
 $PAGE->set_url($url);
-$PAGE->set_pagelayout('admin');
+$PAGE->set_pagelayout('standard');
 
 $sitecontext = context_system::instance();
 $PAGE->set_context($sitecontext);

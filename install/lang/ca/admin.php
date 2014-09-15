@@ -40,5 +40,5 @@ $string['cliunknowoption'] = 'Opcions invàlides:
  {$a}
 L\'opció --help us orientarà.';
 $string['cliyesnoprompt'] = 'Escriu y (significa Sí) o n (significa No)';
-$string['environmentrequireinstall'] = 'cal instal·lar-lo i habilitar-lo';
+$string['environmentrequireinstall'] = 'es requereix instal·lar/habilitar';
 $string['environmentrequireversion'] = 'esteu executant la versió {$a->current} i es requereix la {$a->needed}';

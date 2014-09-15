@@ -16,7 +16,7 @@ Block
 .block .content {
     padding:10px;
 }
-.jsenabled .block.hidden .content {
+.block.hidden .content {
     display: none;
 }
 .block .content .userpicture {

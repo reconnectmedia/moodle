@@ -302,27 +302,17 @@ class mod_wiki_renderer extends plugin_renderer_base {
     public function wiki_print_subwiki_selector($wiki, $subwiki, $page, $pagetype = 'view') {
         global $CFG, $USER;
         require_once($CFG->dirroot . '/user/lib.php');
-        $cm = get_coursemodule_from_instance('wiki', $wiki->id);
-
         switch ($pagetype) {
         case 'files':
-            $baseurl = new moodle_url('/mod/wiki/files.php',
-                    array('wid' => $wiki->id, 'title' => $page->title, 'pageid' => $page->id));
-            break;
-        case 'search':
-            $search = optional_param('searchstring', null, PARAM_ALPHANUMEXT);
-            $searchcontent = optional_param('searchwikicontent', 0, PARAM_INT);
-            $baseurl = new moodle_url('/mod/wiki/search.php',
-                    array('cmid' => $cm->id, 'courseid' => $cm->course,
-                        'searchstring' => $search, 'searchwikicontent' => $searchcontent));
+            $baseurl = new moodle_url('/mod/wiki/files.php');
             break;
         case 'view':
         default:
-            $baseurl = new moodle_url('/mod/wiki/view.php',
-                    array('wid' => $wiki->id, 'title' => $page->title));
+            $baseurl = new moodle_url('/mod/wiki/view.php');
             break;
         }
 
+        $cm = get_coursemodule_from_instance('wiki', $wiki->id);
         $context = context_module::instance($cm->id);
         // @TODO: A plenty of duplicated code below this lines.
         // Create private functions.
@@ -347,9 +337,14 @@ class mod_wiki_renderer extends plugin_renderer_base {
                     }
 
                     echo $this->output->container_start('wiki_right');
+                    $params = array('wid' => $wiki->id, 'title' => $page->title);
+                    if ($pagetype == 'files') {
+                        $params['pageid'] = $page->id;
+                    }
+                    $baseurl->params($params);
                     $name = 'uid';
                     $selected = $subwiki->userid;
-                    echo $this->output->single_select($baseurl, $name, $options, $selected, null);
+                    echo $this->output->single_select($baseurl, $name, $options, $selected);
                     echo $this->output->container_end();
                 }
                 return;
@@ -360,6 +355,12 @@ class mod_wiki_renderer extends plugin_renderer_base {
         case SEPARATEGROUPS:
             if ($wiki->wikimode == 'collaborative') {
                 // We need to print a select to choose a course group
+
+                $params = array('wid'=>$wiki->id, 'title'=>$page->title);
+                if ($pagetype == 'files') {
+                    $params['pageid'] = $page->id;
+                }
+                $baseurl->params($params);
 
                 echo $this->output->container_start('wiki_right');
                 groups_print_activity_menu($cm, $baseurl);
@@ -396,9 +397,14 @@ class mod_wiki_renderer extends plugin_renderer_base {
                     }
                 }
                 echo $this->output->container_start('wiki_right');
+                $params = array('wid' => $wiki->id, 'title' => $page->title);
+                if ($pagetype == 'files') {
+                    $params['pageid'] = $page->id;
+                }
+                $baseurl->params($params);
                 $name = 'groupanduser';
                 $selected = $subwiki->groupid . '-' . $subwiki->userid;
-                echo $this->output->single_select($baseurl, $name, $options, $selected, null);
+                echo $this->output->single_select($baseurl, $name, $options, $selected);
                 echo $this->output->container_end();
 
                 return;
@@ -411,6 +417,11 @@ class mod_wiki_renderer extends plugin_renderer_base {
             if ($wiki->wikimode == 'collaborative') {
                 // We need to print a select to choose a course group
                 // moodle_url will take care of encoding for us
+                $params = array('wid'=>$wiki->id, 'title'=>$page->title);
+                if ($pagetype == 'files') {
+                    $params['pageid'] = $page->id;
+                }
+                $baseurl->params($params);
 
                 echo $this->output->container_start('wiki_right');
                 groups_print_activity_menu($cm, $baseurl);
@@ -433,9 +444,14 @@ class mod_wiki_renderer extends plugin_renderer_base {
                 }
 
                 echo $this->output->container_start('wiki_right');
+                $params = array('wid' => $wiki->id, 'title' => $page->title);
+                if ($pagetype == 'files') {
+                    $params['pageid'] = $page->id;
+                }
+                $baseurl->params($params);
                 $name = 'groupanduser';
                 $selected = $subwiki->groupid . '-' . $subwiki->userid;
-                echo $this->output->single_select($baseurl, $name, $options, $selected, null);
+                echo $this->output->single_select($baseurl, $name, $options, $selected);
                 echo $this->output->container_end();
 
                 return;
@@ -453,10 +469,6 @@ class mod_wiki_renderer extends plugin_renderer_base {
     }
 
     function menu_map($pageid, $currentselect) {
-        if (empty($currentselect)) {
-            // The wiki uses digit number to match the options and 5 is the default one.
-            $currentselect = 5;
-        }
         $options = array('contributions', 'links', 'orphaned', 'pageindex', 'pagelist', 'updatedpages');
         $items = array();
         foreach ($options as $opt) {
@@ -466,7 +478,7 @@ class mod_wiki_renderer extends plugin_renderer_base {
         foreach ($items as $key => $item) {
             $selectoptions[$key + 1] = $item;
         }
-        $select = new single_select(new moodle_url('/mod/wiki/map.php', array('pageid' => $pageid)), 'option', $selectoptions, $currentselect, null);
+        $select = new single_select(new moodle_url('/mod/wiki/map.php', array('pageid' => $pageid)), 'option', $selectoptions, $currentselect);
         $select->label = get_string('mapmenu', 'wiki') . ': ';
         return $this->output->container($this->output->render($select), 'midpad');
     }
@@ -497,7 +509,7 @@ class mod_wiki_renderer extends plugin_renderer_base {
         foreach ($items as $key => $item) {
             $selectoptions[$key + 1] = $item;
         }
-        $select = new single_select(new moodle_url('/mod/wiki/admin.php', array('pageid' => $pageid)), 'option', $selectoptions, $currentselect, null);
+        $select = new single_select(new moodle_url('/mod/wiki/admin.php', array('pageid' => $pageid)), 'option', $selectoptions, $currentselect);
         $select->label = get_string('adminmenu', 'wiki') . ': ';
         return $this->output->container($this->output->render($select), 'midpad');
     }

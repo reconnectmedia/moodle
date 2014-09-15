@@ -788,7 +788,7 @@ if ($fromform = $mform_post->get_data()) {
             }
 
             if ($subscribemessage = forum_post_subscription($discussion, $forum)) {
-                $timemessage = 6;
+                $timemessage = 4;
             }
 
             // Update completion status

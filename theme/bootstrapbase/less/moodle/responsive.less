@@ -50,20 +50,10 @@
     .form-buttons {
         padding-left: @horizontalComponentOffset980;
     }
-}
-
-@media (max-width: 873px) {
-    .dir-rtl {
-        .userprofile dl.list dt,
-        .userprofile dl.list dd {
-            float: none;
-            text-align: right;
-            margin-right: 0;
-        }
-    }
 
 }
 
+// login page
 @media (min-width: 1200px) {
     .loginbox.twocolumns .loginpanel {
         margin-left: 0;
@@ -96,18 +86,11 @@
         .mform .fdescription.required,
         .userprofile dl.list dd,
         .form-horizontal .controls {
-            margin-right: (@horizontalComponentOffset1200 - 100px);
+            margin-right: @horizontalComponentOffset1200;
         }
         #page-mod-forum-search .c1 {
             margin-right: @horizontalComponentOffset1200;
         }
-        .form-item .form-label,
-        .mform .fitem div.fitemtitle,
-        .userprofile dl.list dt,
-        .form-horizontal .control-label {
-            width: (@horizontalComponentOffset1200 - 120px);
-        }
-
     }
     .path-admin .buttons,
     .form-buttons {
@@ -120,18 +103,6 @@
         }
     }
 
-    // Core empty block regions.
-    .fluid-span (@columns) {
-        .fluid-span-full(@columns, @fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
-    }
-    .empty-region-side-post.used-region-side-pre #region-main.span8 {
-        /** increase the span size by 1 **/
-        .fluid-span(9);
-    }
-    .empty-region-side-post.used-region-side-pre #block-region-side-pre.span4 {
-        /** decrease the span size by 1 **/
-        .fluid-span(3);
-    }
 }
 
 @media (min-width: 980px) {
@@ -154,18 +125,6 @@
         width: 48.61878453038674%;
         *width: 48.56559304102504%;
     }
-    // Core empty block regions.
-    .fluid-span (@columns) {
-        .fluid-span-full(@columns, @fluidGridColumnWidth768, @fluidGridGutterWidth768);
-    }
-    .empty-region-side-post.used-region-side-pre #region-main.span8 {
-        /** increase the span size by 1 **/
-        .fluid-span(9);
-    }
-    .empty-region-side-post.used-region-side-pre #block-region-side-pre.span4 {
-        /** decrease the span size by 1 **/
-        .fluid-span(3);
-    }
 }
 
 @media (max-width: 767px) {
@@ -177,16 +136,6 @@
          margin-left: 0;
          .box-sizing(border-box);
      }
-     #page-mod-quiz-edit div.quizcontents,
-    .questionbankwindow.block {
-        width: 100%;
-        float: none;
-    }
-    #page-mod-quiz-edit #block-region-side-pre,
-    #page-mod-quiz-edit #block-region-side-post {
-        clear: both;
-    }
-
  }
 
 @media (max-width: 480px) {
@@ -349,17 +298,7 @@
     .path-backup .mform .fitem .felement,
     .mform .fdescription.required,
     .form-item .form-description {
-        margin-left: 0;
-    }
-    .dir-rtl {
-        .form-item .form-label,
-        .mform .fitem div.fitemtitle {
-            float: none;
-            text-align: right;
-        }
-        .mform .fitem .felement {
-            margin-right: 0;
-        }
+      margin-left: 0;
     }
     table#form td.submit,
     .form-buttons,
@@ -382,32 +321,6 @@
     .block .minicalendar td {
         padding-left: 0;
         padding-right: 0;
-    }
-}
-
-.dir-rtl {
-    .dropdown-menu {
-        right:0;
-        left:auto;
-    }
-    .navbar .nav>li>.dropdown-menu:before {
-        right:9px;
-        left:auto;
-    }
-    .navbar .nav>li>.dropdown-menu:after {
-        right: 10px;
-        left:auto;
-    }
-    .dropdown-submenu>a:after {
-        margin-right: -10px;
-        margin-left: 0;
-        border-right-color: #ccc;
-        border-left-color: transparent;
-        border-width: 5px 5px 5px 0px;
-    }
-    .dropdown-submenu>.dropdown-menu {
-        right:100%;
-        left:auto;
     }
 }
 
@@ -437,7 +350,7 @@
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 // Resize, reflow file-picker on small devices
    #filesskin .yui3-panel,
    #filesskin .file-picker.fp-generallayout {
@@ -459,6 +372,18 @@
     // Reset the alignment for required label to display inline on mobile devices
     #page-mod-wiki-create .mform .fitem div.fitemtitle {
         float: left;
+    }
+
+// Hide broken drag'n'drop options on touch devices MDL-38371
+// Not a great workaround, landscape iPads are wider than this,
+// and a resized window on a netbook could be smaller, but best
+// we can do with CSS. There might be a JS-based solution.
+    .section .side,
+    .editing_move {
+        display: none;
+    }
+    .activityinstance > a {
+        display: block;
     }
 
   // GRID & CONTAINERS
@@ -488,18 +413,6 @@
     margin-left: 0;
     .box-sizing(border-box);
   }
-
-    // We need to specify a more specific selector to reset the width for
-    // cases when we have content in the side-pre blockregion but not in the
-    // side-post blockregion as there are more specific selectors in
-    // core.less which take precedence which break responsiveness.
-    .empty-region-side-post.used-region-side-pre {
-        #block-region-side-pre.span4,
-        #region-main.span8 {
-            .fluid-span(12);
-        }
-    }
-
   .row-fluid .span12 {
     width: 100%;
     .box-sizing(border-box);
@@ -510,29 +423,4 @@
   div[role=main] {
       margin-bottom: 1em;
   }
-}
-
-// All widths up to 1199px.
-@media (max-width: 1199px) {
-    #page-mod-forum-discuss .discussioncontrols {
-        text-align: right;
-        .discussioncontrol {
-            float: none;
-            width: auto;
-            display: inline-block;
-            margin: 0 3px 0.5em;
-            select,
-            input {
-                margin-bottom: 0;
-            }
-            &.movediscussion {
-                margin-right: 0;
-                padding-right: 0;
-            }
-        }
-    }
-
-   #page-mod-forum-discuss.dir-rtl .discussioncontrols {
-       text-align: left;
-   }
 }

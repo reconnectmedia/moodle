@@ -170,13 +170,11 @@ class qformat_xml extends qformat_default {
         }
         $fs = get_file_storage();
         $itemid = file_get_unused_draft_itemid();
-        $filepaths = array();
+        $filenames = array();
         foreach ($xml as $file) {
-            $filename = $this->getpath($file, array('@', 'name'), '', true);
-            $filepath = $this->getpath($file, array('@', 'path'), '/', true);
-            $fullpath = $filepath . $filename;
-            if (in_array($fullpath, $filepaths)) {
-                debugging('Duplicate file in XML: ' . $fullpath, DEBUG_DEVELOPER);
+            $filename = $file['@']['name'];
+            if (in_array($filename, $filenames)) {
+                debugging('Duplicate file in XML: ' . $filename, DEBUG_DEVELOPER);
                 continue;
             }
             $filerecord = array(
@@ -184,11 +182,11 @@ class qformat_xml extends qformat_default {
                 'component' => 'user',
                 'filearea'  => 'draft',
                 'itemid'    => $itemid,
-                'filepath'  => $filepath,
+                'filepath'  => '/',
                 'filename'  => $filename,
             );
             $fs->create_file_from_string($filerecord, base64_decode($file['#']));
-            $filepaths[] = $fullpath;
+            $filenames[] = $filename;
         }
         return $itemid;
     }
@@ -780,7 +778,7 @@ class qformat_xml extends qformat_default {
 
         // get answers array
         $answers = $question['#']['answer'];
-        $qo->answer = array();
+        $qo->answers = array();
         $qo->feedback = array();
         $qo->fraction = array();
         $qo->tolerance = array();
@@ -794,7 +792,7 @@ class qformat_xml extends qformat_default {
             if (empty($ans->answer['text'])) {
                 $ans->answer['text'] = '*';
             }
-            $qo->answer[] = $ans->answer['text'];
+            $qo->answers[] = $ans->answer;
             $qo->feedback[] = $ans->feedback;
             $qo->tolerance[] = $answer['#']['tolerance'][0]['#'];
             // fraction as a tag is deprecated
@@ -1095,9 +1093,9 @@ class qformat_xml extends qformat_default {
             if ($file->is_directory()) {
                 continue;
             }
-            $string .= '<file name="' . $file->get_filename() . '" path="' . $file->get_filepath() . '" encoding="base64">';
+            $string .= '<file name="' . $file->get_filename() . '" encoding="base64">';
             $string .= base64_encode($file->get_content());
-            $string .= "</file>\n";
+            $string .= '</file>';
         }
         return $string;
     }
@@ -1273,7 +1271,7 @@ class qformat_xml extends qformat_default {
 
             case 'multianswer':
                 foreach ($question->options->questions as $index => $subq) {
-                    $expout = str_replace('{#' . $index . '}', $subq->questiontext, $expout);
+                    $expout = preg_replace('~{#' . $index . '}~', $subq->questiontext, $expout);
                 }
                 break;
 

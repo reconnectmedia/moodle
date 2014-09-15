@@ -152,6 +152,15 @@
             //$params     = array();
             $i = 0;
 
+            if (empty($fullsearch)) {
+                // With fullsearch disabled, look only within concepts and aliases.
+                $concat = $DB->sql_concat('ge.concept', "' '", "COALESCE(al.alias, :emptychar)");
+            } else {
+                // With fullsearch enabled, look also within definitions.
+                $concat = $DB->sql_concat('ge.concept', "' '", 'ge.definition', "' '", "COALESCE(al.alias, :emptychar)");
+            }
+            $params['emptychar'] = '';
+
             $searchterms = explode(" ",$hook);
 
             foreach ($searchterms as $searchterm) {
@@ -160,17 +169,8 @@
                 $NOT = false; /// Initially we aren't going to perform NOT LIKE searches, only MSSQL and Oracle
                            /// will use it to simulate the "-" operator with LIKE clause
 
-                if (empty($fullsearch)) {
-                    // With fullsearch disabled, look only within concepts and aliases.
-                    $concat = $DB->sql_concat('ge.concept', "' '", "COALESCE(al.alias, :emptychar".$i.")");
-                } else {
-                    // With fullsearch enabled, look also within definitions.
-                    $concat = $DB->sql_concat('ge.concept', "' '", 'ge.definition', "' '", "COALESCE(al.alias, :emptychar".$i.")");
-                }
-                $params['emptychar'.$i] = '';
-
-                /// Under Oracle and MSSQL, trim the + and - operators and perform
-                /// simpler LIKE (or NOT LIKE) queries
+            /// Under Oracle and MSSQL, trim the + and - operators and perform
+            /// simpler LIKE (or NOT LIKE) queries
                 if (!$DB->sql_regex_supported()) {
                     if (substr($searchterm, 0, 1) == '-') {
                         $NOT = true;

@@ -676,6 +676,7 @@ class quiz_statistics_report extends quiz_default_report {
             return $this->get_emtpy_stats($questions, $firstattempts->countrecs,
                     $allattempts->countrecs);
         }
+        $summarksavg = $usingattempts->total / $usingattempts->countrecs;
 
         $quizstats = new stdClass();
         $quizstats->allattempts = $useallattempts;
@@ -749,7 +750,7 @@ class quiz_statistics_report extends quiz_default_report {
             }
         }
 
-        $qstats = new quiz_statistics_question_stats($questions);
+        $qstats = new quiz_statistics_question_stats($questions, $s, $summarksavg);
         $qstats->load_step_data($quizid, $currentgroup, $groupstudents, $useallattempts);
         $qstats->compute_statistics();
 

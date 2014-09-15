@@ -27,4 +27,3 @@
 $string['loglive:view'] = 'View live logs';
 $string['pluginname'] = 'Live logs';
 $string['livelogs'] = 'Live logs from the past hour';
-$string['page'] = 'Page {$a}';

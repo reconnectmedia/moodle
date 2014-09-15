@@ -95,7 +95,7 @@ function imscp_parse_structure($imscp, $context) {
         return null;
     }
 
-    return imscp_parse_manifestfile($manifestfile->get_content(), $imscp, $context);
+    return imscp_parse_manifestfile($manifestfile->get_content());
 }
 
 /**
@@ -103,13 +103,11 @@ function imscp_parse_structure($imscp, $context) {
  * @param string $manifestfilecontents the contents of the manifest file
  * @return array
  */
-function imscp_parse_manifestfile($manifestfilecontents, $imscp, $context) {
+function imscp_parse_manifestfile($manifestfilecontents) {
     $doc = new DOMDocument();
-    $oldentities = libxml_disable_entity_loader(true);
     if (!$doc->loadXML($manifestfilecontents, LIBXML_NONET)) {
         return null;
     }
-    libxml_disable_entity_loader($oldentities);
 
     // we put this fake URL as base in order to detect path changes caused by xml:base attributes
     $doc->documentURI = 'http://grrr/';
@@ -164,9 +162,6 @@ function imscp_parse_manifestfile($manifestfilecontents, $imscp, $context) {
             foreach ($fileresources as $file) {
                 $href = $file->getAttribute('href');
             }
-            if (pathinfo($href, PATHINFO_EXTENSION) == 'xml') {
-                $href = imscp_recursive_href($href, $imscp, $context);
-            }
             if (empty($href)) {
                 continue;
             }
@@ -192,47 +187,6 @@ function imscp_parse_manifestfile($manifestfilecontents, $imscp, $context) {
     }
 
     return $items;
-}
-
-function imscp_recursive_href($manifestfilename, $imscp, $context) {
-    $fs = get_file_storage();
-
-    $dirname = dirname($manifestfilename);
-    $filename = basename($manifestfilename);
-
-    if ($dirname !== '/') {
-        $dirname = "/$dirname/";
-    }
-
-    if (!$manifestfile = $fs->get_file($context->id, 'mod_imscp', 'content', $imscp->revision, $dirname, $filename)) {
-        return null;
-    }
-
-    $doc = new DOMDocument();
-    $oldentities = libxml_disable_entity_loader(true);
-    if (!$doc->loadXML($manifestfile->get_content(), LIBXML_NONET)) {
-        return null;
-    }
-    libxml_disable_entity_loader($oldentities);
-
-    $xmlresources = $doc->getElementsByTagName('resource');
-    foreach ($xmlresources as $res) {
-        if (!$href = $res->attributes->getNamedItem('href')) {
-            $fileresources = $res->getElementsByTagName('file');
-            foreach ($fileresources as $file) {
-                $href = $file->getAttribute('href');
-                if (pathinfo($href, PATHINFO_EXTENSION) == 'xml') {
-                    $href = imscp_recursive_href($href, $imscp, $context);
-                }
-
-                if (pathinfo($href, PATHINFO_EXTENSION) == 'htm' || pathinfo($href, PATHINFO_EXTENSION) == 'html') {
-                    return $href;
-                }
-            }
-        }
-    }
-
-    return $href;
 }
 
 function imscp_recursive_item($xmlitem, $level, $resources) {

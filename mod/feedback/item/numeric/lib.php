@@ -231,8 +231,7 @@ class feedback_item_numeric extends feedback_item_base {
         global $OUTPUT, $DB;
 
         $align = right_to_left() ? 'right' : 'left';
-        $strrequiredmark = '<img class="req" title="'.get_string('requiredelement', 'form').'" alt="'.
-            get_string('requiredelement', 'form').'" src="'.$OUTPUT->pix_url('req') .'" />';
+        $str_required_mark = '<span class="feedback_required_mark">*</span>';
 
         //get the range
         $range_from_to = explode('|', $item->presentation);
@@ -251,7 +250,7 @@ class feedback_item_numeric extends feedback_item_base {
             $range_to = 0;
         }
 
-        $requiredmark = ($item->required == 1) ? $strrequiredmark : '';
+        $requiredmark =  ($item->required == 1) ? $str_required_mark : '';
         //print the question and label
         $inputname = $item->typ . '_' . $item->id;
         echo '<div class="feedback_item_label_'.$align.'">';
@@ -313,8 +312,7 @@ class feedback_item_numeric extends feedback_item_base {
     public function print_item_complete($item, $value = '', $highlightrequire = false) {
         global $OUTPUT;
         $align = right_to_left() ? 'right' : 'left';
-        $strrequiredmark = '<img class="req" title="'.get_string('requiredelement', 'form').'" alt="'.
-            get_string('requiredelement', 'form').'" src="'.$OUTPUT->pix_url('req') .'" />';
+        $str_required_mark = '<span class="feedback_required_mark">*</span>';
 
         //get the range
         $range_from_to = explode('|', $item->presentation);
@@ -333,11 +331,16 @@ class feedback_item_numeric extends feedback_item_base {
             $range_to = 0;
         }
 
-        $requiredmark = ($item->required == 1) ? $strrequiredmark : '';
+        if ($highlightrequire AND (!$this->check_value($value, $item))) {
+            $highlight = ' missingrequire';
+        } else {
+            $highlight = '';
+        }
+        $requiredmark = ($item->required == 1) ? $str_required_mark : '';
 
         //print the question and label
         $inputname = $item->typ . '_' . $item->id;
-        echo '<div class="feedback_item_label_'.$align.'">';
+        echo '<div class="feedback_item_label_'.$align.$highlight.'">';
         echo '<label for="'. $inputname .'">';
         echo format_text($item->name . $requiredmark, true, false, false);
         echo '<span class="feedback_item_numinfo">';
@@ -358,15 +361,11 @@ class feedback_item_numeric extends feedback_item_base {
                 break;
         }
         echo '</span>';
-        if ($highlightrequire AND (!$this->check_value($value, $item))) {
-            echo '<br class="error"><span id="id_error_'.$inputname.'" class="error"> '.get_string('err_required', 'form').
-                '</span><br id="id_error_break_'.$inputname.'" class="error" >';
-        }
         echo '</label>';
         echo '</div>';
 
         //print the presentation
-        echo '<div class="feedback_item_presentation_'.$align.'">';
+        echo '<div class="feedback_item_presentation_'.$align.$highlight.'">';
         echo '<span class="feedback_item_textfield">';
         echo '<input type="text" '.
                      'id="'.$inputname.'" '.
@@ -390,8 +389,7 @@ class feedback_item_numeric extends feedback_item_base {
     public function print_item_show_value($item, $value = '') {
         global $OUTPUT;
         $align = right_to_left() ? 'right' : 'left';
-        $strrequiredmark = '<img class="req" title="'.get_string('requiredelement', 'form').'" alt="'.
-            get_string('requiredelement', 'form').'" src="'.$OUTPUT->pix_url('req') .'" />';
+        $str_required_mark = '<span class="feedback_required_mark">*</span>';
 
         //get the range
         $range_from_to = explode('|', $item->presentation);
@@ -407,7 +405,7 @@ class feedback_item_numeric extends feedback_item_base {
         } else {
             $range_to = 0;
         }
-        $requiredmark = ($item->required == 1) ? $strrequiredmark : '';
+        $requiredmark = ($item->required == 1) ? $str_required_mark : '';
 
         //print the question and label
         echo '<div class="feedback_item_label_'.$align.'">';

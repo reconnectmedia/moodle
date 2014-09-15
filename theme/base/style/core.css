@@ -380,7 +380,6 @@ input#id_externalurl {direction:ltr;}
 .loginbox.twocolumns .loginpanel {float:left;width:49.5%;border-right: 1px solid;margin-bottom:-2000px;padding-bottom:2000px;}
 .loginbox.twocolumns .signuppanel {float:right;width:50%;margin-bottom:-2000px;padding-bottom:2000px;}
 .loginbox .potentialidp .smallicon { vertical-align: text-bottom; margin: 0 .3em; }
-.dir-rtl .loginbox.twocolumns .loginpanel, .dir-rtl.loginbox.twocolumns .signuppanel {float:right;}
 
 /**
  * Notes
@@ -1238,8 +1237,7 @@ form#installform #id_dbpass, form#installform #id_prefix
 
 html[dir=rtl] .breadcrumb,
 html[dir=rtl] .headermain,
-html[dir=rtl] #page-header,
-html[dir=rtl] #page-content {float: right;}
+html[dir=rtl] #page-header {float: right;}
 
 html[dir=rtl] .formrow label.formlabel { float:right; }
 

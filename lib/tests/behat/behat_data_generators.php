@@ -136,23 +136,6 @@ class behat_data_generators extends behat_base {
     /**
      * Creates the specified element. More info about available elements in http://docs.moodle.org/dev/Acceptance_testing#Fixtures.
      *
-     * This method has been introduced in 2.7 and replaces self::the_following_exists(),
-     * it has been added here to make backports easier and to help 3rd parties working on new
-     * scenarios so they don't need to update their scenarios when they upgrade to 2.7.
-     *
-     * @Given /^the following "(?P<element_string>(?:[^"]|\\")*)" exist:$/
-     *
-     * @param string    $elementname The name of the entity to add
-     * @param TableNode $data
-     */
-    public function the_following_exist($elementname, TableNode $data) {
-        // Forwarding it.
-        $this->the_following_exists($elementname, $data);
-    }
-
-    /**
-     * Creates the specified element. More info about available elements in http://docs.moodle.org/dev/Acceptance_testing#Fixtures. This step will be deprecated in Moodle 2.7 in favour of 'the following "ELEMENT_STRING" exist:'.
-     *
      * @Given /^the following "(?P<element_string>(?:[^"]|\\")*)" exists:$/
      *
      * @throws Exception
@@ -316,13 +299,13 @@ class behat_data_generators extends behat_base {
         $context = $this->get_context($data['contextlevel'], $data['reference']);
 
         switch ($data['permission']) {
-            case get_string('allow', 'role'):
+            case self::cap_allow:
                 $permission = CAP_ALLOW;
                 break;
-            case get_string('prevent', 'role'):
+            case self::cap_prevent:
                 $permission = CAP_PREVENT;
                 break;
-            case get_string('prohibit', 'role'):
+            case self::cap_prohibit:
                 $permission = CAP_PROHIBIT;
                 break;
             default:

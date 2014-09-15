@@ -41,23 +41,20 @@ switch ($action) {
         break;
     case 'deletecategory':
         $id      = required_param('id', PARAM_INT);
-        if (confirm_sesskey()) {
-            profile_delete_category($id);
-        }
+        profile_delete_category($id);
         redirect($redirect,get_string('deleted'));
         break;
     case 'deletefield':
         $id      = required_param('id', PARAM_INT);
         $confirm = optional_param('confirm', 0, PARAM_BOOL);
 
-        // If no userdata for profile than don't show confirmation.
         $datacount = $DB->count_records('user_info_data', array('fieldid'=>$id));
-        if (((data_submitted() and $confirm) or ($datacount === 0)) and confirm_sesskey()) {
+        if (data_submitted() and ($confirm and confirm_sesskey()) or $datacount===0) {
             profile_delete_field($id);
             redirect($redirect,get_string('deleted'));
         }
 
-        // Ask for confirmation, as there is user data available for field.
+        //ask for confirmation
         $fieldname = $DB->get_field('user_info_field', 'name', array('id'=>$id));
         $optionsyes = array ('id'=>$id, 'confirm'=>1, 'action'=>'deletefield', 'sesskey'=>sesskey());
         $strheading = get_string('profiledeletefield', 'admin', $fieldname);
@@ -87,11 +84,12 @@ switch ($action) {
         //normal form
 }
 
-// Show all categories.
-$categories = $DB->get_records('user_info_category', null, 'sortorder ASC');
+/// Print the header
+echo $OUTPUT->header();
+echo $OUTPUT->heading(get_string('profilefields', 'admin'));
 
-// Check that we have at least one category defined.
-if (empty($categories)) {
+/// Check that we have at least one category defined
+if ($DB->count_records('user_info_category') == 0) {
     $defaultcategory = new stdClass();
     $defaultcategory->name = $strdefaultcategory;
     $defaultcategory->sortorder = 1;
@@ -99,9 +97,8 @@ if (empty($categories)) {
     redirect($redirect);
 }
 
-// Print the header.
-echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('profilefields', 'admin'));
+/// Show all categories
+$categories = $DB->get_records('user_info_category', null, 'sortorder ASC');
 
 foreach ($categories as $category) {
     $table = new html_table();
@@ -176,7 +173,7 @@ function profile_category_icons($category) {
     /// Delete
     /// Can only delete the last category if there are no fields in it
     if ( ($categorycount > 1) or ($fieldcount == 0) ) {
-        $editstr .= '<a title="'.$strdelete.'" href="index.php?id='.$category->id.'&amp;action=deletecategory&amp;sesskey='.sesskey();
+        $editstr .= '<a title="'.$strdelete.'" href="index.php?id='.$category->id.'&amp;action=deletecategory';
         $editstr .= '"><img src="'.$OUTPUT->pix_url('t/delete') . '" alt="'.$strdelete.'" class="iconsmall" /></a> ';
     } else {
         $editstr .= '<img src="'.$OUTPUT->pix_url('spacer') . '" alt="" class="iconsmall" /> ';
@@ -219,7 +216,7 @@ function profile_field_icons($field) {
     $editstr = '<a title="'.$stredit.'" href="index.php?id='.$field->id.'&amp;action=editfield"><img src="'.$OUTPUT->pix_url('t/edit') . '" alt="'.$stredit.'" class="iconsmall" /></a> ';
 
     /// Delete
-    $editstr .= '<a title="'.$strdelete.'" href="index.php?id='.$field->id.'&amp;action=deletefield&amp;sesskey='.sesskey();
+    $editstr .= '<a title="'.$strdelete.'" href="index.php?id='.$field->id.'&amp;action=deletefield';
     $editstr .= '"><img src="'.$OUTPUT->pix_url('t/delete') . '" alt="'.$strdelete.'" class="iconsmall" /></a> ';
 
     /// Move up

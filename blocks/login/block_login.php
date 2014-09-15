@@ -61,7 +61,7 @@ class block_login extends block_base {
             if (isset($CFG->rememberusername) and $CFG->rememberusername == 2) {
                 $checked = $username ? 'checked="checked"' : '';
                 $this->content->text .= '<div class="c1 rememberusername"><input type="checkbox" name="rememberusername" id="rememberusername" value="1" '.$checked.'/>';
-                $this->content->text .= ' <label for="rememberusername">'.get_string('rememberusername', 'admin').'</label></div>';
+                $this->content->text .= ' <label for="rememberusername">'.get_string('rememberusername', 'admin').'</label>';
             }
 
             $this->content->text .= '<div class="c1 btn"><input type="submit" value="'.get_string('login').'" /></div>';
@@ -72,7 +72,7 @@ class block_login extends block_base {
                 $this->content->footer .= '<div><a href="'.$signup.'">'.get_string('startsignup').'</a></div>';
             }
             if (!empty($forgot)) {
-                $this->content->footer .= '<div><a href="'.$forgot.'">'.get_string('forgotaccount').'</a></div>';
+                $this->content->footer .= '<div><a href="'.$forgot.'">'.get_string('forgotaccount').'</a><br /><a href="http://' . $_SERVER['HTTP_HOST'] .'/check.htm">Browser Compatibility Check</a></div>';
             }
         }
 

@@ -1224,25 +1224,13 @@ function portfolio_format_text_options() {
  * @return object|array|string
  */
 function portfolio_rewrite_pluginfile_url_callback($contextid, $component, $filearea, $itemid, $format, $options, $matches) {
-    $matches = $matches[0]; // No internal matching.
-
-    // Loads the HTML.
+    $matches = $matches[0]; // no internal matching
     $dom = new DomDocument();
-    if (!$dom->loadHTML($matches)) {
+    if (!$dom->loadXML($matches)) {
         return $matches;
     }
-
-    // Navigates to the node.
-    $xpath = new DOMXPath($dom);
-    $nodes = $xpath->query('/html/body/child::*');
-    if (empty($nodes) || count($nodes) > 1) {
-        // Unexpected sequence, none or too many nodes.
-        return $matches;
-    }
-    $dom = $nodes->item(0);
-
     $attributes = array();
-    foreach ($dom->attributes as $attr => $node) {
+    foreach ($dom->documentElement->attributes as $attr => $node) {
         $attributes[$attr] = $node->value;
     }
     // now figure out the file
@@ -1372,11 +1360,7 @@ function portfolio_include_callback_file($component, $class = null) {
  * @return mixed
  */
 function portfolio_rewrite_pluginfile_urls($text, $contextid, $component, $filearea, $itemid, $format, $options=null) {
-    $patterns = array(
-        '(<(a|A)[^<]*?href="@@PLUGINFILE@@/[^>]*?>.*?</(a|A)>)',
-        '(<(img|IMG)\s[^<]*?src="@@PLUGINFILE@@/[^>]*?/?>)',
-    );
-    $pattern = '~' . implode('|', $patterns) . '~';
+    $pattern = '/(<[^<]*?="@@PLUGINFILE@@\/[^>]*?(?:\/>|>.*?<\/[^>]*?>))/';
     $callback = partial('portfolio_rewrite_pluginfile_url_callback', $contextid, $component, $filearea, $itemid, $format, $options);
     return preg_replace_callback($pattern, $callback, $text);
 }

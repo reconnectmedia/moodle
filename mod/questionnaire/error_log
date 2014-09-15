@@ -1,0 +1,20 @@
+[10-Dec-2012 20:27:23 America/Denver] Default exception handler: Invalid course module ID Debug: 
+* line 435 of /lib/setuplib.php: moodle_exception thrown
+* line 18 of /mod/questionnaire/view.php: call to print_error()
+
+[14-Dec-2012 11:53:03 America/Denver] Default exception handler: Sorry, but you do not currently have permissions to do that (View a questionnaire) Debug: 
+* line 691 of /lib/accesslib.php: required_capability_exception thrown
+* line 44 of /mod/questionnaire/view.php: call to require_capability()
+
+[17-Jun-2013 11:09:29 America/Denver] Default exception handler: Sorry, but you do not currently have permissions to do that (View a questionnaire) Debug: 
+* line 691 of /lib/accesslib.php: required_capability_exception thrown
+* line 44 of /mod/questionnaire/view.php: call to require_capability()
+
+[17-Jun-2013 11:11:46 America/Denver] Default exception handler: Sorry, but you do not currently have permissions to do that (View a questionnaire) Debug: 
+* line 691 of /lib/accesslib.php: required_capability_exception thrown
+* line 44 of /mod/questionnaire/view.php: call to require_capability()
+
+[17-Jun-2013 15:03:35 America/Denver] Default exception handler: Sorry, but you do not currently have permissions to do that (View a questionnaire) Debug: 
+* line 691 of /lib/accesslib.php: required_capability_exception thrown
+* line 44 of /mod/questionnaire/view.php: call to require_capability()
+

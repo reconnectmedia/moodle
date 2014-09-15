@@ -357,7 +357,6 @@ class qformat_default {
         $count = 0;
 
         foreach ($questions as $question) {   // Process and store each question
-            $transaction = $DB->start_delegated_transaction();
 
             // reset the php timeout
             set_time_limit(0);
@@ -372,7 +371,6 @@ class qformat_default {
                         $this->category = $newcategory;
                     }
                 }
-                $transaction->allow_commit();
                 continue;
             }
             $question->context = $this->importcontext;
@@ -389,7 +387,7 @@ class qformat_default {
             $question->modifiedby = $USER->id;
             $question->timemodified = time();
             $fileoptions = array(
-                    'subdirs' => true,
+                    'subdirs' => false,
                     'maxfiles' => -1,
                     'maxbytes' => 0,
                 );
@@ -431,13 +429,8 @@ class qformat_default {
 
             if (!empty($result->error)) {
                 echo $OUTPUT->notification($result->error);
-                // Can't use $transaction->rollback(); since it requires an exception,
-                // and I don't want to rewrite this code to change the error handling now.
-                $DB->force_transaction_rollback();
                 return false;
             }
-
-            $transaction->allow_commit();
 
             if (!empty($result->notice)) {
                 echo $OUTPUT->notification($result->notice);

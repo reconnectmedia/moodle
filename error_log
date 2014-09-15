@@ -1,0 +1,10 @@
+[06-Feb-2014 11:46:59 America/Denver] PHP Notice:  Use of undefined constant MDL_PERF_TEST - assumed 'MDL_PERF_TEST' in /home6/ascenade/public_html/lib/setuplib.php on line 1763
+[06-Feb-2014 11:46:59 America/Denver] PHP Notice:  Trying to get property of non-object in /home6/ascenade/public_html/lib/moodlelib.php on line 10607
+[06-Feb-2014 11:46:59 America/Denver] PHP Notice:  Undefined offset: 1 in /home6/ascenade/public_html/lib/moodlelib.php on line 9794
+[06-Feb-2014 11:46:59 America/Denver] PHP Notice:  Trying to get property of non-object in /home6/ascenade/public_html/lib/moodlelib.php on line 10614
+[26-Feb-2014 20:41:38 America/Denver] PHP Warning:  mysqli::mysqli(): (42000/1203): User ascenade_moodle already has more than 'max_user_connections' active connections in /home6/ascenade/public_html/lib/dml/mysqli_native_moodle_database.php on line 384
+[25-Jul-2014 18:50:43 America/Denver] PHP Warning:  mysqli::mysqli(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home6/ascenade/public_html/lib/dml/mysqli_native_moodle_database.php on line 384
+[25-Jul-2014 18:50:46 America/Denver] PHP Warning:  mysqli::mysqli(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home6/ascenade/public_html/lib/dml/mysqli_native_moodle_database.php on line 384
+[25-Jul-2014 18:51:39 America/Denver] PHP Warning:  mysqli::mysqli(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home6/ascenade/public_html/lib/dml/mysqli_native_moodle_database.php on line 384
+[31-Jul-2014 10:37:44 America/Denver] Can not read or insert database sessions
+[14-Aug-2014 16:40:41 America/Denver] PHP Warning:  mysqli::mysqli(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home6/ascenade/public_html/lib/dml/mysqli_native_moodle_database.php on line 384

@@ -55,9 +55,6 @@ if (!$wiki = wiki_get_wiki($subwiki->wikiid)) {
 
 require_login($course, true, $cm);
 
-if (!wiki_user_can_view($subwiki, $wiki)) {
-    print_error('cannotviewpage', 'wiki');
-}
 
 $context = context_module::instance($cm->id);
 require_capability('mod/wiki:managewiki', $context);

@@ -60,10 +60,6 @@ $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST)
 
 require_login($course, true, $cm);
 
-if (!wiki_user_can_view($subwiki)) {
-    print_error('cannotviewpage', 'wiki');
-}
-
 if ($confirm) {
     if (!confirm_sesskey()) {
         print_error(get_string('invalidsesskey', 'wiki'));

@@ -69,7 +69,6 @@ Feature: Course activity controls works as expected
     And I hide section "1"
     And "#section-2" "css_element" <should_see_other_sections> exists
     And section "1" should be hidden
-    And all activities in section "1" should be hidden
     And I show section "1"
     And "#section-2" "css_element" <should_see_other_sections> exists
     And section "1" should be visible
@@ -144,7 +143,6 @@ Feature: Course activity controls works as expected
     And I hide section "1"
     And "#section-2" "css_element" <should_see_other_sections> exists
     And section "1" should be hidden
-    And all activities in section "1" should be hidden
     And I show section "1"
     And "#section-2" "css_element" <should_see_other_sections> exists
     And section "1" should be visible

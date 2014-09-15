@@ -3183,8 +3183,8 @@ function require_logout() {
  */
 function require_course_login($courseorid, $autologinguest = true, $cm = NULL, $setwantsurltome = true, $preventredirect = false) {
     global $CFG, $PAGE, $SITE;
-    $issite = ((is_object($courseorid) and $courseorid->id == SITEID)
-          or (!is_object($courseorid) and $courseorid == SITEID));
+    $issite = (is_object($courseorid) and $courseorid->id == SITEID)
+          or (!is_object($courseorid) and $courseorid == SITEID);
     if ($issite && !empty($cm) && !($cm instanceof cm_info)) {
         // note: nearly all pages call get_fast_modinfo anyway and it does not make any
         // db queries so this is not really a performance concern, however it is obviously
@@ -4072,9 +4072,6 @@ function delete_user(stdClass $user) {
 
     // Remove users private keys.
     $DB->delete_records('user_private_key', array('userid' => $user->id));
-
-    // Remove users customised pages.
-    $DB->delete_records('my_pages', array('userid' => $user->id, 'private' => 1));
 
     // force logout - may fail if file based sessions used, sorry
     session_kill_user($user->id);
@@ -8230,9 +8227,14 @@ function get_plugin_types($fullpaths=true) {
     $cache = cache::make('core', 'plugintypes');
 
     if ($fullpaths) {
-        // Cache each dirroot separately in case cluster nodes happen to be deployed to
-        // different locations.
-        $cached = $cache->get(sha1($CFG->dirroot));
+        // First confirm that dirroot and the stored dirroot match.
+        if ($CFG->dirroot === $cache->get('dirroot')) {
+            // They match we can use it.
+            $cached = $cache->get(1);
+        } else {
+            // Oops they didn't match. The moodle directory has been moved on us.
+            $cached = false;
+        }
     } else {
         $cached = $cache->get(0);
     }
@@ -8291,7 +8293,10 @@ function get_plugin_types($fullpaths=true) {
         }
 
         $cache->set(0, $info);
-        $cache->set(sha1($CFG->dirroot), $fullinfo);
+        $cache->set(1, $fullinfo);
+        // We cache the dirroot as well so that we can compare it when we
+        // retrieve full info from the cache.
+        $cache->set('dirroot', $CFG->dirroot);
 
         return ($fullpaths ? $fullinfo : $info);
     }
@@ -9334,20 +9339,9 @@ function moodle_setlocale($locale='') {
     if ($CFG->ostype != 'WINDOWS') {
         $messages= setlocale (LC_MESSAGES, 0);
     }
-    // Set locale to all.
-    $result = setlocale (LC_ALL, $currentlocale);
-    // If setting of locale fails try the other utf8 or utf-8 variant,
-    // some operating systems support both (Debian), others just one (OSX).
-    if ($result === false) {
-        if (stripos($currentlocale, '.UTF-8') !== false) {
-            $newlocale = str_ireplace('.UTF-8', '.UTF8', $currentlocale);
-            setlocale (LC_ALL, $newlocale);
-        } else if (stripos($currentlocale, '.UTF8') !== false) {
-            $newlocale = str_ireplace('.UTF8', '.UTF-8', $currentlocale);
-            setlocale (LC_ALL, $newlocale);
-        }
-    }
-    // Set old values.
+/// Set locale to all
+    setlocale (LC_ALL, $currentlocale);
+/// Set old values
     setlocale (LC_MONETARY, $monetary);
     setlocale (LC_NUMERIC, $numeric);
     if ($CFG->ostype != 'WINDOWS') {
@@ -10500,21 +10494,45 @@ function message_popup_window() {
     //if we have new messages to notify the user about
     if (!empty($message_users)) {
 
-        $strmessages = get_string('unreadnewmessages', 'message', count($message_users));
+        $strmessages = '';
+        if (count($message_users)>1) {
+            $strmessages = get_string('unreadnewmessages', 'message', count($message_users));
+        } else {
+            $message_users = reset($message_users);
+
+            //show who the message is from if its not a notification
+            if (!$message_users->notification) {
+                $strmessages = get_string('unreadnewmessage', 'message', fullname($message_users) );
+            }
+
+            //try to display the small version of the message
+            $smallmessage = null;
+            if (!empty($message_users->smallmessage)) {
+                //display the first 200 chars of the message in the popup
+                $smallmessage = null;
+                if (textlib::strlen($message_users->smallmessage) > 200) {
+                    $smallmessage = textlib::substr($message_users->smallmessage,0,200).'...';
+                } else {
+                    $smallmessage = $message_users->smallmessage;
+                }
+
+                //prevent html symbols being displayed
+                if ($message_users->fullmessageformat == FORMAT_HTML) {
+                    $smallmessage = html_to_text($smallmessage);
+                } else {
+                    $smallmessage = s($smallmessage);
+                }
+            } else if ($message_users->notification) {
+                //its a notification with no smallmessage so just say they have a notification
+                $smallmessage = get_string('unreadnewnotification', 'message');
+            }
+            if (!empty($smallmessage)) {
+                $strmessages .= '<div id="usermessage">'.s($smallmessage).'</div>';
+            }
+        }
+
         $strgomessage = get_string('gotomessages', 'message');
         $strstaymessage = get_string('ignore','admin');
-
-        $notificationsound = null;
-        $beep = get_user_preferences('message_beepnewmessage', '');
-        if (!empty($beep)) {
-            // Browsers will work down this list until they find something they support.
-            $sourcetags =  html_writer::empty_tag('source', array('src' => $CFG->wwwroot.'/message/bell.wav', 'type' => 'audio/wav'));
-            $sourcetags .= html_writer::empty_tag('source', array('src' => $CFG->wwwroot.'/message/bell.ogg', 'type' => 'audio/ogg'));
-            $sourcetags .= html_writer::empty_tag('source', array('src' => $CFG->wwwroot.'/message/bell.mp3', 'type' => 'audio/mpeg'));
-            $sourcetags .= html_writer::empty_tag('embed',  array('src' => $CFG->wwwroot.'/message/bell.wav', 'autostart' => 'true', 'hidden' => 'true'));
-
-            $notificationsound = html_writer::tag('audio', $sourcetags, array('preload' => 'auto', 'autoplay' => 'autoplay'));
-        }
 
         $url = $CFG->wwwroot.'/message/index.php';
         $content =  html_writer::start_tag('div', array('id'=>'newmessageoverlay','class'=>'mdl-align')).
@@ -10522,10 +10540,9 @@ function message_popup_window() {
                             $strmessages.
                         html_writer::end_tag('div').
 
-                        $notificationsound.
-                        html_writer::start_tag('div', array('id' => 'newmessagelinks')).
-                            html_writer::link($url, $strgomessage, array('id' => 'notificationyes')).'&nbsp;&nbsp;&nbsp;'.
-                            html_writer::link('', $strstaymessage, array('id' => 'notificationno')).
+                        html_writer::start_tag('div', array('id'=>'newmessagelinks')).
+                            html_writer::link($url, $strgomessage, array('id'=>'notificationyes')).'&nbsp;&nbsp;&nbsp;'.
+                            html_writer::link('', $strstaymessage, array('id'=>'notificationno')).
                         html_writer::end_tag('div');
                     html_writer::end_tag('div');
 
@@ -10674,10 +10691,6 @@ function get_performance_info() {
     $info['dbqueries'] = $DB->perf_get_reads().'/'.($DB->perf_get_writes() - $PERF->logwrites);
     $info['html'] .= '<span class="dbqueries">DB reads/writes: '.$info['dbqueries'].'</span> ';
     $info['txt'] .= 'db reads/writes: '.$info['dbqueries'].' ';
-
-    $info['dbtime'] = round($DB->perf_get_queries_time(), 5);
-    $info['html'] .= '<span class="dbtime">DB queries time: '.$info['dbtime'].' secs</span> ';
-    $info['txt'] .= 'db queries time: ' . $info['dbtime'] . 's ';
 
     if (function_exists('posix_times')) {
         $ptimes = posix_times();

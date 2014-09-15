@@ -137,8 +137,7 @@ class courselib_testcase extends advanced_testcase {
         // The goal not being to fully test assign_add_instance() we'll stop here for the assign tests - to avoid too many DB queries.
 
         // Advanced grading.
-        $cm = get_coursemodule_from_instance('assign', $dbmodinstance->id);
-        $contextmodule = context_module::instance($cm->id);
+        $contextmodule = context_module::instance($dbmodinstance->id);
         $advancedgradingmethod = $DB->get_record('grading_areas',
             array('contextid' => $contextmodule->id,
                 'activemethod' => $moduleinfo->advancedgradingmethod_submissions));

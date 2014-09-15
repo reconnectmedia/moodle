@@ -395,10 +395,6 @@ class plugin_manager {
             return 'svn';
         }
 
-        if (is_dir($pluginroot.'/.hg')) {
-            return 'mercurial';
-        }
-
         return false;
     }
 
@@ -1987,10 +1983,6 @@ class available_update_deployer {
 
         if (is_dir($pluginroot.'/.svn')) {
             return 'svn';
-        }
-
-        if (is_dir($pluginroot.'/.hg')) {
-            return 'mercurial';
         }
 
         return false;

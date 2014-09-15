@@ -54,9 +54,9 @@ assignment submission for \'{$a->assignment}\'
 You can see it appended to your assignment submission:
 
     {$a->url}';
-$string['assignmentmailhtml'] = '<p>{$a->grader} has posted some feedback on your
-assignment submission for \'<i>{$a->assignment}</i>\'.</p>
-<p>You can see it appended to your <a href="{$a->url}">assignment submission</a>.</p>';
+$string['assignmentmailhtml'] = '{$a->grader} has posted some feedback on your
+assignment submission for \'<i>{$a->assignment}</i>\'<br /><br />
+You can see it appended to your <a href="{$a->url}">assignment submission</a>.';
 $string['assignmentmailsmall'] = '{$a->grader} has posted some feedback on your
 assignment submission for \'{$a->assignment}\' You can see it appended to your submission';
 $string['assignmentname'] = 'Assignment name';
@@ -268,8 +268,6 @@ $string['savegradingresult'] = 'Grade';
 $string['saveallquickgradingchanges'] = 'Save all quick grading changes';
 $string['savenext'] = 'Save and show next';
 $string['scale'] = 'Scale';
-$string['sendstudentnotifications'] = 'Notify students';
-$string['sendstudentnotifications_help'] = 'If enabled, students receive a message about the updated grade or feedback.';
 $string['sendnotifications'] = 'Notify graders about submissions';
 $string['sendnotifications_help'] = 'If enabled, graders (usually teachers) receive a message whenever a student submits an assignment, early, on time and late. Message methods are configurable.';
 $string['selectlink'] = 'Select...';
@@ -286,9 +284,9 @@ assignment submission for \'{$a->assignment}\'
 You can see the status of your assignment submission:
 
     {$a->url}';
-$string['submissioncopiedhtml'] = '<p>You have made a copy of your previous
-assignment submission for \'<i>{$a->assignment}</i>\'.</p>
-<p>You can see the status of your <a href="{$a->url}">assignment submission</a>.</p>';
+$string['submissioncopiedhtml'] = 'You have made a copy of your previous
+assignment submission for \'<i>{$a->assignment}</i>\'<br /><br />
+You can see the status of your <a href="{$a->url}">assignment submission</a>.';
 $string['submissioncopiedsmall'] = 'You have copied your previous assignment submission for {$a->assignment}';
 $string['submissiondrafts'] = 'Require students click submit button';
 $string['submissiondrafts_help'] = 'If enabled, students will have to click a Submit button to declare their submission as final. This allows students to keep a draft version of the submission on the system. If this setting is changed from "No" to "Yes" after students have already submitted those submissions will be regarded as final.';
@@ -304,8 +302,9 @@ assignment submission for \'{$a->assignment}\'
 You can see the status of your assignment submission:
 
     {$a->url}';
-$string['submissionreceipthtml'] = '<p>You have submitted an assignment submission for \'<i>{$a->assignment}</i>\'.</p>
-<p>You can see the status of your <a href="{$a->url}">assignment submission</a>.</p>';
+$string['submissionreceipthtml'] = 'You have submitted an
+assignment submission for \'<i>{$a->assignment}</i>\'<br /><br />
+You can see the status of your <a href="{$a->url}">assignment submission</a>.';
 $string['submissionreceiptsmall'] = 'You have submitted your assignment submission for {$a->assignment}';
 $string['submissionslocked'] = 'This assignment is not accepting submissions';
 $string['submissionslockedshort'] = 'Submission changes not allowed';
@@ -335,10 +334,6 @@ $string['submittedearly'] = 'Assignment was submitted {$a} early';
 $string['submittedlate'] = 'Assignment was submitted {$a} late';
 $string['submittedlateshort'] = '{$a} late';
 $string['submitted'] = 'Submitted';
-$string['subplugintype_assignsubmission'] = 'Submission plugin';
-$string['subplugintype_assignsubmission_plural'] = 'Submission plugins';
-$string['subplugintype_assignfeedback'] = 'Feedback plugin';
-$string['subplugintype_assignfeedback_plural'] = 'Feedback plugins';
 $string['teamsubmission'] = 'Students submit in groups';
 $string['teamsubmission_help'] = 'If enabled students will be divided into groups based on the default set of groups or a custom grouping. A group submission will be shared among group members and all members of the group will see each others changes to the submission.';
 $string['teamsubmissiongroupingid'] = 'Grouping for student groups';

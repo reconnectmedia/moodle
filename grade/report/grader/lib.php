@@ -471,12 +471,9 @@ class grade_report_grader extends grade_report {
                            AND ue.status = :uestatus
                            AND e.status = :estatus
                            AND e.courseid = :courseid
-                           AND ue.timestart < :now1 AND (ue.timeend = 0 OR ue.timeend > :now2)
                   GROUP BY ue.userid";
             $coursecontext = get_course_context($this->context);
-            $time = time();
-            $params = array_merge($uparams, array('estatus' => ENROL_INSTANCE_ENABLED, 'uestatus' => ENROL_USER_ACTIVE,
-                    'courseid' => $coursecontext->instanceid, 'now1' => $time, 'now2' => $time));
+            $params = array_merge($uparams, array('estatus'=>ENROL_INSTANCE_ENABLED, 'uestatus'=>ENROL_USER_ACTIVE, 'courseid'=>$coursecontext->instanceid));
             $useractiveenrolments = $DB->get_records_sql($sql, $params);
 
             $defaultgradeshowactiveenrol = !empty($CFG->grade_report_showonlyactiveenrol);
@@ -1136,15 +1133,6 @@ class grade_report_grader extends grade_report {
         $PAGE->requires->js_init_call('M.gradereport_grader.init_report', $jsarguments, false, $module);
         $PAGE->requires->strings_for_js(array('addfeedback','feedback', 'grade'), 'grades');
         $PAGE->requires->strings_for_js(array('ajaxchoosescale','ajaxclicktoclose','ajaxerror','ajaxfailedupdate', 'ajaxfieldchanged'), 'gradereport_grader');
-        if (!$this->get_pref('enableajax') && $USER->gradeediting[$this->courseid]) {
-            $PAGE->requires->yui_module('moodle-core-formchangechecker',
-                    'M.core_formchangechecker.init',
-                    array(array(
-                        'formid' => 'gradereport_grader'
-                    ))
-            );
-            $PAGE->requires->string_for_js('changesmadereallygoaway', 'moodle');
-        }
 
         $rows = $this->get_right_range_row($rows);
         $rows = $this->get_right_avg_row($rows, true);

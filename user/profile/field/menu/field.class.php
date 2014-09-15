@@ -14,13 +14,9 @@ class profile_field_menu extends profile_field_base {
         $this->profile_field_base($fieldid, $userid);
 
         /// Param 1 for menu type is the options
-        if (isset($this->field->param1)) {
-            $options = explode("\n", $this->field->param1);
-        } else {
-            $options = array();
-        }
+        $options = explode("\n", $this->field->param1);
         $this->options = array();
-        if (!empty($this->field->required)) {
+        if ($this->field->required){
             $this->options[''] = get_string('choose').'...';
         }
         foreach($options as $key => $option) {

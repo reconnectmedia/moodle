@@ -359,13 +359,6 @@ class theme_config {
     private $usesvg = null;
 
     /**
-     * Sets the render method that should be used for rendering custom block regions by scripts such as my/index.php
-     * Defaults to {@link core_renderer::blocks_for_region()}
-     * @var string
-     */
-    public $blockrendermethod = null;
-
-    /**
      * Load the config.php file for a particular theme, and return an instance
      * of this class. (That is, this is a factory method.)
      *
@@ -433,7 +426,7 @@ class theme_config {
         $configurable = array('parents', 'sheets', 'parents_exclude_sheets', 'plugins_exclude_sheets', 'javascripts', 'javascripts_footer',
                               'parents_exclude_javascripts', 'layouts', 'enable_dock', 'enablecourseajax', 'supportscssoptimisation',
                               'rendererfactory', 'csspostprocess', 'editor_sheets', 'rarrow', 'larrow', 'hidefromselector', 'doctype',
-                              'yuicssmodules', 'blockrtlmanipulations', 'blockrendermethod');
+                              'yuicssmodules', 'blockrtlmanipulations');
 
         foreach ($config as $key=>$value) {
             if (in_array($key, $configurable)) {
@@ -789,33 +782,22 @@ class theme_config {
                 $plugins = get_plugin_list($type);
                 foreach ($plugins as $plugin=>$fulldir) {
                     if (!empty($excludes[$type]) and is_array($excludes[$type])
-                            and in_array($plugin, $excludes[$type])) {
+                        and in_array($plugin, $excludes[$type])) {
                         continue;
                     }
 
-                    // Add main stylesheet.
+                    $plugincontent = '';
                     $sheetfile = "$fulldir/styles.css";
                     if (is_readable($sheetfile)) {
                         $cssfiles['plugins'][$type.'_'.$plugin] = $sheetfile;
                     }
-
-                    // Create a list of candidate sheets from parents (direct parent last) and current theme.
-                    $candidates = array();
-                    foreach (array_reverse($this->parent_configs) as $parent_config) {
-                        $candidates[] = $parent_config->name;
+                    $sheetthemefile = "$fulldir/styles_{$this->name}.css";
+                    if (is_readable($sheetthemefile)) {
+                        $cssfiles['plugins'][$type.'_'.$plugin.'_'.$this->name] = $sheetthemefile;
                     }
-                    $candidates[] = $this->name;
-
-                    // Add the sheets found.
-                    foreach ($candidates as $candidate) {
-                        $sheetthemefile = "$fulldir/styles_{$candidate}.css";
-                        if (is_readable($sheetthemefile)) {
-                            $cssfiles['plugins'][$type.'_'.$plugin.'_'.$candidate] = $sheetthemefile;
-                        }
                     }
                 }
             }
-        }
 
         // find out wanted parent sheets
         $excludes = $this->resolve_excludes('parents_exclude_sheets');
@@ -1494,7 +1476,7 @@ class theme_config {
     public function setup_blocks($pagelayout, $blockmanager) {
         $layoutinfo = $this->layout_info_for_page($pagelayout);
         if (!empty($layoutinfo['regions'])) {
-            $blockmanager->add_regions($layoutinfo['regions'], false);
+            $blockmanager->add_regions($layoutinfo['regions']);
             $blockmanager->set_default_region($layoutinfo['defaultregion']);
         }
     }
@@ -1548,32 +1530,6 @@ class theme_config {
      */
     public function get_theme_name() {
         return get_string('pluginname', 'theme_'.$this->name);
-    }
-
-    /**
-     * Returns the block render method.
-     *
-     * It is set by the theme via:
-     *     $THEME->blockrendermethod = '...';
-     *
-     * It can be one of two values, blocks or blocks_for_region.
-     * It should be set to the method being used by the theme layouts.
-     *
-     * @return string
-     */
-    public function get_block_render_method() {
-        if ($this->blockrendermethod) {
-            // Return the specified block render method.
-            return $this->blockrendermethod;
-        }
-        // Its not explicitly set, check the parent theme configs.
-        foreach ($this->parent_configs as $config) {
-            if (isset($config->blockrendermethod)) {
-                return $config->blockrendermethod;
-            }
-        }
-        // Default it to blocks.
-        return 'blocks';
     }
 }
 

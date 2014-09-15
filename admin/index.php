@@ -45,13 +45,6 @@ if (!function_exists('iconv')) {
     die();
 }
 
-// Make sure php5-json is available.
-if (!function_exists('json_encode') || !function_exists('json_decode')) {
-    // This also shouldn't happen.
-    echo 'Moodle requires the json PHP extension. Please install or enable the json extension.';
-    die();
-}
-
 define('NO_OUTPUT_BUFFERING', true);
 
 if ((isset($_GET['cache']) and $_GET['cache'] === '0')
@@ -493,11 +486,6 @@ if (!$cache and !optional_param('sesskey', '', PARAM_RAW)) {
 
 // Check for valid admin user - no guest autologin
 require_login(0, false);
-if (isguestuser()) {
-    // Login as real user!
-    $SESSION->wantsurl = (string)new moodle_url('/admin/index.php');
-    redirect(get_login_url());
-}
 $context = context_system::instance();
 require_capability('moodle/site:config', $context);
 

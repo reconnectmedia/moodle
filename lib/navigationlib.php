@@ -2719,9 +2719,6 @@ class global_navigation_for_ajax extends global_navigation {
         $this->rootnodes['site']    = $this->add_course($SITE);
         $this->rootnodes['mycourses'] = $this->add(get_string('mycourses'), new moodle_url('/my'), self::TYPE_ROOTNODE, null, 'mycourses');
         $this->rootnodes['courses'] = $this->add(get_string('courses'), null, self::TYPE_ROOTNODE, null, 'courses');
-        // The courses branch is always displayed, and is always expandable (although may be empty).
-        // This mimicks what is done during {@link global_navigation::initialise()}.
-        $this->rootnodes['courses']->isexpandable = true;
 
         // Branchtype will be one of navigation_node::TYPE_*
         switch ($this->branchtype) {
@@ -2740,12 +2737,6 @@ class global_navigation_for_ajax extends global_navigation {
                 break;
             case self::TYPE_COURSE :
                 $course = $DB->get_record('course', array('id' => $this->instanceid), '*', MUST_EXIST);
-                if (!can_access_course($course)) {
-                    // Thats OK all courses are expandable by default. We don't need to actually expand it we can just
-                    // add the course node and break. This leads to an empty node.
-                    $this->add_course($course);
-                    break;
-                }
                 require_course_login($course, true, null, false, true);
                 $this->page->set_context(context_course::instance($course->id));
                 $coursenode = $this->add_course($course);

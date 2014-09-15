@@ -295,18 +295,17 @@ class feedback_item_multichoicerated extends feedback_item_base {
 
         $align = right_to_left() ? 'right' : 'left';
         $info = $this->get_info($item);
-        $strrequiredmark = '<img class="req" title="'.get_string('requiredelement', 'form').'" alt="'.
-            get_string('requiredelement', 'form').'" src="'.$OUTPUT->pix_url('req') .'" />';
+        $str_required_mark = '<span class="feedback_required_mark">*</span>';
 
         $lines = explode (FEEDBACK_MULTICHOICERATED_LINE_SEP, $info->presentation);
-        $requiredmark = ($item->required == 1) ? $strrequiredmark : '';
+        $requiredmark =  ($item->required == 1) ? $str_required_mark : '';
         //print the question and label
         echo '<div class="feedback_item_label_'.$align.'">';
         if ($info->subtype == 'd') {
             echo '<label for="'. $item->typ . '_' . $item->id .'">';
         }
         echo '('.$item->label.') ';
-        echo format_text($item->name . $requiredmark, FORMAT_HTML, array('noclean' => true, 'para' => false));
+        echo format_text($item->name.$requiredmark, true, false, false);
         if ($item->dependitem) {
             if ($dependitem = $DB->get_record('feedback_item', array('id'=>$item->dependitem))) {
                 echo ' <span class="feedback_depend">';
@@ -345,34 +344,29 @@ class feedback_item_multichoicerated extends feedback_item_base {
         global $OUTPUT;
         $align = right_to_left() ? 'right' : 'left';
         $info = $this->get_info($item);
-        $strrequiredmark = '<img class="req" title="'.get_string('requiredelement', 'form').'" alt="'.
-            get_string('requiredelement', 'form').'" src="'.$OUTPUT->pix_url('req') .'" />';
+        $str_required_mark = '<span class="feedback_required_mark">*</span>';
 
         $lines = explode (FEEDBACK_MULTICHOICERATED_LINE_SEP, $info->presentation);
-        $requiredmark = ($item->required == 1) ? $strrequiredmark : '';
+        $requiredmark =  ($item->required == 1) ? $str_required_mark : '';
+        if ($highlightrequire AND $item->required AND intval($value) <= 0) {
+            $highlight = ' missingrequire';
+        } else {
+            $highlight = '';
+        }
 
         //print the question and label
-        $inputname = $item->typ . '_' . $item->id;
-        echo '<div class="feedback_item_label_'.$align.'">';
+        echo '<div class="feedback_item_label_'.$align.$highlight.'">';
         if ($info->subtype == 'd') {
-            echo '<label for="'. $inputname .'">';
+            echo '<label for="'. $item->typ . '_' . $item->id .'">';
             echo format_text($item->name.$requiredmark, true, false, false);
-            if ($highlightrequire AND $item->required AND intval($value) <= 0) {
-                echo '<br class="error"><span id="id_error_'.$inputname.'" class="error"> '.get_string('err_required', 'form').
-                    '</span><br id="id_error_break_'.$inputname.'" class="error" >';
-            }
             echo '</label>';
         } else {
-            echo format_text($item->name . $requiredmark, FORMAT_HTML, array('noclean' => true, 'para' => false));
-            if ($highlightrequire AND $item->required AND intval($value) <= 0) {
-                echo '<br class="error"><span id="id_error_'.$inputname.'" class="error"> '.get_string('err_required', 'form').
-                    '</span><br id="id_error_break_'.$inputname.'" class="error" >';
-            }
+            echo format_text($item->name.$requiredmark, true, false, false);
         }
         echo '</div>';
 
         //print the presentation
-        echo '<div class="feedback_item_presentation_'.$align.'">';
+        echo '<div class="feedback_item_presentation_'.$align.$highlight.'">';
         switch($info->subtype) {
             case 'r':
                 $this->print_item_radio($item, $value, $info, $align, false, $lines);
@@ -398,13 +392,12 @@ class feedback_item_multichoicerated extends feedback_item_base {
         $info = $this->get_info($item);
 
         $lines = explode (FEEDBACK_MULTICHOICERATED_LINE_SEP, $info->presentation);
-        $requiredmark = ($item->required == 1)?'<img class="req" title="'.get_string('requiredelement', 'form').'" alt="'.
-            get_string('requiredelement', 'form').'" src="'.$OUTPUT->pix_url('req') .'" />':'';
+        $requiredmark = ($item->required == 1)?'<span class="feedback_required_mark">*</span>':'';
 
         //print the question and label
         echo '<div class="feedback_item_label_'.$align.'">';
             echo '('.$item->label.') ';
-            echo format_text($item->name . $requiredmark, FORMAT_HTML, array('noclean' => true, 'para' => false));
+            echo format_text($item->name . $requiredmark, true, false, false);
         echo '</div>';
 
         //print the presentation
@@ -414,7 +407,7 @@ class feedback_item_multichoicerated extends feedback_item_base {
             if ($value == $index) {
                 $item_value = explode(FEEDBACK_MULTICHOICERATED_VALUE_SEP, $line);
                 echo $OUTPUT->box_start('generalbox boxalign'.$align);
-                echo format_text($item_value[1], FORMAT_HTML, array('noclean' => true, 'para' => false));
+                echo text_to_html($item_value[1], true, false, false);
                 echo $OUTPUT->box_end();
                 break;
             }
@@ -527,7 +520,6 @@ class feedback_item_multichoicerated extends feedback_item_base {
         } else {
             $hv = 'v';
         }
-        echo '<fieldset>';
         echo '<ul>';
         if (!$this->hidenoselect($item)) {
             ?>
@@ -572,9 +564,9 @@ class feedback_item_multichoicerated extends feedback_item_base {
                         <?php
                             if ($showrating) {
                                 $str_rating_value = '('.$radio_value[0].') '.$radio_value[1];
-                                echo format_text($str_rating_value, FORMAT_HTML, array('noclean' => true, 'para' => false));
+                                echo text_to_html($str_rating_value, true, false, false);
                             } else {
-                                echo format_text($radio_value[1], FORMAT_HTML, array('noclean' => true, 'para' => false));
+                                echo text_to_html($radio_value[1], true, false, false);
                             }
                         ?>
                     </label>
@@ -584,7 +576,6 @@ class feedback_item_multichoicerated extends feedback_item_base {
             $index++;
         }
         echo '</ul>';
-        echo '</fieldset>';
     }
 
     private function print_item_dropdown($item, $value, $info, $align, $showrating, $lines) {
@@ -593,8 +584,10 @@ class feedback_item_multichoicerated extends feedback_item_base {
         } else {
             $hv = 'v';
         }
+        echo '<ul>';
         ?>
-        <div class="feedback_item_select_<?php echo $hv.'_'.$align;?>">
+        <li class="feedback_item_select_<?php echo $hv.'_'.$align;?>">
+            <label class="accesshide" for="<?php echo $item->typ.'_'.$item->id;?>"><?php echo $item->name; ?></label>
             <select id="<?php echo $item->typ.'_'.$item->id;?>" name="<?php echo $item->typ.'_'.$item->id;?>">
                 <option value="0">&nbsp;</option>
                 <?php
@@ -609,19 +602,20 @@ class feedback_item_multichoicerated extends feedback_item_base {
                     $dropdown_value = explode(FEEDBACK_MULTICHOICERATED_VALUE_SEP, $line);
                     if ($showrating) {
                         echo '<option value="'.$index.'" '.$selected.'>';
-                        echo format_text('(' . $dropdown_value[0] . ') ' . $dropdown_value[1], FORMAT_HTML, array('para' => false));
+                        echo clean_text('('.$dropdown_value[0].') '.$dropdown_value[1]);
                         echo '</option>';
                     } else {
                         echo '<option value="'.$index.'" '.$selected.'>';
-                        echo format_text($dropdown_value[1], FORMAT_HTML, array('para' => false));
+                        echo clean_text($dropdown_value[1]);
                         echo '</option>';
                     }
                     $index++;
                 }
                 ?>
             </select>
-        </div>
+        </li>
         <?php
+        echo '</ul>';
     }
 
     public function prepare_presentation_values($linesep1,

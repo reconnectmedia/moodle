@@ -1627,20 +1627,7 @@ abstract class admin_setting {
             rebuild_course_cache(0, true);
         }
 
-        $this->add_to_config_log($name, $oldvalue, $value);
-
-        return true; // BC only
-    }
-
-    /**
-     * Log config changes if necessary.
-     * @param string $name
-     * @param string $oldvalue
-     * @param string $value
-     */
-    protected function add_to_config_log($name, $oldvalue, $value) {
-        global $DB, $USER;
-
+        // log change
         $log = new stdClass();
         $log->userid       = during_initial_install() ? 0 :$USER->id; // 0 as user id during install
         $log->timemodified = time();
@@ -1649,6 +1636,8 @@ abstract class admin_setting {
         $log->value        = $value;
         $log->oldvalue     = $oldvalue;
         $DB->insert_record('config_log', $log);
+
+        return true; // BC only
     }
 
     /**
@@ -2024,22 +2013,6 @@ class admin_setting_configpasswordunmask extends admin_setting_configtext {
     }
 
     /**
-     * Log config changes if necessary.
-     * @param string $name
-     * @param string $oldvalue
-     * @param string $value
-     */
-    protected function add_to_config_log($name, $oldvalue, $value) {
-        if ($value !== '') {
-            $value = '********';
-        }
-        if ($oldvalue !== '' and $oldvalue !== null) {
-            $oldvalue = '********';
-        }
-        parent::add_to_config_log($name, $oldvalue, $value);
-    }
-
-    /**
      * Returns XHTML for the field
      * Writes Javascript into the HTML below right before the last div
      *
@@ -2164,7 +2137,7 @@ class admin_setting_configexecutable extends admin_setting_configfile {
         $default = $this->get_defaultsetting();
 
         if ($data) {
-            if (file_exists($data) and !is_dir($data) and is_executable($data)) {
+            if (file_exists($data) and is_executable($data)) {
                 $executable = '<span class="pathok">&#x2714;</span>';
             } else {
                 $executable = '<span class="patherror">&#x2718;</span>';
@@ -8270,9 +8243,12 @@ class admin_setting_configstoredfile extends admin_setting {
 
         // Let's not deal with validation here, this is for admins only.
         $current = $this->get_setting();
-        if (empty($data) && $current === null) {
-            // This will be the case when applying default settings (installation).
-            return ($this->config_write($this->name, '') ? '' : get_string('errorsetting', 'admin'));
+        if (empty($data)) {
+            // Most probably applying default settings.
+            if ($current === null) {
+                return ($this->config_write($this->name, '') ? '' : get_string('errorsetting', 'admin'));
+            }
+            return '';
         } else if (!is_number($data)) {
             // Draft item id is expected here!
             return get_string('errorsetting', 'admin');
@@ -8293,10 +8269,8 @@ class admin_setting_configstoredfile extends admin_setting {
 
         if ($fs->file_exists($options['context']->id, $component, $this->filearea, $this->itemid, '/', '.')) {
             // Make sure the settings form was not open for more than 4 days and draft areas deleted in the meantime.
-            // But we can safely ignore that if the destination area is empty, so that the user is not prompt
-            // with an error because the draft area does not exist, as he did not use it.
             $usercontext = context_user::instance($USER->id);
-            if (!$fs->file_exists($usercontext->id, 'user', 'draft', $data, '/', '.') && $current !== '') {
+            if (!$fs->file_exists($usercontext->id, 'user', 'draft', $data, '/', '.')) {
                 return get_string('errorsetting', 'admin');
             }
         }
@@ -8444,7 +8418,7 @@ class admin_setting_devicedetectregex extends admin_setting {
     public function output_html($data, $query='') {
         global $OUTPUT;
 
-        $out  = html_writer::start_tag('table', array('class' => 'generaltable'));
+        $out  = html_writer::start_tag('table', array('border' => 1, 'class' => 'generaltable'));
         $out .= html_writer::start_tag('thead');
         $out .= html_writer::start_tag('tr');
         $out .= html_writer::tag('th', get_string('devicedetectregexexpression', 'admin'));

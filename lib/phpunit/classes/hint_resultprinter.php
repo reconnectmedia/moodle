@@ -108,9 +108,7 @@ class Hint_ResultPrinter extends PHPUnit_TextUI_ResultPrinter {
             $executable = 'phpunit';
             if (testing_is_cygwin()) {
                 $file = str_replace('\\', '/', $file);
-                if (!testing_is_mingw()) {
-                    $executable = 'phpunit.bat';
-                }
+                $executable = 'phpunit.bat';
             }
         }
 

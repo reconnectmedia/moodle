@@ -125,11 +125,7 @@ class repository_equella extends repository {
      * @return string file referece
      */
     public function get_file_reference($source) {
-        // Internally we store serialized value but user input is json-encoded for security reasons.
-        $ref = json_decode(base64_decode($source));
-        $filename  = clean_param($ref->filename, PARAM_FILE);
-        $url = clean_param($ref->url, PARAM_URL);
-        return base64_encode(serialize((object)array('url' => $url, 'filename' => $filename)));
+        return $source;
     }
 
     /**
@@ -418,13 +414,12 @@ class repository_equella extends repository {
     /**
      * Return the source information
      *
-     * @param string $source
+     * @param stdClass $url
      * @return string|null
      */
-    public function get_file_source_info($source) {
-        $ref = json_decode(base64_decode($source));
-        $filename  = clean_param($ref->filename, PARAM_FILE);
-        return 'EQUELLA: ' . $filename;
+    public function get_file_source_info($url) {
+        $ref = unserialize(base64_decode($url));
+        return 'EQUELLA: ' . $ref->filename;
     }
 
     /**

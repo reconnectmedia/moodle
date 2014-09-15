@@ -83,7 +83,7 @@
     .ie7-inline-block();
     border-right: 1px solid #BBBBBB;
     position: absolute;
-    top: 31px;
+    top: 26px;
     bottom: 1px;
 }
 .dir-rtl .file-picker .fp-repo-area {
@@ -91,34 +91,20 @@
     border-right: none;
 }
 .file-picker .fp-repo-items {
-    float: none;
-    width: auto;
-    margin-left:181px;
-}
-.moodle-dialogue-fullscreen .file-picker .fp-repo-items {
-    margin-left: 0px;
-    margin-right:0px;
-    float: left;
-}
-.dir-rtl .file-picker .fp-repo-items {
-    margin-left: 0px;
-    margin-right:181px;
-}
-.dir-rtl .moodle-dialogue-fullscreen .file-picker .fp-repo-items {
-    margin-left: 0px;
-    margin-right:0px;
-    float: right;
+    vertical-align: top;
+    display: inline-block;
+    .ie7-inline-block();
+    margin-left: 181px;
 }
 .file-picker .fp-navbar {
     background: #F2F2F2;
     min-height: 22px;
     border-bottom: 1px solid #BBBBBB;
-    min-height: 40px;
-    overflow: hidden;
+    padding: 5px 8px;
 }
 .file-picker .fp-content {
     background: #FFFFFF;
-    clear: none;
+    clear: both;
     overflow: auto;
     width: 678px;
     height: 477px;
@@ -214,8 +200,8 @@
     padding-right: 10px;
 }
 .dir-rtl .fp-toolbar div {
+    width: 100px;
     padding-right: 0px;
-    padding-left: 10px;
 }
 .fp-toolbar img {
     vertical-align: -15%;
@@ -234,18 +220,16 @@
 }
 .fp-viewbar {
     float: right;
-    width: 72px;
+    width: 69px;
     height: 22px;
-    text-align:right;
+    margin-right: 8px;
 }
 .dir-rtl .fp-toolbar img {
     vertical-align: -35%;
-    margin-right: 0px;
-    margin-left: 5px;
 }
 .dir-rtl .fp-viewbar {
     float: left;
-    text-align:left;
+    width: 100px;
 }
 .fp-vb-icons {
     background: url('[[pix:theme|fp/view_icon_active]]') no-repeat 0 0;
@@ -371,6 +355,7 @@
 .dir-rtl .fp-pathbar span {
     display: inline-block;
     .ie7-inline-block();
+    float: right;
     margin-left: 32px;
 }
 .fp-pathbar .fp-path-folder-name {
@@ -828,10 +813,8 @@ a.ygtvspacer:hover {
     display: none;
 }
 // File Manager layout
-.filemanager {
-    .fp-restrictions{
-        text-align: right;
-    }
+.fp-restrictions{
+    text-align: right;
 }
 .filemanager .fp-navbar {
     background: #F2F2F2;
@@ -1049,6 +1032,7 @@ a.ygtvspacer:hover {
     width: 100%;
     height: 80px;
     position: absolute;
+    margin-left: -28px;
     top: 5px;
 }
 .fitem.disabled .filepicker-container,
@@ -1167,58 +1151,17 @@ a.ygtvspacer:hover {
 .file-picker div.bd {
     text-align: left;
 }
-
-// Alfresco.
-.repository_alfresco {
-    .fp-toolbar {
-        .fp-tb-search {
-            width: auto;
-            height: auto;
-
-            @searchMargin: 0px;
-            input {
-                height: 25px;
-                width: 140px;
-                border-radius: 4px;
-                padding: 2px 6px 1px 28px;
-                background-position: 6px 6px;
-                margin-bottom: @searchMargin;
-            }
-            .alfresco-workplace {
-                width: 160px;
-                margin-bottom: @searchMargin;
-            }
-        }
-    }
-    .fp-clear-left {
-        clear: both;
-    }
-}
-
 // RTL Overrides
-.dir-rtl {
-    .filemanager {
-        .fp-restrictions{
-            text-align: left;
-        }
-    }
-    .file-picker div.bd,
-    .file-picker .fp-pathbar,
-    .file-picker .fp-list,
-    #filemenu .yuimenuitemlabel,
-    .filemanager-container .yui3-skin-sam .yui3-datatable-header {
-        text-align: right;
-    }
-    .filepicker {
-        .yui-layout-unit-left {
-            left: 500px;
-        }
-        .yui-layout-unit-center {
-            left: 0;
-        }
-    }
-    .repository_alfresco .fp-toolbar .fp-tb-search input {
-        background-position: right 6px;
-        padding: 2px 28px 1px 6px;
-    }
+.dir-rtl .file-picker div.bd,
+.dir-rtl .file-picker .fp-pathbar,
+.dir-rtl .file-picker .fp-list,
+.dir-rtl #filemenu .yuimenuitemlabel,
+.dir-rtl .filemanager-container .yui3-skin-sam .yui3-datatable-header {
+    text-align: right;
+}
+.dir-rtl .filepicker .yui-layout-unit-left {
+    left: 500px;
+}
+.dir-rtl .filepicker .yui-layout-unit-center {
+    left: 0;
 }

@@ -719,27 +719,13 @@ function wiki_parser_get_token($markup, $name) {
 /**
  * Checks if current user can view a subwiki
  *
- * @param stdClass $subwiki usually record from {wiki_subwikis}. Must contain fields 'wikiid', 'groupid', 'userid'.
- *     If it also contains fields 'course' and 'groupmode' from table {wiki} it will save extra DB query.
- * @param stdClass $wiki optional wiki object if known
- * @return bool
+ * @param $subwiki
  */
-function wiki_user_can_view($subwiki, $wiki = null) {
+function wiki_user_can_view($subwiki) {
     global $USER;
 
-    if (empty($wiki) || $wiki->id != $subwiki->wikiid) {
-        $wiki = wiki_get_wiki($subwiki->wikiid);
-    }
-    $modinfo = get_fast_modinfo($wiki->course);
-    if (!isset($modinfo->instances['wiki'][$subwiki->wikiid])) {
-        // Module does not exist.
-        return false;
-    }
-    $cm = $modinfo->instances['wiki'][$subwiki->wikiid];
-    if (!$cm->uservisible) {
-        // The whole module is not visible to the current user.
-        return false;
-    }
+    $wiki = wiki_get_wiki($subwiki->wikiid);
+    $cm = get_coursemodule_from_instance('wiki', $wiki->id);
     $context = context_module::instance($cm->id);
 
     // Working depending on activity groupmode
@@ -781,7 +767,7 @@ function wiki_user_can_view($subwiki, $wiki = null) {
         //      Each person owns a wiki.
         if ($wiki->wikimode == 'collaborative' || $wiki->wikimode == 'individual') {
             // Only members of subwiki group could view that wiki
-            if (in_array($subwiki->groupid, $modinfo->get_groups($cm->groupingid))) {
+            if (groups_is_member($subwiki->groupid)) {
                 // Only view capability needed
                 return has_capability('mod/wiki:viewpage', $context);
 
@@ -1418,11 +1404,8 @@ function wiki_print_upload_table($context, $filearea, $fileitemid, $deleteupload
  */
 function wiki_build_tree($page, $node, &$keys) {
     $content = array();
-    static $icon = null;
-    if ($icon === null) {
-        // Substitute the default navigation icon with empty image.
-        $icon = new pix_icon('spacer', '');
-    }
+    static $icon;
+    $icon = new pix_icon('f/odt', '');
     $pages = wiki_get_linked_pages($page->id);
     foreach ($pages as $p) {
         $key = $page->id . ':' . $p->id;
